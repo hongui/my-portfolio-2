@@ -254,36 +254,46 @@ export default function App() {
       <main className="pl-16 md:pl-24 transition-all duration-500">
         
         {/* Hero Section */}
-        <section className="relative pt-32 pb-24 px-6 max-w-7xl mx-auto flex flex-col justify-center min-h-[90vh]">
-          <div 
-            className="absolute top-[15%] right-[10%] w-[500px] h-[500px] rounded-full pointer-events-none z-0 opacity-50"
-            style={{ 
-              background: 'radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, rgba(147, 51, 234, 0.05) 100%)',
-              filter: 'blur(100px)',
-              transform: `translate(${mousePos.x * 30}px, ${mousePos.y * 30}px)`,
-              transition: 'transform 0.8s ease-out'
-            }}
-          />
-          <div className="relative z-10">
-            <FadeIn>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-600 font-bold text-[10px] uppercase tracking-[0.3em] mb-8">
-                <Activity className="w-3 h-3 animate-pulse" /> G Side Experience Design
-              </div>
-              <h1 className="text-6xl md:text-9xl font-black tracking-tighter leading-[0.9] mb-16">
-                Hi, 我是任俊明<br />
-                专注高效的<span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-blue-400 to-indigo-600">政务系统设计</span>
-              </h1>
-              <p className="text-xl md:text-2xl text-slate-400 max-w-3xl mb-12 leading-relaxed font-medium">
-                深耕法治舆情与司法行政系统，擅长 0-1 构建复杂政务业务。我致力于以组件化思维驱动设计落地，将繁琐的业务转化为极致流畅的数字化体验。
-              </p>
-              <div className="flex gap-6">
-                 <a href="#work" className="group flex items-center gap-4 text-lg font-bold transition-all">
-                    开始探索作品 <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-all"><ArrowRight className="w-5 h-5" /></div>
-                 </a>
-              </div>
-            </FadeIn>
-          </div>
-        </section>
+<section className="relative pt-48 pb-24 px-6 max-w-7xl mx-auto flex flex-col lg:flex-row justify-center min-h-[90vh] gap-12 items-center">
+  {/* 左侧文字内容（保持原来） */}
+  <div className="flex-1 relative z-10">
+    <div 
+      className="absolute top-[15%] right-[10%] w-[500px] h-[500px] rounded-full pointer-events-none z-0 opacity-50"
+      style={{ 
+        background: 'radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, rgba(147, 51, 234, 0.05) 100%)',
+        filter: 'blur(100px)',
+        transform: `translate(${mousePos.x * 30}px, ${mousePos.y * 30}px)`,
+        transition: 'transform 0.8s ease-out'
+      }}
+    />
+    
+    <FadeIn>
+      <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-600 font-bold text-[10px] uppercase tracking-[0.3em] mb-8">
+        <Activity className="w-3 h-3 animate-pulse" /> G Side Experience Design
+      </div>
+      <h1 className="text-6xl md:text-9xl font-black tracking-tighter leading-[0.9] mb-16">
+        Hi, 我是任俊明<br />
+        专注高效的<span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-blue-400 to-indigo-600">政务系统设计</span>
+      </h1>
+      <p className="text-xl md:text-2xl text-slate-400 max-w-3xl mb-12 leading-relaxed font-medium">
+        深耕法治舆情与司法行政系统，擅长 0-1 构建复杂政务业务。我致力于以组件化思维驱动设计落地，将繁琐的业务转化为极致流畅的数字化体验。
+      </p>
+      <div className="flex gap-6">
+        <a href="#work" className="group flex items-center gap-4 text-lg font-bold transition-all">
+          开始探索作品 <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-all"><ArrowRight className="w-5 h-5" /></div>
+        </a>
+      </div>
+    </FadeIn>
+  </div>
+
+  {/* 右侧 Spline 3D 区域（新增） */}
+  <div className="flex-1 w-full lg:w-auto h-[500px] lg:h-[650px] relative rounded-3xl overflow-hidden border border-slate-100 shadow-2xl">
+    <Spline 
+      scene="https://prod.spline.design/https://my.spline.design/untitled-ae76ceb64a7ba6f39eb47f7ba84add06//scene.splinecode" 
+      className="absolute inset-0 w-full h-full"
+    />
+  </div>
+</section>
 
         {/* About Me */}
         <section id="about" className="py-32 relative scroll-mt-20">
