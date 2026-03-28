@@ -294,7 +294,7 @@ export default function App() {
             <h1 className="text-6xl md:text-9xl font-black tracking-tighter leading-[0.9] mb-16">
               Hi, 我是任俊明<br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-blue-400 to-indigo-600">
-                政务系统设计
+                政务系统设计 2年经验
               </span>
             </h1>
           </FadeIn>
