@@ -324,24 +324,26 @@ export default function App() {
   </div>
 </section>
         
-{/* About Me - 文字宽度与技能工具对齐优化版 */}
+{/* About Me - 文字宽度与卡片区域对齐版 */}
 <section id="about" className="py-32 relative scroll-mt-20">
   <div className="max-w-7xl mx-auto px-6">
     
-    {/* 职业价值 - 文字宽度与技能工具保持一致 */}
-    <div className="mb-24 max-w-4xl">
+    {/* 职业价值 - 文字宽度调整为和卡片区域一致 */}
+    <div className="mb-24">
       <FadeIn>
         <h2 className="text-5xl font-black mb-10 tracking-tighter italic text-slate-900 underline decoration-blue-600 decoration-4 underline-offset-8">
           职业价值 / Value
         </h2>
-        <p className="text-slate-500 text-xl leading-relaxed font-medium">
-          毕业于杭州职业技术学院。在杭州睿云期间，主导了法治舆情项目从 0-1 的全链路落地。我不仅交付界面，更交付<strong>设计系统</strong>。通过沉淀 135+ 个原子组件，大幅提升了团队 40% 的产出效率。
-        </p>
+        <div className="max-w-5xl">   {/* ← 这里调整为 max-w-5xl，让文字更宽 */}
+          <p className="text-slate-500 text-xl leading-relaxed font-medium">
+            毕业于杭州职业技术学院。在杭州睿云期间，主导了法治舆情项目从 0-1 的全链路落地。我不仅交付界面，更交付<strong>设计系统</strong>。通过沉淀 135+ 个原子组件，大幅提升了团队 40% 的产出效率。
+          </p>
+        </div>
       </FadeIn>
     </div>
 
-    {/* 经历卡片 */}
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
+    {/* 三个经历卡片 - 保持当前布局 */}
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
       {[
         { 
           icon: Briefcase, 
@@ -360,22 +362,22 @@ export default function App() {
         }
       ].map((item, i) => (
         <FadeIn key={i} delay={i * 100}>
-          <div className="flex gap-4 items-start p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:border-blue-200 transition-all group h-full">
-            <div className="w-14 h-14 rounded-2xl bg-white shadow-sm flex-shrink-0 flex items-center justify-center text-blue-600 group-hover:scale-110 transition-transform">
-              <item.icon className="w-7 h-7" />
+          <div className="flex gap-5 items-start p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:border-blue-200 transition-all group h-full">
+            <div className="w-12 h-12 rounded-2xl bg-white shadow-sm flex-shrink-0 flex items-center justify-center text-blue-600 group-hover:scale-110 transition-transform mt-1">
+              <item.icon className="w-6 h-6" />
             </div>
-            <div>
-              <h4 className="font-black text-xl mb-2 leading-tight">{item.title}</h4>
-              <p className="text-slate-400 font-medium">{item.desc}</p>
+            <div className="flex-1">
+              <h4 className="font-black text-lg leading-tight mb-1">{item.title}</h4>
+              <p className="text-slate-400 font-medium text-[15px]">{item.desc}</p>
             </div>
           </div>
         </FadeIn>
       ))}
     </div>
 
-    {/* 专业技能工具 */}
+    {/* 专业技能工具 - 保持较宽布局 */}
     <FadeIn delay={200}>
-      <div className="bg-slate-900 text-white p-12 md:p-16 rounded-[3.5rem] relative overflow-hidden group shadow-2xl max-w-4xl">
+      <div className="bg-slate-900 text-white p-12 md:p-16 rounded-[3.5rem] relative overflow-hidden group shadow-2xl">
         <div className="absolute top-0 right-0 w-80 h-80 bg-blue-600/20 blur-[100px] group-hover:bg-blue-600/30 transition-all" />
         
         <h3 className="text-3xl font-black mb-12 flex items-center gap-4">
