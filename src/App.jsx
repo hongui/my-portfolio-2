@@ -279,7 +279,7 @@ export default function App() {
       Hi,<br />
       我是任俊明<br />
       专注高效的<br />
-      <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-blue-400 to-indigo-600">行政务系统设计</span>
+      <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-blue-400 to-indigo-600">政务系统设计</span>
     </h1>
     
     <p className="text-xl md:text-2xl text-slate-400 max-w-3xl mb-12 leading-relaxed font-medium">
