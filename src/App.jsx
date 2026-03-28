@@ -1,6 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ArrowRight, Mail, Phone, ArrowLeft, ExternalLink, Activity, Layers, Smartphone, PieChart, LayoutTemplate, Zap, Shield, ChevronRight, Monitor, Database, Settings, GraduationCap, Briefcase, Award, QrCode, CheckCircle2, Cpu, MousePointer2, User, FolderOpen, MessageSquare } from 'lucide-react';
 import Spline from '@splinetool/react-spline';
+useEffect(() => {
+  const timer = setTimeout(() => {
+    const loadingEl = document.getElementById('spline-loading');
+    if (loadingEl) loadingEl.style.opacity = '0';
+  }, 3000); // 最多显示 3 秒
+
+  return () => clearTimeout(timer);
+}, []);
 
 // --- 自定义 Hooks ---
 const useScroll = () => {
