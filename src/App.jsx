@@ -287,15 +287,26 @@ export default function App() {
     </FadeIn>
   </div>
 
-{/* 右侧 Spline 3D 区域 */}
+{/* 右侧 Spline 3D 区域 - 最终推荐版 */}
 <div className="flex-1 w-full lg:w-auto h-[480px] lg:h-[620px] relative rounded-3xl overflow-hidden border border-slate-100 shadow-2xl bg-slate-50">
 
   <Spline 
     scene="https://prod.spline.design/xxocG5UX04nYJYmm/scene.splinecode" 
     className="absolute inset-0 w-full h-full"
+    onLoad={() => {
+      // 模型加载完成后自动隐藏加载提示
+      const loadingEl = document.getElementById('spline-loading');
+      if (loadingEl) {
+        loadingEl.style.opacity = '0';
+        // 700ms 淡出动画后彻底隐藏，防止占用空间
+        setTimeout(() => {
+          if (loadingEl) loadingEl.style.display = 'none';
+        }, 700);
+      }
+    }}
   />
 
-  {/* 加载提示层 - 模型加载完后自动隐藏 */}
+  {/* 加载提示层 */}
   <div id="spline-loading" 
        className="absolute inset-0 flex items-center justify-center bg-slate-50/90 z-10 transition-opacity duration-700 pointer-events-none">
     <div className="flex flex-col items-center gap-3">
