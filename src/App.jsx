@@ -287,17 +287,24 @@ export default function App() {
     </FadeIn>
   </div>
 
-  {/* 右侧 Spline 3D 区域 */}
+ {/* 右侧 Spline 3D 区域 */}
 <div className="flex-1 w-full lg:w-auto h-[480px] lg:h-[620px] relative rounded-3xl overflow-hidden border border-slate-100 shadow-2xl bg-slate-50">
-  {/* 加载中占位（防止白屏太久） */}
-  <div className="absolute inset-0 flex items-center justify-center z-10 bg-slate-50">
-    <div className="text-slate-400 text-sm font-medium">加载 3D 场景中...</div>
-  </div>
-  
   <Spline 
     scene="https://prod.spline.design/xxocG5UX04nYJYmm/scene.splinecode" 
     className="absolute inset-0 w-full h-full"
+    onLoad={() => {
+      console.log("Spline 场景加载成功！");
+      // 这里可以加隐藏加载提示的逻辑，如果需要
+    }}
   />
+  
+  {/* 改进后的加载提示 - 半透明 + 自动淡出 */}
+  <div id="spline-loading" className="absolute inset-0 flex items-center justify-center bg-slate-50/80 z-10 transition-opacity duration-700">
+    <div className="text-slate-400 text-sm font-medium flex items-center gap-2">
+      <div className="w-4 h-4 border-2 border-slate-300 border-t-blue-600 rounded-full animate-spin"></div>
+      加载 3D 场景中...
+    </div>
+  </div>
 </div>
 </section>
 
