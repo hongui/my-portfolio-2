@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ArrowRight, Mail, Phone, ArrowLeft, ExternalLink, Activity, Layers, Smartphone, PieChart, LayoutTemplate, Zap, Shield, ChevronRight, Monitor, Database, Settings, GraduationCap, Briefcase, Award, QrCode, CheckCircle2, Cpu, MousePointer2, User, FolderOpen, MessageSquare } from 'lucide-react';
+import Spline from '@splinetool/react-spline';
 
 // --- 自定义 Hooks ---
 const useScroll = () => {
