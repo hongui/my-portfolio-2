@@ -287,13 +287,18 @@ export default function App() {
     </FadeIn>
   </div>
 
-  {/* 右侧 Spline 3D 区域（新增） */}
-  <div className="flex-1 w-full lg:w-auto h-[500px] lg:h-[650px] relative rounded-3xl overflow-hidden border border-slate-100 shadow-2xl">
-    <Spline 
-      scene="https://prod.spline.design/https://my.spline.design/untitled-ae76ceb64a7ba6f39eb47f7ba84add06//scene.splinecode" 
-      className="absolute inset-0 w-full h-full"
-    />
+  {/* 右侧 Spline 3D 区域 */}
+<div className="flex-1 w-full lg:w-auto h-[480px] lg:h-[620px] relative rounded-3xl overflow-hidden border border-slate-100 shadow-2xl bg-slate-50">
+  {/* 加载中占位（防止白屏太久） */}
+  <div className="absolute inset-0 flex items-center justify-center z-10 bg-slate-50">
+    <div className="text-slate-400 text-sm font-medium">加载 3D 场景中...</div>
   </div>
+  
+  <Spline 
+    scene="https://prod.spline.design/xxocG5UX04nYJYmm/scene.splinecode" 
+    className="absolute inset-0 w-full h-full"
+  />
+</div>
 </section>
 
         {/* About Me */}
