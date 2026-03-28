@@ -257,7 +257,7 @@ export default function App() {
 {/* Hero Section - 右侧无边框模型 + 文字可叠加 */}
 <section className="relative pt-48 pb-24 px-6 max-w-7xl mx-auto flex flex-col lg:flex-row justify-center min-h-[90vh] gap-16 lg:gap-20 items-start lg:items-center">
   
-  {/* 左侧文字内容 - 调整后的排版 */}
+  {/* 左侧文字内容 - 按你要求调整为四行标题 */}
 <div className="flex-1 relative z-10">
   <div 
     className="absolute top-[15%] right-[10%] w-[500px] h-[500px] rounded-full pointer-events-none z-0 opacity-50"
@@ -270,14 +270,16 @@ export default function App() {
   />
   
   <FadeIn>
-    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-600 font-bold text-[10px] uppercase tracking-[0.3em] mb-8">
+    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-600 font-bold text-[10px] uppercase tracking-[0.3em] mb-10">
       <Activity className="w-3 h-3 animate-pulse" /> G Side Experience Design
     </div>
     
-    {/* 修改后的标题排版 */}
-    <h1 className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.95] mb-10">
-      Hi, 我是任俊明<br />
-      专注高效的<span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-blue-400 to-indigo-600">政务系统设计</span>
+    {/* 四行标题排版 */}
+    <h1 className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.88] mb-12">
+      Hi,<br />
+      我是任俊明<br />
+      专注高效的<br />
+      <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-blue-400 to-indigo-600">行政务系统设计</span>
     </h1>
     
     <p className="text-xl md:text-2xl text-slate-400 max-w-3xl mb-12 leading-relaxed font-medium">
