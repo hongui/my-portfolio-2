@@ -324,23 +324,23 @@ export default function App() {
   </div>
 </section>
         
-        {/* About Me - 优化版：文字单独占屏 + 经历卡片放在下方 */}
+{/* About Me - 文字宽度与技能工具对齐优化版 */}
 <section id="about" className="py-32 relative scroll-mt-20">
   <div className="max-w-7xl mx-auto px-6">
     
-    {/* 职业价值 - 单独占大空间 */}
-    <div className="mb-24">
+    {/* 职业价值 - 文字宽度与技能工具保持一致 */}
+    <div className="mb-24 max-w-4xl">
       <FadeIn>
         <h2 className="text-5xl font-black mb-10 tracking-tighter italic text-slate-900 underline decoration-blue-600 decoration-4 underline-offset-8">
           职业价值 / Value
         </h2>
-        <p className="text-slate-500 text-xl leading-relaxed font-medium max-w-3xl">
+        <p className="text-slate-500 text-xl leading-relaxed font-medium">
           毕业于杭州职业技术学院。在杭州睿云期间，主导了法治舆情项目从 0-1 的全链路落地。我不仅交付界面，更交付<strong>设计系统</strong>。通过沉淀 135+ 个原子组件，大幅提升了团队 40% 的产出效率。
         </p>
       </FadeIn>
     </div>
 
-    {/* 经历卡片 - 放在文字下方，垂直排列，更清晰 */}
+    {/* 经历卡片 */}
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
       {[
         { 
@@ -373,9 +373,9 @@ export default function App() {
       ))}
     </div>
 
-    {/* 专业技能工具 - 单独一块，放在最下方 */}
+    {/* 专业技能工具 */}
     <FadeIn delay={200}>
-      <div className="bg-slate-900 text-white p-12 md:p-16 rounded-[3.5rem] relative overflow-hidden group shadow-2xl">
+      <div className="bg-slate-900 text-white p-12 md:p-16 rounded-[3.5rem] relative overflow-hidden group shadow-2xl max-w-4xl">
         <div className="absolute top-0 right-0 w-80 h-80 bg-blue-600/20 blur-[100px] group-hover:bg-blue-600/30 transition-all" />
         
         <h3 className="text-3xl font-black mb-12 flex items-center gap-4">
