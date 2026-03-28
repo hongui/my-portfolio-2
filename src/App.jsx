@@ -257,7 +257,7 @@ export default function App() {
 {/* Hero Section - 右侧无边框模型 + 文字可叠加 */}
 <section className="relative pt-48 pb-24 px-6 max-w-7xl mx-auto flex flex-col lg:flex-row justify-center min-h-[90vh] gap-16 lg:gap-20 items-start lg:items-center">
   
-  {/* 左侧文字内容 - 按你要求调整为四行标题 */}
+{/* 左侧文字内容 - 按你要求调整大小 */}
 <div className="flex-1 relative z-10">
   <div 
     className="absolute top-[15%] right-[10%] w-[500px] h-[500px] rounded-full pointer-events-none z-0 opacity-50"
@@ -274,15 +274,16 @@ export default function App() {
       <Activity className="w-3 h-3 animate-pulse" /> G Side Experience Design
     </div>
     
-    {/* 四行标题排版 */}
-    <h1 className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.88] mb-12">
+    {/* 标题：Hi 保持原大小，其他三行减半 */}
+    <h1 className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.92] mb-12">
       Hi,<br />
-      我是任俊明<br />
-      专注高效的<br />
-      <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-blue-400 to-indigo-600">行政务系统设计</span>
+      <span className="text-4xl md:text-5xl lg:text-[56px]">我是任俊明</span><br />
+      <span className="text-4xl md:text-5xl lg:text-[56px]">专注高效的</span><br />
+      <span className="text-4xl md:text-5xl lg:text-[56px] text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-blue-400 to-indigo-600">行政务系统设计</span>
     </h1>
     
-    <p className="text-xl md:text-2xl text-slate-400 max-w-3xl mb-12 leading-relaxed font-medium">
+    {/* 简介文字：比标题小16px */}
+    <p className="text-[22px] md:text-[26px] lg:text-[40px] text-slate-500 max-w-3xl mb-12 leading-relaxed font-medium">
       深耕法治舆情与司法行政系统，擅长 0-1 构建复杂政务业务。我致力于以组件化思维驱动设计落地，将繁琐的业务转化为极致流畅的数字化体验。
     </p>
 
