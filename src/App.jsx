@@ -10,7 +10,8 @@ const useScroll = () => {
     const handleScroll = () => {
       setScrollY(window.scrollY);
       
-      const sections = ['about', 'work', 'metrics'];
+      // 移除 metrics 监听
+      const sections = ['about', 'work', 'contact'];
       const current = sections.find(id => {
         const el = document.getElementById(id);
         if (el) {
@@ -88,7 +89,6 @@ const ProjectDetail = ({ project, onBack }) => {
 
   return (
     <div className="min-h-screen bg-[#F8FAFC] text-slate-900 pb-32 animate-in fade-in slide-in-from-bottom-4 duration-700">
-      {/* 顶部导航 */}
       <nav className="sticky top-0 w-full z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200/60">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <button onClick={onBack} className="flex items-center gap-2 text-slate-500 hover:text-blue-600 font-bold transition-all group">
@@ -98,7 +98,6 @@ const ProjectDetail = ({ project, onBack }) => {
         </div>
       </nav>
 
-      {/* 沉浸式头图 */}
       <header className={`pt-24 pb-20 bg-gradient-to-br ${project.color} to-white border-b border-slate-100`}>
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-end">
@@ -123,7 +122,6 @@ const ProjectDetail = ({ project, onBack }) => {
         </div>
       </header>
 
-      {/* 内容主体 */}
       <main className="max-w-6xl mx-auto px-6 mt-24 space-y-40">
          {project.sections.map((section, idx) => (
            <section key={idx} className="relative">
@@ -146,9 +144,6 @@ const ProjectDetail = ({ project, onBack }) => {
                 <div className="lg:col-span-8">
                    <div className="bg-white rounded-[2.5rem] p-4 border border-slate-200 shadow-2xl shadow-slate-200/50 overflow-hidden group">
                       <div className="aspect-[16/10] bg-slate-50 rounded-[1.8rem] overflow-hidden relative">
-                         <div className="absolute inset-0 flex items-center justify-center text-slate-300 font-bold italic">
-                           
-                         </div>
                          <img src={section.image} alt={section.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                       </div>
                    </div>
@@ -158,7 +153,6 @@ const ProjectDetail = ({ project, onBack }) => {
          ))}
       </main>
 
-      {/* 底部引导 */}
       <footer className="max-w-4xl mx-auto px-6 mt-40 text-center">
         <div className="p-12 bg-slate-900 rounded-[3rem] text-white">
           <h3 className="text-3xl font-black mb-6">想了解更多设计细节？</h3>
@@ -266,7 +260,7 @@ export default function App() {
             {[
               { id: 'about', label: '关于我' },
               { id: 'work', label: '项目分类' },
-              { id: 'metrics', label: '核心成果' }
+              { id: 'contact', label: '联系我' }
             ].map((nav) => (
               <a 
                 key={nav.id}
@@ -277,9 +271,6 @@ export default function App() {
                 <div className={`absolute inset-0 bg-blue-50 rounded-lg transition-all duration-500 ease-out ${activeSection === nav.id ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`} />
               </a>
             ))}
-            <a href="#contact" className="ml-4 px-6 py-2.5 bg-slate-900 text-white rounded-full hover:bg-blue-600 hover:scale-105 active:scale-95 transition-all shadow-lg shadow-slate-200">
-              联系我
-            </a>
           </div>
         </div>
       </nav>
@@ -296,17 +287,25 @@ export default function App() {
           }}
         />
         <div className="relative z-10">
-          <FadeIn>
+          <FadeIn delay={0}>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-600 font-bold text-[10px] uppercase tracking-[0.3em] mb-8">
               <Activity className="w-3 h-3 animate-pulse" /> G Side Experience Design
             </div>
             <h1 className="text-6xl md:text-9xl font-black tracking-tighter leading-[0.9] mb-16">
               Hi, 我是任俊明<br />
-              专注高效的<span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-blue-400 to-indigo-600">政务系统设计</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-blue-400 to-indigo-600">
+                政务系统设计
+              </span>
             </h1>
+          </FadeIn>
+
+          <FadeIn delay={400}>
             <p className="text-xl md:text-2xl text-slate-400 max-w-3xl mb-12 leading-relaxed font-medium">
-              深耕法治舆情与司法行政系统，擅长 0-1 构建复杂政务业务。我致力于以组件化思维驱动设计落地，将繁琐的业务转化为极致流畅的数字化体验。
+              专注高效的<span className="text-slate-900 font-bold">政务系统设计</span>。深耕法治舆情与司法行政系统，擅长 0-1 构建复杂业务。我致力于以组件化思维驱动设计落地。
             </p>
+          </FadeIn>
+
+          <FadeIn delay={800}>
             <div className="flex gap-6">
                <a href="#work" className="group flex items-center gap-4 text-lg font-bold transition-all">
                   开始探索作品 <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-all"><ArrowRight className="w-5 h-5" /></div>
@@ -402,37 +401,13 @@ export default function App() {
         </div>
       </section>
 
-      {/* 数据成果 */}
-      <section id="metrics" className="py-32 bg-slate-900 text-white relative scroll-mt-20">
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-            {[
-              { val: "135+", label: "业务原子组件", sub: "基于司法行政规范沉淀", icon: PieChart },
-              { val: "482", label: "数字化设计资产", sub: "1:1 高还原度上线", icon: Layers },
-              { val: "85%", label: "WebP 优化", sub: "大屏加载体积缩减", icon: Zap },
-              { val: "37.5%", label: "动效流畅度提升", sub: "技术方案实际落地", icon: Activity }
-            ].map((item, idx) => (
-              <FadeIn key={idx} delay={idx * 100}>
-                <div className="p-10 rounded-[2.5rem] bg-white/5 border border-white/10 text-center group hover:bg-white/10 transition-colors">
-                  <item.icon className="w-10 h-10 mx-auto mb-8 text-slate-500 group-hover:text-blue-400 group-hover:scale-110 transition-all" />
-                  <div className="text-6xl font-black mb-3 tracking-tighter">{item.val}</div>
-                  <div className="text-slate-100 font-black mb-2 tracking-tight">{item.label}</div>
-                  <div className="text-slate-500 text-[10px] font-bold uppercase tracking-widest">{item.sub}</div>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* 联系方式 */}
-      <footer id="contact" className="py-32 bg-white text-center relative overflow-hidden">
+      <footer id="contact" className="py-32 bg-white text-center relative overflow-hidden scroll-mt-20">
         <div className="max-w-5xl mx-auto px-6 relative z-10">
           <FadeIn>
             <h2 className="text-5xl md:text-8xl font-black tracking-tighter mb-20 italic">Say Hello.</h2>
             
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 items-center">
-              {/* 二维码占位 */}
               <div className="flex flex-col items-center gap-6">
                 <div className="w-56 h-56 p-6 bg-slate-50 rounded-[3rem] border border-slate-100 flex items-center justify-center relative group shadow-inner">
                   <div className="absolute inset-0 bg-blue-600/5 blur-3xl group-hover:bg-blue-600/10 transition-all" />
@@ -444,7 +419,6 @@ export default function App() {
                 <p className="text-[10px] text-slate-400 font-black uppercase tracking-[0.3em]">扫描或搜索 ID 添加微信</p>
               </div>
 
-              {/* 核心信息 */}
               <div className="lg:col-span-2 flex flex-col items-center lg:items-start gap-10">
                 <div className="flex flex-col items-center lg:items-start group cursor-pointer">
                   <p className="text-slate-400 text-[10px] font-black uppercase tracking-widest mb-3">联系电话 / Phone</p>
