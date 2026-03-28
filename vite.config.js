@@ -3,8 +3,9 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: './',
+  base: './',                    // 保持相对路径
   build: {
-    cssMinify: true,   // 确保 CSS 正常压缩
+    outDir: 'dist',              // 确保输出目录是 dist
+    assetsDir: 'assets',         // 明确 assets 文件夹
   }
 })
