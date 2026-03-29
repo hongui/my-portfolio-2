@@ -264,7 +264,7 @@ export default function App() {
 
       <main className="pl-16 md:pl-24 transition-all duration-500">
 
-  {/* ==================== Hero Section ==================== */}
+  {/* Hero Section */}
   <section className="relative pt-32 pb-20 px-6 max-w-7xl mx-auto flex flex-col lg:flex-row justify-center min-h-[85vh] gap-16 lg:gap-20 items-start lg:items-center">
     
     {/* 左侧文字 */}
@@ -303,37 +303,26 @@ export default function App() {
       </FadeIn>
     </div>
 
- {/* 右侧 Spline 窗口 - 修复黑框 + 恢复圆角 + 调整大小 */}
-<div className="flex-1 w-full lg:w-auto relative lg:-mt-8">
-  <div className="relative w-full h-[520px] lg:h-[620px] overflow-hidden rounded-[2.75rem] bg-white">   {/* ← 改成 bg-white */}
-    
-    <Spline 
-  scene="https://prod.spline.design/kN0BGRxHdBIuvXNd/scene.splinecode"
-  className="absolute inset-0 w-full h-full scale-[0.82]"
-  onLoad={() => {
-    const loadingEl = document.getElementById('spline-loading');
-    if (loadingEl) {
-      loadingEl.style.opacity = '0';
-      setTimeout(() => {
-        if (loadingEl) loadingEl.style.display = 'none';
-      }, 800);
-    }
-  }}
-/>
-    
-    {/* 加载提示 */}
-    <div id="spline-loading" 
-         className="absolute inset-0 flex items-center justify-center bg-white/90 z-10 transition-opacity duration-700">
-      <div className="flex flex-col items-center gap-3">
-        <div className="w-5 h-5 border-2 border-slate-300 border-t-blue-600 rounded-full animate-spin"></div>
-        <div className="text-slate-400 text-sm font-medium">加载 3D 场景中...</div>
+    {/* 右侧 Spline */}
+    <div className="flex-1 w-full lg:w-auto relative lg:-mt-8">
+      <div className="relative w-full h-[460px] lg:h-[580px] overflow-hidden rounded-[2.75rem] bg-white">
+        <Spline 
+          scene="https://prod.spline.design/kN0BGRxHdBIuvXNd/scene.splinecode" 
+          className="absolute inset-0 w-full h-full scale-[0.82]"
+          onLoad={handleSplineLoad}
+        />
+        <div id="spline-loading" 
+             className="absolute inset-0 flex items-center justify-center bg-white/90 z-10 transition-opacity duration-700">
+          <div className="flex flex-col items-center gap-3">
+            <div className="w-5 h-5 border-2 border-slate-300 border-t-blue-600 rounded-full animate-spin"></div>
+            <div className="text-slate-400 text-sm font-medium">加载 3D 场景中...</div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
   </section>
 
-  {/* ==================== About Section ==================== */}
+  {/* About Section */}
   <section id="about" className="py-32 relative scroll-mt-20">
     <div className="max-w-7xl mx-auto px-6">
       
@@ -372,58 +361,47 @@ export default function App() {
         ))}
       </div>
 
-   {/* 专业技能工具 - 极简干净版（避免标签错误） */}
-<FadeIn delay={200}>
-  <div className="bg-slate-900 text-white p-12 md:p-16 rounded-[3.5rem] relative overflow-hidden group shadow-2xl max-w-5xl mx-auto mt-24">
-    
-    <div className="flex items-center gap-4 mb-12">
-      <div className="w-3 h-8 bg-blue-600 rounded-full" />
-      <h3 className="text-3xl font-black tracking-tight">专业技能工具</h3>
+      {/* 专业技能工具 */}
+      <FadeIn delay={200}>
+        <div className="bg-slate-900 text-white p-12 md:p-16 rounded-[3.5rem] relative overflow-hidden group shadow-2xl max-w-5xl mx-auto mt-24">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/10 blur-[120px] group-hover:bg-blue-600/20 transition-all duration-700" />
+          
+          <div className="flex items-center gap-4 mb-12">
+            <div className="w-3 h-8 bg-blue-600 rounded-full" />
+            <h3 className="text-3xl font-black tracking-tight">专业技能工具</h3>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
+            <div>
+              <p className="text-blue-400 text-xs font-black uppercase tracking-[0.08em] mb-3">专业设计软件</p>
+              <p className="text-2xl font-semibold">Figma / MasterGo / Axure</p>
+            </div>
+            <div>
+              <p className="text-blue-400 text-xs font-black uppercase tracking-[0.08em] mb-3">AI 提效工具</p>
+              <p className="text-2xl font-semibold">FigmaMake / Stitch</p>
+            </div>
+            <div>
+              <p className="text-blue-400 text-xs font-black uppercase tracking-[0.08em] mb-3">全链路落地</p>
+              <p className="text-2xl font-semibold">物料印刷 / UI动效</p>
+            </div>
+            <div>
+              <p className="text-blue-400 text-xs font-black uppercase tracking-[0.08em] mb-3">系统化思维</p>
+              <p className="text-2xl font-semibold">原子组件 / 设计资产</p>
+            </div>
+          </div>
+        </div>
+      </FadeIn>
     </div>
+  </section>
 
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
-      <div>
-        <p className="text-blue-400 text-xs font-black uppercase tracking-[0.08em] mb-3">专业设计软件</p>
-        <p className="text-2xl font-semibold">Figma / MasterGo / Axure</p>
-      </div>
-      <div>
-        <p className="text-blue-400 text-xs font-black uppercase tracking-[0.08em] mb-3">AI 提效工具</p>
-        <p className="text-2xl font-semibold">FigmaMake / Stitch</p>
-      </div>
-      <div>
-        <p className="text-blue-400 text-xs font-black uppercase tracking-[0.08em] mb-3">全链路落地</p>
-        <p className="text-2xl font-semibold">物料印刷 / UI动效</p>
-      </div>
-      <div>
-        <p className="text-blue-400 text-xs font-black uppercase tracking-[0.08em] mb-3">系统化思维</p>
-        <p className="text-2xl font-semibold">原子组件 / 设计资产</p>
-      </div>
-    </div>
-  </div>
-</FadeIn>
+  {/* Work Section */}
+  <section id="work" className="py-32 bg-slate-50 scroll-mt-20">
+    <div className="max-w-7xl mx-auto px-6">
+      <FadeIn className="mb-20 text-center">
+        <h2 className="text-5xl font-black tracking-tighter mb-4">核心项目拆解 / Projects</h2>
+        <p className="text-slate-400 text-lg font-bold italic">基于《司法行政系统》项目深度复盘</p>
+      </FadeIn>
 
-{/* ==================== 项目展示列表 (优化间距) ==================== */}
-
-<div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16 mb-20">
-{projects.map((project, index) => (
-<FadeIn key={project.id} delay={index * 150}>
-<div
-className="bg-white rounded-[3.5rem] p-12 border border-slate-100 shadow-[0_20px_50px_rgba(0,0,0,0.04)] hover:-translate-y-4 transition-all duration-700 h-full flex flex-col cursor-pointer group"
-onClick={() => { setSelectedProject(project); setCurrentView('detail'); }}
->
-<div className={w-16} h-16 rounded-2xl bg-gradient-to-br ${project.color} to-white flex items-center justify-center mb-12}>
-<project.icon className="w-7 h-7 text-slate-800" />
-</div>
-<div className="text-blue-600 font-black text-[10px] mb-4 tracking-[0.25em] uppercase opacity-70">{project.tag}</div>
-<h3 className="text-3xl font-black mb-6 leading-tight tracking-tighter text-slate-900">{project.title}</h3>
-<p className="text-slate-500 mb-12 flex-grow line-clamp-3 font-medium leading-relaxed">{project.desc}</p>
-<div className="flex items-center gap-3 text-slate-900 font-bold group-hover:text-blue-600 group-hover:gap-6 transition-all duration-300">
-查看项目详情 <span className="text-xl">→</span>
-</div>
-</div>
-</FadeIn>
-))}
-</div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
         {projects.map((project, index) => (
           <FadeIn key={project.id} delay={index * 150}>
