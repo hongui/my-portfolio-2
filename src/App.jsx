@@ -470,7 +470,7 @@ export default function App() {
               </h1>
               
               <p className="text-xl md:text-2xl text-slate-400 max-w-3xl mb-12 leading-[1.65] font-medium">
-                深耕法治舆情与司法行政系统，擅长 0-1 构建复杂政务业务。我致力于以组件化思维驱动设计落地，将繁琐的业务转化为极致流畅的数字化体验。
+                深耕法治舆情与司法行政领域，擅长 0-1 搭建复杂政务业务系统，以组件化思维驱动设计落地，让繁琐政务业务转化为流畅的数字化体验
               </p>
 
               <div className="flex gap-6">
