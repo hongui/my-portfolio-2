@@ -327,19 +327,20 @@ export default function App() {
   <section id="about" className="py-32 relative scroll-mt-20">
     <div className="max-w-7xl mx-auto px-6">
       
-      {/* 职业价值 */}
-      <div className="mb-24">
-        <FadeIn>
-          <h2 className="text-5xl font-black mb-10 tracking-tighter italic text-slate-900 underline decoration-blue-600 decoration-4 underline-offset-8">
-            职业价值 / Value
-          </h2>
-          <div className="max-w-[920px]">
-            <p className="text-slate-500 text-[21px] leading-[1.78] font-medium text-justify">
-              毕业于杭州职业技术学院。在杭州睿云期间，主导了法治舆情项目从 0-1 的全链路落地。我不仅交付界面，更交付<strong>设计系统</strong>。通过沉淀 135+ 个原子组件，大幅提升了团队 40% 的产出效率。
-            </p>
-          </div>
-        </FadeIn>
-      </div>
+      {/* 职业价值 - 最终实用版（强制两端对齐 + 更好视觉） */}
+<div className="mb-24">
+  <FadeIn>
+    <h2 className="text-5xl font-black mb-10 tracking-tighter italic text-slate-900 underline decoration-blue-600 decoration-4 underline-offset-8">
+      职业价值 / Value
+    </h2>
+    
+    <div className="max-w-[920px]">
+      <p className="text-slate-500 text-[21px] leading-[1.85] font-medium text-justify hyphens-auto">
+        毕业于杭州职业技术学院。在杭州睿云期间，主导了法治舆情项目从 0-1 的全链路落地。我不仅交付界面，更交付<strong>设计系统</strong>。通过沉淀 135+ 个原子组件，大幅提升了团队 40% 的产出效率。
+      </p>
+    </div>
+  </FadeIn>
+</div>
 
       {/* 三个经历卡片 */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
