@@ -385,10 +385,10 @@ export default function App() {
     {
       id: 'p3',
       title: "司法可视化大屏设计",
-      tag: "视觉动效 / 性能落地",
+      tag: "视觉动效 / IP落地",
       color: "from-emerald-100",
       icon: Monitor,
-      desc: "探索政务展示的科技美学极限。主导 AL 动效 IP 的全场景落地，并在极端硬件环境下实现极致流畅体验。",
+      desc: "主导 Ai落地动效 IP 的全场景落地，通过webp格式优化提高页面的启动速度。",
       sections: [
         { 
           title: "AL 动效 IP 视觉体系", 
