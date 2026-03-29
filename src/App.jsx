@@ -411,7 +411,7 @@ export default function App() {
 className="bg-white rounded-[3.5rem] p-12 border border-slate-100 shadow-[0_20px_50px_rgba(0,0,0,0.04)] hover:-translate-y-4 transition-all duration-700 h-full flex flex-col cursor-pointer group"
 onClick={() => { setSelectedProject(project); setCurrentView('detail'); }}
 >
-<div className={w-16 h-16 rounded-2xl bg-gradient-to-br ${project.color} to-white flex items-center justify-center mb-12}>
+<div className={w-16} h-16 rounded-2xl bg-gradient-to-br ${project.color} to-white flex items-center justify-center mb-12}>
 <project.icon className="w-7 h-7 text-slate-800" />
 </div>
 <div className="text-blue-600 font-black text-[10px] mb-4 tracking-[0.25em] uppercase opacity-70">{project.tag}</div>
