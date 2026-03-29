@@ -308,18 +308,18 @@ export default function App() {
   <div className="relative w-full h-[520px] lg:h-[620px] overflow-hidden rounded-[2.75rem] bg-white">   {/* ← 改成 bg-white */}
     
     <Spline 
-      scene="https://prod.spline.design/kN0BGRxHdBIuvXNd/scene.splinecode" 
-      className="absolute inset-0 w-full h-full scale-[0.82]"   {/* ← 调整缩放 */}
-      onLoad={() => {
-        const loadingEl = document.getElementById('spline-loading');
-        if (loadingEl) {
-          loadingEl.style.opacity = '0';
-          setTimeout(() => {
-            if (loadingEl) loadingEl.style.display = 'none';
-          }, 800);
-        }
-      }}
-    />
+  scene="https://prod.spline.design/kN0BGRxHdBIuvXNd/scene.splinecode"
+  className="absolute inset-0 w-full h-full scale-[0.82]"
+  onLoad={() => {
+    const loadingEl = document.getElementById('spline-loading');
+    if (loadingEl) {
+      loadingEl.style.opacity = '0';
+      setTimeout(() => {
+        if (loadingEl) loadingEl.style.display = 'none';
+      }, 800);
+    }
+  }}
+/>
     
     {/* 加载提示 */}
     <div id="spline-loading" 
