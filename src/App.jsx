@@ -395,7 +395,7 @@ export default function App() {
   <div className="flex-1 w-full lg:w-auto relative lg:-mt-8">
     <div className="relative w-full h-[460px] lg:h-[580px] overflow-hidden rounded-[2.75rem]">
       <Spline 
-        scene="https://prod.spline.design/xxocG5UX04nYJYmm/scene.splinecode" 
+        scene="https://prod.spline.design/kN0BGRxHdBIuvXNd/scene.splinecode" 
         className="absolute inset-0 w-full h-full scale-[1.08]"
         onLoad={() => {
           const loadingEl = document.getElementById('spline-loading');
