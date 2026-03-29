@@ -1,3 +1,4 @@
+import React, { useState, useEffect, useRef } from 'react';
 import { 
   ArrowRight, 
   ArrowLeft, 
@@ -15,7 +16,6 @@ import {
   FolderOpen, 
   MessageSquare,
   Target,
-  // --- 补充下面这些缺少的图标 ---
   Zap,
   Settings,
   PieChart,
@@ -24,6 +24,8 @@ import {
   UserCircle2
 } from 'lucide-react';
 import Spline from '@splinetool/react-spline';
+
+// --- 顶部导入部分结束 ---
 
 // --- 自定义 Hooks ---
 const useScroll = () => {
