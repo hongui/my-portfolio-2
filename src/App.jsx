@@ -341,14 +341,20 @@ export default function App() {
           职业价值 / Value
         </h2>
         
-        <div className="max-w-5xl">
-          {/* 核心修改：text-justify 配合 break-all 实现完美的左右端对齐 */}
-          <p className="text-slate-500 text-xl leading-relaxed font-medium text-justify break-all">
-            毕业于杭州职业技术学院。在杭州睿云期间，主导了法治舆情项目从 0-1 的全链路落地。我不仅交付界面，更交付<strong>设计系统</strong>。通过沉淀 135+ 个原子组件，大幅提升了团队 40% 的产出效率。
-          </p>
-        </div>
-      </FadeIn>
+   {/* 职业价值 - 最终优化版 */}
+<div className="mb-24">
+  <FadeIn>
+    <h2 className="text-5xl font-black mb-10 tracking-tighter italic text-slate-900 underline decoration-blue-600 decoration-4 underline-offset-8">
+      职业价值 / Value
+    </h2>
+    
+    <div className="max-w-[920px]">
+      <p className="text-slate-500 text-[21px] leading-[1.78] font-medium text-justify">
+        毕业于杭州职业技术学院。在杭州睿云期间，主导了法治舆情项目从 0-1 的全链路落地。我不仅交付界面，更交付<strong>设计系统</strong>。通过沉淀 135+ 个原子组件，大幅提升了团队 40% 的产出效率。
+      </p>
     </div>
+  </FadeIn>
+</div>
 
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
       {[
