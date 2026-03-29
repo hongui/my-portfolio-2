@@ -104,6 +104,20 @@ const ProjectDetail = ({ project, onBack }) => {
     window.scrollTo(0, 0);
   }, []);
 
+  // --- 这是你要“插入”的代码开始 ---
+  const images = {
+    p1: {
+      hero: "https://raw.githubusercontent.com/hongui/my-portfolio-2/refs/heads/main/public/images/fzyq%20shouye.png",
+      mobile: "https://raw.githubusercontent.com/你的用户名/仓库名/main/p1_app.png",
+    },
+    p2: {
+      dashboard: "https://raw.githubusercontent.com/你的用户名/仓库名/main/p2_main.png",
+    },
+    p3: {
+      ip: "https://raw.githubusercontent.com/你的用户名/仓库名/main/p3_robot.png",
+    }
+  };
+
   // 路由逻辑：判断当前点击的是哪一个子页面
   const isJusticeSystem = project.id === 'p1';   // 子页面 1：司法行政系统工作台 (PDF 3 视觉规范)
   const isDashboard = project.id === 'p2';       // 子页面 2：法治舆情决策驾驶舱 (PDF 1/2 需求拆解)
@@ -174,26 +188,33 @@ const ProjectDetail = ({ project, onBack }) => {
             </section>
 
             <section className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="md:col-span-1 space-y-6">
-                <h3 className="text-3xl font-black">首页功能概述</h3>
-                <p className="text-slate-500 font-medium">采用可拓展导航设计与分模块布局，支持快速决策分析，确保 Webapp 用户体验高度一致。</p>
-                <div className="space-y-4">
-                  {["统一视觉语言", "响应式布局优化", "适老化交互模式"].map((item, i) => (
-                    <div key={i} className="flex items-center gap-3 text-slate-900 font-bold italic">
-                      <CheckCircle2 className="w-5 h-5 text-blue-600" /> {item}
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="md:col-span-2 relative bg-slate-900 rounded-[2.5rem] p-4 shadow-2xl overflow-hidden group">
-                <div className="aspect-[16/10] w-full bg-slate-800 rounded-[1.75rem] flex items-center justify-center border border-slate-700/50">
-                  <div className="text-center">
-                    <LayoutTemplate className="w-12 h-12 text-slate-600 mx-auto mb-4" />
-                    <p className="text-slate-500 font-bold tracking-widest">[ 首页/Web端模块化布局展示位 ]</p>
-                  </div>
-                </div>
-              </div>
-            </section>
+  <div className="md:col-span-1 space-y-6">
+    <h3 className="text-3xl font-black">首页功能概述</h3>
+    <p className="text-slate-500 font-medium">
+      采用可拓展导航设计与分模块布局，支持快速决策分析，确保 Webapp 用户体验高度一致。
+    </p>
+    <div className="space-y-4">
+      {["统一视觉语言", "响应式布局优化", "适老化交互模式"].map((item, i) => (
+        <div key={i} className="flex items-center gap-3 text-slate-900 font-bold italic">
+          <CheckCircle2 className="w-5 h-5 text-blue-600" /> {item}
+        </div>
+      ))}
+    </div>
+  </div>
+
+  {/* 重点修改区域：图片展示部分 */}
+  <div className="md:col-span-2 relative bg-slate-900 rounded-[2.5rem] p-4 shadow-2xl overflow-hidden group">
+    <div className="aspect-[16/10] w-full bg-slate-800 rounded-[1.75rem] overflow-hidden border border-slate-700/50">
+      <img 
+        src={images.p1.hero} 
+        alt="司法行政系统首页展示" 
+        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+        // 如果图片加载失败，显示深灰色背景
+        onError={(e) => { e.target.style.display = 'none'; }} 
+      />
+    </div>
+  </div>
+</section>
 
             <section className="bg-slate-50 rounded-[3.5rem] p-12 md:p-20 flex flex-col md:flex-row items-center gap-16">
               <div className="flex-1 space-y-8">
