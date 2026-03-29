@@ -576,23 +576,29 @@ export default function App() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
               {projects.map((project, index) => (
-                <FadeIn key={project.id} delay={index * 150}>
-                  <ShimmerWrapper 
-                    className="bg-white rounded-[3rem] p-10 border border-slate-100 shadow-xl hover:-translate-y-4 transition-all duration-500 h-full flex flex-col cursor-pointer group" 
-                    onClick={() => { setSelectedProject(project); setCurrentView('detail'); }}
-                  >
-                    <div className={`w-16 h-16 rounded-[1.5rem] bg-gradient-to-br ${project.color} to-white flex items-center justify-center mb-10`}>
-                      <project.icon className="w-8 h-8 text-slate-800" />
-                    </div>
-                    <div className="text-blue-600 font-black text-[10px] mb-4 tracking-[0.2em] uppercase">{project.tag}</div>
-                    <h3 className="text-3xl font-black mb-6 leading-tight">{project.title}</h3>
-                    <p className="text-slate-500 mb-10 flex-grow line-clamp-3 font-medium">{project.desc}</p>
-                    <div className="flex items-center gap-3 text-slate-900 font-black group-hover:text-blue-600 group-hover:gap-5 transition-all">
-                      查看项目详情 <ArrowRight className="w-5 h-5" />
-                    </div>
-                  </ShimmerWrapper>
-                </FadeIn>
-              ))}
+  <FadeIn key={project.id} delay={index * 150}>
+    <ShimmerWrapper 
+      className="bg-white rounded-[3rem] p-10 border border-slate-100 shadow-xl hover:-translate-y-4 transition-all duration-500 h-full flex flex-col cursor-pointer group" 
+      onClick={() => { setSelectedProject(project); setCurrentView('detail'); }}
+    >
+      <div className={`w-16 h-16 rounded-[1.5rem] bg-gradient-to-br ${project.color} to-white flex items-center justify-center mb-10`}>
+        <project.icon className="w-8 h-8 text-slate-800" />
+      </div>
+      
+      {/* 这里是修改后的 tag - 字体加大 */}
+      <div className="text-blue-600 font-black text-sm md:text-base mb-4 tracking-[0.05em] uppercase">
+        {project.tag}
+      </div>
+      
+      <h3 className="text-3xl font-black mb-6 leading-tight">{project.title}</h3>
+      <p className="text-slate-500 mb-10 flex-grow line-clamp-3 font-medium">{project.desc}</p>
+      
+      <div className="flex items-center gap-3 text-slate-900 font-black group-hover:text-blue-600 group-hover:gap-5 transition-all">
+        查看项目详情 <ArrowRight className="w-5 h-5" />
+      </div>
+    </ShimmerWrapper>
+  </FadeIn>
+))}
             </div>
           </div>
         </section>
