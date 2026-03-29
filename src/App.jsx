@@ -1,21 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ArrowRight, Mail, Phone, ArrowLeft, ExternalLink, Activity, Layers, Smartphone, PieChart, LayoutTemplate, Zap, Shield, ChevronRight, Monitor, Database, Settings, GraduationCap, Briefcase, Award, QrCode, CheckCircle2, Cpu, MousePointer2, User, FolderOpen, MessageSquare } from 'lucide-react';
+import Spline from '@splinetool/react-spline';
 
-// --- Spline 3D 组件修复 (使用原生加载方式避免依赖冲突) ---
-const SplineScene = ({ scene, className, onLoad }) => {
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.type = 'module';
-    script.src = 'https://unpkg.com/@splinetool/viewer@1.0.94/build/spline-viewer.js';
-    document.head.appendChild(script);
-  }, []);
-
-  return (
-    <div className={className}>
-      <spline-viewer url={scene} onLoad={onLoad} />
-    </div>
-  );
-};
 
 // --- 自定义 Hooks ---
 const useScroll = () => {
@@ -318,11 +304,11 @@ export default function App() {
   <div className="flex-1 w-full lg:w-auto relative lg:-mt-8">
     <div className="relative w-full h-[460px] lg:h-[580px] overflow-hidden rounded-[2.75rem]">
       {/* 修复后的 Spline 加载 */}
-      <SplineScene 
-        scene="https://prod.spline.design/xxocG5UX04nYJYmm/scene.splinecode" 
-        className="absolute inset-0 w-full h-full scale-[1.08]"
-        onLoad={handleSplineLoad}
-      />
+      <Spline 
+  scene="https://prod.spline.design/xxocG5UX04nYJYmm/scene.splinecode" 
+  className="absolute inset-0 w-full h-full scale-[1.08]"
+  onLoad={handleSplineLoad}
+/>
       
       <div id="spline-loading" 
            className="absolute inset-0 flex items-center justify-center bg-slate-50/80 z-10 transition-opacity duration-700 text-slate-400 text-sm font-medium">
