@@ -396,7 +396,7 @@ export default function App() {
     <div className="relative w-full h-[460px] lg:h-[580px] overflow-hidden rounded-[2.75rem]">
       <Spline 
         scene="https://prod.spline.design/kN0BGRxHdBIuvXNd/scene.splinecode" 
-        className="absolute inset-0 w-full h-full scale-[1.08]"
+        className="absolute inset-0 w-full h-full scale-[0.85]"
         onLoad={() => {
           const loadingEl = document.getElementById('spline-loading');
           if (loadingEl) {
