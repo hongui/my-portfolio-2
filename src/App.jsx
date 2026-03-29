@@ -82,23 +82,26 @@ const ShimmerWrapper = ({ children, className = "", onClick }) => (
   </div>
 );
 
-// --- 子页面：项目详情页 ---
+// --- 子页面：项目详情页（第一个项目 - 司法行政系统工作台） ---
 const ProjectDetail = ({ project, onBack }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] text-slate-900 pb-32 animate-in fade-in slide-in-from-bottom-4 duration-700">
+    <div className="min-h-screen bg-[#F8FAFC] text-slate-900 pb-32">
+      
+      {/* 顶部导航 */}
       <nav className="sticky top-0 w-full z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200/60">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <button onClick={onBack} className="flex items-center gap-2 text-slate-500 hover:text-blue-600 font-bold transition-all group">
-            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" /> 返回控制台
+            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" /> 返回作品集
           </button>
           <div className="text-xs font-black tracking-widest text-slate-300 uppercase">Case Study / 2024</div>
         </div>
       </nav>
 
+      {/* 沉浸式头部 */}
       <header className={`pt-24 pb-20 bg-gradient-to-br ${project.color} to-white border-b border-slate-100`}>
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-end">
@@ -106,42 +109,54 @@ const ProjectDetail = ({ project, onBack }) => {
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-600 text-white text-[10px] font-black uppercase tracking-widest mb-6 shadow-lg shadow-blue-200">
                 <project.icon className="w-3 h-3" /> {project.tag}
               </div>
-              <h1 className="text-5xl md:text-7xl font-black tracking-tighter mb-8 leading-none">{project.title}</h1>
+              <h1 className="text-5xl md:text-7xl font-black tracking-tighter leading-none mb-8">{project.title}</h1>
               <p className="text-xl text-slate-600 leading-relaxed font-medium">{project.desc}</p>
             </div>
           </div>
         </div>
       </header>
 
-      <main className="max-w-6xl mx-auto px-6 mt-24 space-y-40">
-         {project.sections.map((section, idx) => (
-           <section key={idx} className="relative">
-             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-                <div className="lg:col-span-4 sticky top-32 h-fit">
-                   <div className="text-6xl font-black text-blue-600/10 mb-4">0{idx + 1}</div>
-                   <h2 className="text-3xl font-black mb-6 tracking-tight">{section.title}</h2>
-                   <p className="text-slate-500 leading-relaxed font-medium mb-8">{section.content}</p>
-                </div>
-                <div className="lg:col-span-8">
-                   <div className="bg-white rounded-[2.5rem] p-4 border border-slate-200 shadow-2xl shadow-slate-200/50 overflow-hidden group">
-                      <div className="aspect-[16/10] bg-slate-50 rounded-[1.8rem] overflow-hidden relative">
-                         <img src={section.image} alt={section.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                      </div>
-                   </div>
-                </div>
-             </div>
-           </section>
-         ))}
+      <main className="max-w-6xl mx-auto px-6 mt-20 space-y-32">
+        
+        {/* 项目背景说明 */}
+        <section>
+          <div className="text-3xl font-black mb-8">项目背景说明</div>
+          <div className="prose text-slate-600 text-lg leading-relaxed max-w-3xl">
+            在数字政府建设浪潮下，司法行政领域正加速从传统人工流程向智能化、闭环化、数字化转型。本项目旨在提升执法效率、监督效能与治理能力。
+          </div>
+        </section>
+
+        {/* 项目统构成 */}
+        <section>
+          <div className="text-3xl font-black mb-8">项目统构成</div>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            {/* 这里可以继续根据 PDF 补充更多卡片 */}
+            <div className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all">① 细化内容</div>
+            <div className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all">② 业务流程</div>
+            <div className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all">③ 数据分析</div>
+            <div className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all">④ 舆情监控</div>
+          </div>
+        </section>
+
+        {/* 更多 PDF 章节可以继续往下加 */}
+        {/* ... 后续你可以根据 PDF 继续扩展 ... */}
+
+        {/* 设计页面展示 - 占位图 */}
+        <section>
+          <div className="text-3xl font-black mb-8">设计页面展示</div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <img src="https://placehold.co/1200x750/f1f5f9/3b82f6?text=管理端首页" alt="管理端首页" className="rounded-3xl shadow-xl hover:scale-[1.02] transition-transform" />
+            <img src="https://placehold.co/1200x750/f1f5f9/3b82f6?text=办理端页面" alt="办理端页面" className="rounded-3xl shadow-xl hover:scale-[1.02] transition-transform" />
+          </div>
+        </section>
+
       </main>
 
+      {/* 返回按钮 */}
       <footer className="max-w-4xl mx-auto px-6 mt-40 text-center">
-        <div className="p-12 bg-slate-900 rounded-[3rem] text-white">
-          <h3 className="text-3xl font-black mb-6">想了解更多设计细节？</h3>
-          <p className="text-slate-400 mb-8">关于该项目的组件库规范、交互原型以及开发还原度文档可私下交流。</p>
-          <button onClick={onBack} className="px-8 py-4 bg-blue-600 hover:bg-blue-500 rounded-full font-bold transition-all flex items-center gap-2 mx-auto">
-             返回作品集首页 <ArrowRight className="w-4 h-4" />
-          </button>
-        </div>
+        <button onClick={onBack} className="px-8 py-4 bg-blue-600 hover:bg-blue-500 rounded-full font-bold text-white transition-all flex items-center gap-2 mx-auto">
+          返回作品集首页 <ArrowRight className="w-4 h-4" />
+        </button>
       </footer>
     </div>
   );
