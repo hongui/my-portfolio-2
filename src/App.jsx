@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ArrowRight, Mail, Phone, ArrowLeft, ExternalLink, Activity, Layers, Smartphone, PieChart, LayoutTemplate, Zap, Shield, ChevronRight, Monitor, Database, Settings, GraduationCap, Briefcase, Award, QrCode, CheckCircle2, Cpu, MousePointer2, User, FolderOpen, MessageSquare, Target, Lightbulb } from 'lucide-react';
+import Spline from '@splinetool/react-spline';
 
 // --- 自定义 Hooks ---
 const useScroll = () => {
@@ -390,36 +391,34 @@ export default function App() {
             </FadeIn>
           </div>
 
-          <div className="flex-1 w-full lg:w-auto relative lg:-mt-8">
-            <div className="relative w-full h-[460px] lg:h-[580px] overflow-hidden rounded-[2.75rem] bg-slate-50 border border-slate-100 shadow-inner">
-              {/* 右侧 Spline 窗口 - 去黑框 + 调整大小 */}
-<div className="flex-1 w-full lg:w-auto relative lg:-mt-8">
-  <div className="relative w-full h-[460px] lg:h-[580px] overflow-hidden rounded-[2.75rem] bg-transparent">
-    
-    <Spline 
-      scene="https://prod.spline.design/kN0BGRxHdBIuvXNd/scene.splinecode" 
-      className="absolute inset-0 w-full h-full scale-[0.85]"   // ← 这里调整缩放
-      onLoad={() => {
-        const loadingEl = document.getElementById('spline-loading');
-        if (loadingEl) {
-          loadingEl.style.opacity = '0';
-          setTimeout(() => {
-            if (loadingEl) loadingEl.style.display = 'none';
-          }, 800);
-        }
-      }}
-    />
-    
-    {/* 加载提示 */}
-    <div id="spline-loading" 
-         className="absolute inset-0 flex items-center justify-center bg-slate-50/90 z-10 transition-opacity duration-700">
-      <div className="flex flex-col items-center gap-3">
-        <div className="w-5 h-5 border-2 border-slate-300 border-t-blue-600 rounded-full animate-spin"></div>
-        <div className="text-slate-400 text-sm font-medium">加载 3D 场景中...</div>
+ {/* 右侧无边框 Spline 窗口 - 模型直接显示 */}
+  <div className="flex-1 w-full lg:w-auto relative lg:-mt-8">
+    <div className="relative w-full h-[460px] lg:h-[580px] overflow-hidden rounded-[2.75rem]">
+      <Spline 
+        scene="https://prod.spline.design/xxocG5UX04nYJYmm/scene.splinecode" 
+        className="absolute inset-0 w-full h-full scale-[1.08]"
+        onLoad={() => {
+          const loadingEl = document.getElementById('spline-loading');
+          if (loadingEl) {
+            loadingEl.style.opacity = '0';
+            setTimeout(() => {
+              if (loadingEl) loadingEl.style.display = 'none';
+            }, 800);
+          }
+        }}
+      />
+      
+      {/* 加载提示 */}
+      <div id="spline-loading" 
+           className="absolute inset-0 flex items-center justify-center bg-slate-50/80 z-10 transition-opacity duration-700">
+        <div className="flex flex-col items-center gap-3">
+          <div className="w-5 h-5 border-2 border-slate-300 border-t-blue-600 rounded-full animate-spin"></div>
+          <div className="text-slate-400 text-sm font-medium">加载 3D 场景中...</div>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</section>
 
         {/* About Section */}
         <section id="about" className="py-32 relative scroll-mt-20">
