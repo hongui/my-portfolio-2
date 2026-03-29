@@ -82,14 +82,14 @@ const ShimmerWrapper = ({ children, className = "", onClick }) => (
   </div>
 );
 
-// --- 子页面：项目详情页（第一个项目 - 司法行政系统工作台） ---
+// --- 子页面：项目详情页 (已优化内容并添加图片占位) ---
 const ProjectDetail = ({ project, onBack }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] text-slate-900 pb-32">
+    <div className="min-h-screen bg-[#FDFDFD] text-slate-900 pb-32">
       
       {/* 顶部导航 */}
       <nav className="sticky top-0 w-full z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200/60">
@@ -97,79 +97,144 @@ const ProjectDetail = ({ project, onBack }) => {
           <button onClick={onBack} className="flex items-center gap-2 text-slate-500 hover:text-blue-600 font-bold transition-all group">
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" /> 返回作品集
           </button>
-          <div className="text-xs font-black tracking-widest text-slate-300 uppercase">Case Study / 2024</div>
+          <div className="text-xs font-black tracking-widest text-slate-300 uppercase">Case Study / Justice System</div>
         </div>
       </nav>
 
       {/* 沉浸式头部 */}
       <header className={`pt-24 pb-20 bg-gradient-to-br ${project.color} to-white border-b border-slate-100`}>
         <div className="max-w-6xl mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-end">
-            <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-600 text-white text-[10px] font-black uppercase tracking-widest mb-6 shadow-lg shadow-blue-200">
-                <project.icon className="w-3 h-3" /> {project.tag}
-              </div>
-              <h1 className="text-5xl md:text-7xl font-black tracking-tighter leading-none mb-8">{project.title}</h1>
-              <p className="text-xl text-slate-600 leading-relaxed font-medium">{project.desc}</p>
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-600 text-white text-[10px] font-black uppercase tracking-widest mb-6 shadow-lg shadow-blue-200">
+              <project.icon className="w-3 h-3" /> {project.tag}
             </div>
+            <h1 className="text-5xl md:text-7xl font-black tracking-tighter leading-tight mb-8">
+              {project.title}
+            </h1>
+            <p className="text-xl text-slate-600 leading-relaxed font-medium">
+              深耕司法行政数字化，通过全场景适配与组件化重构，构建高效、闭环的政务办公新生态。
+            </p>
           </div>
         </div>
       </header>
 
-      <main className="max-w-6xl mx-auto px-6 mt-20 space-y-32">
+      <main className="max-w-6xl mx-auto px-6 mt-24 space-y-32">
         
-        {/* 项目背景说明 */}
+        {/* 背景与痛点 */}
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+          <FadeIn>
+            <div className="flex items-center gap-3 mb-6">
+              <div className="p-2 bg-blue-50 text-blue-600 rounded-xl">
+                <Target className="w-6 h-6" />
+              </div>
+              <h3 className="text-3xl font-black">项目背景</h3>
+            </div>
+            <p className="text-lg text-slate-500 leading-[1.8] font-medium">
+              传统司法办公系统长期面临“入口深、数据散、操作慢”的痛点。本次项目作为全省数字化转型的关键一环，旨在打破原本碎片化的业务条线，为执法人员提供“一屏通办、全程闭环”的数字化工作站。
+            </p>
+          </FadeIn>
+          <FadeIn delay={200}>
+            <div className="bg-slate-50 p-8 rounded-[2.5rem] border border-slate-100">
+              <h4 className="font-black text-slate-400 text-sm uppercase tracking-widest mb-6">核心挑战 / CHALLENGES</h4>
+              <ul className="space-y-4">
+                {[
+                  "高频业务埋藏深，平均查找时间超过 10 秒",
+                  "移动端与 PC 端体验割裂，数据同步不及时",
+                  "系统界面老旧，不符合适老化设计规范",
+                  "缺乏统一的组件化资产，迭代成本高昂"
+                ].map((item, i) => (
+                  <li key={i} className="flex gap-3 text-slate-700 font-bold">
+                    <span className="text-blue-600">✕</span> {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </FadeIn>
+        </section>
+
+        {/* 图片占位符 1 - 系统架构展示 */}
+        <FadeIn>
+          <div className="group relative">
+             <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-[2.5rem] blur opacity-15 group-hover:opacity-25 transition duration-1000"></div>
+             <div className="relative bg-white border border-slate-100 rounded-[2.5rem] overflow-hidden shadow-sm">
+                <div className="bg-slate-50/50 h-10 border-b border-slate-100 flex items-center px-6 gap-2">
+                   <div className="w-2.5 h-2.5 rounded-full bg-slate-200" />
+                   <div className="w-2.5 h-2.5 rounded-full bg-slate-200" />
+                   <div className="w-2.5 h-2.5 rounded-full bg-slate-200" />
+                </div>
+                {/* 占位图容器 */}
+                <div className="aspect-[16/9] w-full bg-slate-50 flex items-center justify-center group-hover:bg-slate-100 transition-colors">
+                   <div className="flex flex-col items-center gap-4 text-slate-300">
+                      <LayoutTemplate className="w-16 h-16 opacity-20" />
+                      <p className="font-bold tracking-widest text-sm">[ 核心业务架构全景图展示位 / 此处后续替换图片 ]</p>
+                   </div>
+                </div>
+             </div>
+          </div>
+        </FadeIn>
+
+        {/* 项目系统构成 */}
         <section>
-          <div className="text-3xl font-black mb-8">项目背景说明</div>
-          <div className="prose text-slate-600 text-lg leading-relaxed max-w-3xl">
-            在数字政府建设浪潮下，司法行政领域正加速从传统人工流程向智能化、闭环化、数字化转型。本项目旨在提升执法效率、监督效能与治理能力。
+          <div className="text-center mb-16">
+            <h3 className="text-4xl font-black mb-4">全场景多端适配</h3>
+            <p className="text-slate-400 font-bold">实现管理端、办理端、APP、iPad 四端数据互通与体验统一</p>
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { label: "管理端", emoji: "💻", color: "bg-blue-50", text: "决策大脑：数据总览、权限配置、统计分析", icon: Monitor },
+              { label: "办理端", emoji: "✍️", color: "bg-emerald-50", text: "业务实操：流程审批、任务执行、在线办公", icon: CheckCircle2 },
+              { label: "APP端", emoji: "📲", color: "bg-purple-50", text: "移动执法：现场取证、实时推送、定位签到", icon: Smartphone },
+              { label: "iPad端", emoji: "📟", color: "bg-amber-50", text: "会议演示：适老化设计、数据大屏、会议流", icon: Layers },
+            ].map((item, i) => (
+              <FadeIn key={i} delay={i * 100}>
+                <div className="bg-white rounded-[2rem] p-8 border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all group h-full">
+                  <div className={`w-14 h-14 ${item.color} rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform`}>
+                    <item.icon className="w-6 h-6 text-slate-800" />
+                  </div>
+                  <h4 className="font-black text-xl mb-3">{item.label}</h4>
+                  <p className="text-slate-500 text-sm leading-relaxed font-medium">{item.text}</p>
+                </div>
+              </FadeIn>
+            ))}
           </div>
         </section>
 
-        {/* 项目统构成 - 修改为四个端 */}
-<section className="mt-20">
-  <div className="text-3xl font-black mb-8">项目统构成</div>
-  
-  <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-    
-    {/* 管理端 */}
-    <div className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all group">
-      <div className="flex items-center justify-center w-12 h-12 bg-blue-100 text-blue-600 rounded-2xl mb-6 group-hover:scale-110 transition-transform">
-        📱
-      </div>
-      <h4 className="font-black text-xl mb-2">管理端</h4>
-      <p className="text-slate-500 text-sm leading-relaxed">后台管理系统、数据总览、权限配置、统计分析</p>
-    </div>
+        {/* 图片占位符 2 - 界面细节展示 */}
+        <section className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
+           <div className="lg:col-span-2">
+              <div className="p-2 bg-blue-600 text-white rounded-xl inline-block mb-6 shadow-lg shadow-blue-100">
+                <Lightbulb className="w-6 h-6" />
+              </div>
+              <h3 className="text-3xl font-black mb-6">核心设计策略</h3>
+              <div className="space-y-8">
+                <div>
+                  <h4 className="font-black text-blue-600 mb-2">01 / 组件化思维</h4>
+                  <p className="text-slate-500 font-medium">沉淀 50+ 司法业务原子组件，确保多端 UI 一致性并缩短 40% 研发周期。</p>
+                </div>
+                <div>
+                  <h4 className="font-black text-blue-600 mb-2">02 / 场景化导航</h4>
+                  <p className="text-slate-500 font-medium">采用“卡片式”首屏设计，根据登录角色动态展示高频入口，降低认知负担。</p>
+                </div>
+                <div>
+                  <h4 className="font-black text-blue-600 mb-2">03 / 适老化交互</h4>
+                  <p className="text-slate-500 font-medium">针对特定层级用户，调整色彩对比度与字体层级，提升易操作性。</p>
+                </div>
+              </div>
+           </div>
+           <div className="lg:col-span-3">
+              <div className="relative bg-slate-900 rounded-[3rem] p-4 shadow-2xl group overflow-hidden">
+                <div className="absolute inset-0 bg-blue-600/5 group-hover:bg-blue-600/10 transition-colors" />
+                <div className="relative aspect-[4/3] bg-slate-800 rounded-[2.25rem] border border-slate-700/50 flex items-center justify-center overflow-hidden">
+                   <div className="flex flex-col items-center gap-4 text-slate-600">
+                      <LayoutTemplate className="w-16 h-16 opacity-30" />
+                      <p className="font-bold tracking-widest text-sm">[ 高保真界面细节展示位 / 此处后续替换图片 ]</p>
+                   </div>
+                </div>
+              </div>
+           </div>
+        </section>
 
-    {/* 办理端 */}
-    <div className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all group">
-      <div className="flex items-center justify-center w-12 h-12 bg-emerald-100 text-emerald-600 rounded-2xl mb-6 group-hover:scale-110 transition-transform">
-        ✍️
-      </div>
-      <h4 className="font-black text-xl mb-2">办理端</h4>
-      <p className="text-slate-500 text-sm leading-relaxed">业务办理、流程审批、任务执行、移动办公</p>
-    </div>
-
-    {/* APP端 */}
-    <div className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all group">
-      <div className="flex items-center justify-center w-12 h-12 bg-purple-100 text-purple-600 rounded-2xl mb-6 group-hover:scale-110 transition-transform">
-        📲
-      </div>
-      <h4 className="font-black text-xl mb-2">APP端</h4>
-      <p className="text-slate-500 text-sm leading-relaxed">移动端适配、执法人员使用、实时任务推送</p>
-    </div>
-
-    {/* iPad端 */}
-    <div className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all group">
-      <div className="flex items-center justify-center w-12 h-12 bg-amber-100 text-amber-600 rounded-2xl mb-6 group-hover:scale-110 transition-transform">
-        📟
-      </div>
-      <h4 className="font-black text-xl mb-2">iPad端</h4>
-      <p className="text-slate-500 text-sm leading-relaxed">大屏适配、适老化设计、会议演示、现场办公</p>
-    </div>
-
-  </div>
-</section>
 
       </main>
 
