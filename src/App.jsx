@@ -87,23 +87,26 @@ const ProjectDetail = ({ project, onBack }) => {
     window.scrollTo(0, 0);
   }, []);
 
-  // 如果是“法治舆情决策驾驶舱”，展示特定的重构内容
-  const isDashboardProject = project.id === 'p2';
+  // --- 逻辑分发：根据 ID 判断显示哪个子页面的设计内容 ---
+  const isJusticeSystem = project.id === 'p1';   // 司法行政系统
+  const isDashboard = project.id === 'p2';       // 法治舆情驾驶舱
+  const isVisualScreen = project.id === 'p3';    // 可视化大屏
 
   return (
     <div className="min-h-screen bg-[#FDFDFD] text-slate-900 pb-32">
-      
-      {/* 顶部导航 */}
+      {/* 1. 全局顶部导航 */}
       <nav className="sticky top-0 w-full z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200/60">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <button onClick={onBack} className="flex items-center gap-2 text-slate-500 hover:text-blue-600 font-bold transition-all group">
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" /> 返回作品集
           </button>
-          <div className="text-xs font-black tracking-widest text-slate-300 uppercase">Case Study / {isDashboardProject ? "Data Visualization" : "Justice System"}</div>
+          <div className="text-xs font-black tracking-widest text-slate-300 uppercase">
+            Case Study / {project.tag.split(' / ')[0]}
+          </div>
         </div>
       </nav>
 
-      {/* 沉浸式头部 */}
+      {/* 2. 动态头部：根据项目颜色和标题自动适配 */}
       <header className={`pt-24 pb-20 bg-gradient-to-br ${project.color} to-white border-b border-slate-100`}>
         <div className="max-w-6xl mx-auto px-6">
           <div className="max-w-3xl">
@@ -114,134 +117,150 @@ const ProjectDetail = ({ project, onBack }) => {
               {project.title}
             </h1>
             <p className="text-xl text-slate-600 leading-relaxed font-medium">
-              {isDashboardProject 
-                ? "聚焦决策层数据分析查阅，通过结构化需求提炼与组件化设计，构建极具视觉冲击力的数字化驾驶舱。" 
-                : "深耕司法行政数字化，通过全场景适配与组件化重构，构建高效、闭环的政务办公新生态。"}
+              {project.desc}
             </p>
           </div>
         </div>
       </header>
 
+      {/* 3. 核心内容区：根据 ID 切换 */}
       <main className="max-w-6xl mx-auto px-6 mt-24 space-y-32">
-        
-        {/* 1. 需求拆解与业务对齐 (来自 PDF 模块) */}
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
-          <FadeIn>
-            <div className="flex items-center gap-3 mb-6">
-              <div className="p-2 bg-blue-50 text-blue-600 rounded-xl">
-                <Target className="w-6 h-6" />
-              </div>
-              <h3 className="text-3xl font-black">需求拆解 / Demand</h3>
-            </div>
-            <p className="text-lg text-slate-500 leading-[1.8] font-medium">
-              分析业务方的需求描述，将内容提炼为结构化需求列表，确保设计方向精准对齐业务价值，避免主观断遗漏关键点。[cite: 1]
-            </p>
-          </FadeIn>
-          <FadeIn delay={200}>
-            <div className="bg-slate-50 p-8 rounded-[2.5rem] border border-slate-100">
-              <h4 className="font-black text-slate-400 text-sm uppercase tracking-widest mb-6">核心业务描述 / BUSINESS ALIGNMENT</h4>
-              <div className="space-y-6">
-                <div>
-                  <p className="text-blue-600 font-black text-xs mb-2">需求描述 01：办结完成情况查询[cite: 1]</p>
-                  <p className="text-slate-700 font-bold leading-snug">首页仪表盘展示关键数据信息，取代传统月报，实现整体趋势可见。[cite: 1]</p>
-                </div>
-                <div>
-                  <p className="text-blue-600 font-black text-xs mb-2">需求描述 02：地域实时监控[cite: 1]</p>
-                  <p className="text-slate-700 font-bold leading-snug">支持地域热力图+时间维度切换，突出高频区域，便捷查看区域协。[cite: 1]</p>
-                </div>
-                <div>
-                  <p className="text-blue-600 font-black text-xs mb-2">需求描述 03：部门趋势与预警[cite: 1]</p>
-                  <p className="text-slate-700 font-bold leading-snug">部门画像实时查看，异常区域生成提醒，形成验证优化的闭环。[cite: 1]</p>
-                </div>
-              </div>
-            </div>
-          </FadeIn>
-        </section>
 
-        {/* 2. 图片占位符：首屏 A/B 屏切换模式展示 (来自 PDF 首屏模块) */}
-        <FadeIn>
-          <div className="space-y-6">
-            <div className="flex justify-between items-end">
-              <div>
-                <h3 className="text-3xl font-black mb-2">首屏 / Context</h3>
-                <p className="text-slate-400 font-bold">A/B 屏切换模式，全面覆盖业务需求范围。[cite: 1]</p>
-              </div>
-              <div className="flex gap-2">
-                <div className="px-4 py-2 bg-blue-600 text-white rounded-lg text-xs font-black">A 屏-数据分析主视图</div>
-                <div className="px-4 py-2 bg-slate-100 text-slate-400 rounded-lg text-xs font-black">B 屏-领域分析主视图</div>
-              </div>
-            </div>
-            <div className="relative bg-slate-900 rounded-[3rem] p-4 shadow-2xl group overflow-hidden">
-               <div className="aspect-[16/9] w-full bg-slate-800 rounded-[2.25rem] border border-slate-700/50 flex items-center justify-center">
-                  <div className="flex flex-col items-center gap-4 text-slate-600">
-                     <PieChart className="w-16 h-16 opacity-30" />
-                     <p className="font-bold tracking-widest text-sm">[ 此处放置：驾驶舱首屏 A/B 屏切换效果大图 ][cite: 1]</p>
+        {/* --- 子页面 2：法治舆情决策驾驶舱 (根据PDF重新设计) --- */}
+        {isDashboard && (
+          <>
+            {/* 需求拆解模块 */}
+            <section className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+              <FadeIn>
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-2 bg-blue-50 text-blue-600 rounded-xl">
+                    <Target className="w-6 h-6" />
                   </div>
-               </div>
-            </div>
-          </div>
-        </FadeIn>
-
-        {/* 3. 设计原则与组件库 (来自 PDF 组件模块) */}
-        <section>
-          <div className="text-center mb-16">
-            <h3 className="text-4xl font-black mb-4">组件库构成与设计原则</h3>
-            <p className="text-slate-400 font-bold">前期完成组件风格统一设计，确保视觉语言一致，提升开发效率与后期维护性。[cite: 1]</p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              { title: "风格统一", text: "高度一致视觉语言，避免模块割裂，提升专业感与可读性[cite: 1]", icon: Shield },
-              { title: "效率提升", text: "预定义组件库，缩短高保真迭代周期[cite: 1]", icon: Zap },
-              { title: "可维护性", text: "统一规范，一处修改全局生效。便于后期迭代与团队协作[cite: 1]", icon: Settings },
-            ].map((item, i) => (
-              <FadeIn key={i} delay={i * 100}>
-                <div className="relative group p-10 bg-white border border-slate-100 rounded-[2.5rem] hover:shadow-2xl transition-all">
-                  <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
-                    <item.icon className="w-16 h-16" />
+                  <h3 className="text-3xl font-black">需求拆解 / Demand</h3>
+                </div>
+                <p className="text-lg text-slate-500 leading-[1.8] font-medium">
+                  分析业务方的需求描述，将内容提炼为结构化需求列表，确保设计方向精准对齐业务价值，避免主观断遗漏关键点。
+                </p>
+              </FadeIn>
+              <FadeIn delay={200}>
+                <div className="space-y-6 bg-slate-50 p-8 rounded-[2.5rem] border border-slate-100">
+                  <div className="border-l-4 border-blue-600 pl-4">
+                    <h4 className="font-black text-slate-900 mb-1">关键数据可见性</h4>
+                    <p className="text-slate-500 text-sm">首页仪表盘展示关键数据信息，取代传统月报汇报方式。</p>
                   </div>
-                  <h4 className="font-black text-2xl mb-4 text-slate-900">{item.title}</h4>
-                  <p className="text-slate-500 font-medium leading-relaxed">{item.text}</p>
+                  <div className="border-l-4 border-blue-600 pl-4">
+                    <h4 className="font-black text-slate-900 mb-1">地域热力图监控</h4>
+                    <p className="text-slate-500 text-sm">支持地域热力+时间维度切换，突出高频区域，支持多层钻取。</p>
+                  </div>
+                  <div className="border-l-4 border-blue-600 pl-4">
+                    <h4 className="font-black text-slate-900 mb-1">异常预警闭环</h4>
+                    <p className="text-slate-500 text-sm">部门画像实时查看，异常区域自动预警，形成验证优化闭环。</p>
+                  </div>
                 </div>
               </FadeIn>
-            ))}
-          </div>
-        </section>
+            </section>
 
-        {/* 4. 图片占位符：组件汇总展示 (来自 PDF 底部模块) */}
-        <section className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-           <div>
-              <div className="p-2 bg-blue-600 text-white rounded-xl inline-block mb-6 shadow-lg shadow-blue-100">
-                <Layers className="w-6 h-6" />
+            {/* 组件化设计原则模块 */}
+            <section>
+              <div className="text-center mb-16">
+                <h3 className="text-4xl font-black mb-4">组件库构成与设计原则</h3>
+                <p className="text-slate-400 font-bold">确保整个数据分析驾驶舱视觉语言一致，提升开发效率与后期维护性。</p>
               </div>
-              <h3 className="text-3xl font-black mb-6">组件收集汇总</h3>
-              <p className="text-slate-500 font-medium text-lg leading-relaxed mb-8">
-                项目完成后将组件重构为可复用的母版，UI 样式组件库内容超过 <strong>135+</strong> 个。[cite: 1] 包含：
-              </p>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="bg-slate-50 p-6 rounded-2xl">
-                  <div className="text-3xl font-black text-blue-600 mb-1">135+</div>
-                  <div className="text-xs font-bold text-slate-400 uppercase tracking-widest">组件库数量</div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {[
+                  { title: "风格统一", desc: "高度一致视觉语言，避免模块割裂，提升专业感与可读性。", icon: Shield },
+                  { title: "效率提升", desc: "预定义组件库，缩短高保真迭代周期。", icon: Zap },
+                  { title: "可维护性", desc: "统一规范，一处修改全局生效，便于后期迭代。", icon: Settings },
+                ].map((item, i) => (
+                  <div key={i} className="p-10 bg-white border border-slate-100 rounded-[2.5rem] shadow-sm text-center group hover:border-blue-500 transition-colors">
+                    <item.icon className="w-10 h-10 mx-auto mb-6 text-blue-600" />
+                    <h4 className="font-black text-xl mb-4">{item.title}</h4>
+                    <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* 图片占位：A/B屏效果展示 */}
+            <FadeIn>
+              <div className="text-center mb-10">
+                <h3 className="text-3xl font-black">首屏布局 (Context)</h3>
+                <p className="text-slate-400 font-bold mt-2">A/B屏切换模式，覆盖多维度数据需求</p>
+              </div>
+              <div className="relative bg-slate-900 rounded-[3rem] p-4 shadow-2xl overflow-hidden group">
+                <div className="aspect-[16/9] w-full bg-slate-800 rounded-[2.25rem] border border-slate-700/50 flex items-center justify-center">
+                   <div className="flex flex-col items-center gap-4 text-slate-600">
+                      <LayoutTemplate className="w-16 h-16 opacity-30" />
+                      <p className="font-bold tracking-widest text-sm">[ 此处放置 A/B 屏切换效果预览图 ]</p>
+                   </div>
                 </div>
-                <div className="bg-slate-50 p-6 rounded-2xl">
-                  <div className="text-3xl font-black text-blue-600 mb-1">60,000+</div>
-                  <div className="text-xs font-bold text-slate-400 uppercase tracking-widest">累计使用次数</div>
+              </div>
+            </FadeIn>
+
+            {/* 组件收集汇总占位 */}
+            <section className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+              <div className="relative bg-slate-100 rounded-[2.5rem] aspect-square flex items-center justify-center border-2 border-dashed border-slate-300">
+                  <div className="text-center">
+                    <Database className="w-12 h-12 text-slate-300 mx-auto mb-4" />
+                    <p className="text-slate-400 font-bold">[ 135+ 组件资产包预览图 ]</p>
+                  </div>
+              </div>
+              <div>
+                <h3 className="text-3xl font-black mb-6">组件资产沉淀</h3>
+                <p className="text-slate-500 text-lg leading-relaxed mb-8">
+                  项目完成后将组件重构为可复用的母版，涵盖图表、表单、导航、装饰组件等 135 个以上原子单元。
+                </p>
+                <div className="flex gap-4">
+                  <div className="px-6 py-4 bg-blue-50 rounded-2xl">
+                    <span className="block text-2xl font-black text-blue-600">135+</span>
+                    <span className="text-xs text-blue-400 font-bold">UI组件</span>
+                  </div>
+                  <div className="px-6 py-4 bg-emerald-50 rounded-2xl">
+                    <span className="block text-2xl font-black text-emerald-600">60k+</span>
+                    <span className="text-xs text-emerald-400 font-bold">资产调用</span>
+                  </div>
                 </div>
               </div>
-           </div>
-           <div className="relative bg-white border border-slate-100 rounded-[2.5rem] overflow-hidden p-4 shadow-sm">
-              <div className="aspect-square bg-slate-50 rounded-[1.5rem] flex items-center justify-center border border-dashed border-slate-200">
-                 <div className="flex flex-col items-center gap-4 text-slate-300">
-                    <Cpu className="w-16 h-16 opacity-30" />
-                    <p className="font-bold tracking-widest text-sm">[ 此处放置：135+ 组件库汇总全景图 ][cite: 1]</p>
-                 </div>
-              </div>
-           </div>
-        </section>
+            </section>
+          </>
+        )}
+
+        {/* --- 子页面 1：司法行政系统工作台 (原有内容) --- */}
+        {isJusticeSystem && (
+          <>
+            {/* 这里保留你原先针对 p1 设计的内容，如背景痛点、四端适配等 */}
+            <section className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+               <FadeIn>
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-2 bg-blue-50 text-blue-600 rounded-xl">
+                    <Target className="w-6 h-6" />
+                  </div>
+                  <h3 className="text-3xl font-black">项目背景</h3>
+                </div>
+                <p className="text-lg text-slate-500 leading-[1.8] font-medium">
+                  传统司法办公系统长期面临“入口深、数据散、操作慢”的痛点...
+                </p>
+              </FadeIn>
+              {/* ... 其他 p1 独有模块 ... */}
+            </section>
+          </>
+        )}
+
+        {/* --- 子页面 3：司法可视化大屏 (占位预览) --- */}
+        {isVisualScreen && (
+          <div className="py-20 text-center">
+            <Monitor className="w-20 h-20 text-slate-200 mx-auto mb-8" />
+            <h3 className="text-4xl font-black mb-4">可视化大屏方案</h3>
+            <p className="text-slate-400">该项目侧重于 AL 动效 IP 的全场景落地与 3D 粒子视觉表现...</p>
+            <div className="mt-12 aspect-video bg-slate-50 rounded-[3rem] border-2 border-dashed border-slate-200 flex items-center justify-center text-slate-300">
+               [ 视频/大屏效果占位图 ]
+            </div>
+          </div>
+        )}
 
       </main>
 
-      {/* 底部行动点 */}
+      {/* 4. 底部行动点 (通用) */}
       <footer className="max-w-4xl mx-auto px-6 mt-40">
         <div className="bg-blue-600 rounded-[3.5rem] p-12 md:p-20 text-center relative overflow-hidden group">
           <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-indigo-700" />
