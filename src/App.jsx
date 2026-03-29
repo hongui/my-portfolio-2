@@ -127,18 +127,20 @@ const ProjectDetail = ({ project, onBack }) => {
       {/* --- 公共动态头部 --- */}
       <header className={`pt-24 pb-20 bg-gradient-to-br ${project.color} to-white border-b border-slate-100`}>
         <div className="max-w-6xl mx-auto px-6">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-600 text-white text-[10px] font-black uppercase tracking-widest mb-6 shadow-lg shadow-blue-200">
-              <project.icon className="w-3 h-3" /> {project.tag}
-            </div>
-            <h1 className="text-5xl md:text-7xl font-black tracking-tighter leading-tight mb-8">
-              {project.title}
-            </h1>
-            <p className="text-xl text-slate-600 leading-relaxed font-medium">
-              {project.desc}
-            </p>
-          </div>
-        </div>
+  <div className="max-w-3xl">
+    {/* 修改后的蓝色标签 - 字体加大 */}
+    <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-blue-600 text-white text-sm md:text-base font-black uppercase tracking-widest mb-8 shadow-lg shadow-blue-200">
+      <project.icon className="w-4 h-4" /> {project.tag}
+    </div>
+
+    <h1 className="text-5xl md:text-7xl font-black tracking-tighter leading-tight mb-8">
+      {project.title}
+    </h1>
+    <p className="text-xl text-slate-600 leading-relaxed font-medium">
+      {project.desc}
+    </p>
+  </div>
+</div>
       </header>
 
       <main className="max-w-6xl mx-auto px-6 mt-24 space-y-32">
