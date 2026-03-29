@@ -107,26 +107,20 @@ const ShimmerWrapper = ({ children, className = "", onClick }) => (
 );
 
 // --- 子页面：项目详情页 ---
-const ProjectDetail = ({ project, onBack }) => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
-  // --- 这是你要“插入”的代码开始 ---
-const images = {
-   const images = {
+  // 确保这段代码在 const ProjectDetail = ({ project, onBack }) => { 的大括号后面第一行
+  
+  const images = {
     p1: {
       hero: "https://raw.githubusercontent.com/hongui/my-portfolio-2/main/public/images/fzyq%20shouye.png",
-      // 修正后的 App 1 地址
+      // 修正：去掉了多余的一个 /main
       mobile: "https://raw.githubusercontent.com/hongui/my-portfolio-2/main/public/images/duoduan%20app%201%402x.png", 
-      // 修正后的 App 2 地址
       pad: "https://raw.githubusercontent.com/hongui/my-portfolio-2/main/public/images/duoduan%20app%202%402x.png",
     },
-    p2: {
-      dashboard: "", 
+    p2: { 
+      dashboard: "" 
     },
-    p3: {
-      ip: "",
+    p3: { 
+      ip: "" 
     }
   };
 
