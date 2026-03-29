@@ -264,7 +264,7 @@ export default function App() {
 
       <main className="pl-16 md:pl-24 transition-all duration-500">
   
-  {/* Hero Section - 修复顶部空白问题 */}
+  {/* Hero Section - 干净修复版 */}
 <section className="relative pt-32 pb-20 px-6 max-w-7xl mx-auto flex flex-col lg:flex-row justify-center min-h-[85vh] gap-16 lg:gap-20 items-start lg:items-center">
   
   {/* 左侧文字内容 */}
