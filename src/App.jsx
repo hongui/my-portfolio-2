@@ -107,28 +107,31 @@ const ShimmerWrapper = ({ children, className = "", onClick }) => (
 );
 
 // --- 子页面：项目详情页 ---
-  // 确保这段代码在 const ProjectDetail = ({ project, onBack }) => { 的大括号后面第一行
-  
-  const images = {
+const ProjectDetail = ({ project, onBack }) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  // --- 这是你要“插入”的代码开始 ---
+const images = {
     p1: {
+      // 统一使用这种格式，去掉 refs/heads/，直接用 main
       hero: "https://raw.githubusercontent.com/hongui/my-portfolio-2/main/public/images/fzyq%20shouye.png",
-      // 修正：去掉了多余的一个 /main
       mobile: "https://raw.githubusercontent.com/hongui/my-portfolio-2/main/public/images/duoduan%20app%201%402x.png", 
       pad: "https://raw.githubusercontent.com/hongui/my-portfolio-2/main/public/images/duoduan%20app%202%402x.png",
     },
-    p2: { 
-      dashboard: "" 
+    p2: {
+      dashboard: "https://placehold.co/1200x800?text=P2+Coming+Soon", // 先放个占位图防止报错
     },
-    p3: { 
-      ip: "" 
+    p3: {
+      ip: "https://placehold.co/800x800?text=P3+IP+Coming+Soon",
     }
   };
 
-// 路由逻辑：判断当前点击的是哪一个子页面
-  // 使用 == 而不是 === 可以同时兼容数字 1 和 字符串 "1"
-  const isJusticeSystem = project.id === 1 || project.id === '1' || project.id === 'p1'; 
-  const isDashboard = project.id === 2 || project.id === '2' || project.id === 'p2';
-  const isVisualScreen = project.id === 3 || project.id === '3' || project.id === 'p3';
+  // 路由逻辑：判断当前点击的是哪一个子页面
+  const isJusticeSystem = project.id === 'p1';   // 子页面 1：司法行政系统工作台 (PDF 3 视觉规范)
+  const isDashboard = project.id === 'p2';       // 子页面 2：法治舆情决策驾驶舱 (PDF 1/2 需求拆解)
+  const isVisualScreen = project.id === 'p3';    // 子页面 3：司法可视化大屏 (PDF 4 AI/IP 形象)
 
   return (
     <div className="min-h-screen bg-[#FDFDFD] text-slate-900 pb-32">
@@ -233,23 +236,8 @@ const ShimmerWrapper = ({ children, className = "", onClick }) => (
                 </div>
               </div>
               <div className="flex-1 flex justify-center gap-6">
-                {/* 左边：手机端图片 */}
-                <div className="w-40 h-80 bg-white rounded-[2rem] border-[6px] border-slate-900 shadow-xl overflow-hidden relative">
-                  <img 
-                    src={images.p1.mobile} 
-                    alt="App 展示" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-
-                {/* 右边：iPad端图片 */}
-                <div className="w-40 h-80 bg-white rounded-[2rem] border-[6px] border-slate-900 shadow-xl overflow-hidden relative mt-8">
-                  <img 
-                    src={images.p1.pad} 
-                    alt="iPad 展示" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
+                <div className="w-40 h-80 bg-white rounded-[2rem] border-[6px] border-slate-900 shadow-xl overflow-hidden flex items-center justify-center text-slate-200 font-bold">[ App 占位 ]</div>
+                <div className="w-40 h-80 bg-white rounded-[2rem] border-[6px] border-slate-900 shadow-xl overflow-hidden flex items-center justify-center text-slate-200 font-bold mt-8">[ iPad 占位 ]</div>
               </div>
             </section>
           </>
