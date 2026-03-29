@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ArrowRight, Activity, LayoutTemplate, Database, Monitor, Briefcase, GraduationCap, Award, QrCode, CheckCircle2, Lightbulb, Target, Shield } from 'lucide-react';
+import { ArrowRight, Activity, LayoutTemplate, Database, Monitor, Briefcase, GraduationCap, Award, QrCode, CheckCircle2, Lightbulb, Target, Shield, User, FolderOpen, MessageSquare } from 'lucide-react';
 import Spline from '@splinetool/react-spline';
 
 // --- 自定义 Hooks ---
