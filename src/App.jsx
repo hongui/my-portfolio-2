@@ -1,15 +1,5 @@
-import React, { useState, useEffect, useRef, Suspense } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { ArrowRight, Mail, Phone, ArrowLeft, ExternalLink, Activity, Layers, Smartphone, PieChart, LayoutTemplate, Zap, Shield, ChevronRight, Monitor, Database, Settings, GraduationCap, Briefcase, Award, QrCode, CheckCircle2, Cpu, MousePointer2, User, FolderOpen, MessageSquare, Target, Lightbulb } from 'lucide-react';
-
-// 采用动态加载以避免编译阶段的解析错误
-const Spline = React.lazy(() => import('@splinetool/react-spline').catch(() => ({
-  default: () => (
-    <div className="w-full h-full flex flex-col items-center justify-center bg-slate-100 text-slate-300">
-      <Cpu className="w-16 h-16 mb-4 opacity-20 animate-pulse" />
-      <p className="font-bold tracking-widest text-xs">3D SCENE LOADING...</p>
-    </div>
-  )
-})));
 
 // --- 自定义 Hooks ---
 const useScroll = () => {
@@ -90,7 +80,7 @@ const ShimmerWrapper = ({ children, className = "", onClick }) => (
   </div>
 );
 
-// --- 子页面：项目详情页 ---
+// --- 子页面：项目详情页 (已优化内容并添加图片占位) ---
 const ProjectDetail = ({ project, onBack }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -98,6 +88,7 @@ const ProjectDetail = ({ project, onBack }) => {
 
   return (
     <div className="min-h-screen bg-[#FDFDFD] text-slate-900 pb-32">
+      
       {/* 顶部导航 */}
       <nav className="sticky top-0 w-full z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200/60">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -108,7 +99,7 @@ const ProjectDetail = ({ project, onBack }) => {
         </div>
       </nav>
 
-      {/* 详情页头部 */}
+      {/* 沉浸式头部 */}
       <header className={`pt-24 pb-20 bg-gradient-to-br ${project.color} to-white border-b border-slate-100`}>
         <div className="max-w-6xl mx-auto px-6">
           <div className="max-w-3xl">
@@ -126,6 +117,7 @@ const ProjectDetail = ({ project, onBack }) => {
       </header>
 
       <main className="max-w-6xl mx-auto px-6 mt-24 space-y-32">
+        
         {/* 背景与痛点 */}
         <section className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
           <FadeIn>
@@ -136,7 +128,7 @@ const ProjectDetail = ({ project, onBack }) => {
               <h3 className="text-3xl font-black">项目背景</h3>
             </div>
             <p className="text-lg text-slate-500 leading-[1.8] font-medium">
-              传统司法办公系统长期面临“入口深、数据散、操作慢”的痛点。本项目旨在打破碎片化的业务条线，为执法人员提供“一屏通办、全程闭环”的数字化工作站。
+              传统司法办公系统长期面临“入口深、数据散、操作慢”的痛点。本次项目作为全省数字化转型的关键一环，旨在打破原本碎片化的业务条线，为执法人员提供“一屏通办、全程闭环”的数字化工作站。
             </p>
           </FadeIn>
           <FadeIn delay={200}>
@@ -144,10 +136,10 @@ const ProjectDetail = ({ project, onBack }) => {
               <h4 className="font-black text-slate-400 text-sm uppercase tracking-widest mb-6">核心挑战 / CHALLENGES</h4>
               <ul className="space-y-4">
                 {[
-                  "业务功能埋藏过深",
-                  "移动端与PC端数据同步不及时",
-                  "系统界面老旧，不符合适老化规范",
-                  "缺乏统一的组件化资产"
+                  "高频业务埋藏深，平均查找时间超过 10 秒",
+                  "移动端与 PC 端体验割裂，数据同步不及时",
+                  "系统界面老旧，不符合适老化设计规范",
+                  "缺乏统一的组件化资产，迭代成本高昂"
                 ].map((item, i) => (
                   <li key={i} className="flex gap-3 text-slate-700 font-bold">
                     <span className="text-blue-600">✕</span> {item}
@@ -158,72 +150,103 @@ const ProjectDetail = ({ project, onBack }) => {
           </FadeIn>
         </section>
 
-        {/* 核心业务架构图占位 */}
+        {/* 图片占位符 1 - 系统架构展示 */}
         <FadeIn>
-          <div className="relative bg-white border border-slate-100 rounded-[2.5rem] overflow-hidden shadow-sm group">
-            <div className="aspect-[16/9] w-full bg-slate-50 flex flex-col items-center justify-center group-hover:bg-slate-100 transition-colors">
-              <LayoutTemplate className="w-16 h-16 text-slate-200 mb-4" />
-              <p className="font-bold tracking-widest text-slate-300 text-sm">[ 核心业务架构全景图展示位 ]</p>
-            </div>
+          <div className="group relative">
+             <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-[2.5rem] blur opacity-15 group-hover:opacity-25 transition duration-1000"></div>
+             <div className="relative bg-white border border-slate-100 rounded-[2.5rem] overflow-hidden shadow-sm">
+                <div className="bg-slate-50/50 h-10 border-b border-slate-100 flex items-center px-6 gap-2">
+                   <div className="w-2.5 h-2.5 rounded-full bg-slate-200" />
+                   <div className="w-2.5 h-2.5 rounded-full bg-slate-200" />
+                   <div className="w-2.5 h-2.5 rounded-full bg-slate-200" />
+                </div>
+                {/* 占位图容器 */}
+                <div className="aspect-[16/9] w-full bg-slate-50 flex items-center justify-center group-hover:bg-slate-100 transition-colors">
+                   <div className="flex flex-col items-center gap-4 text-slate-300">
+                      <LayoutTemplate className="w-16 h-16 opacity-20" />
+                      <p className="font-bold tracking-widest text-sm">[ 核心业务架构全景图展示位 / 此处后续替换图片 ]</p>
+                   </div>
+                </div>
+             </div>
           </div>
         </FadeIn>
 
-        {/* 四端适配 */}
+        {/* 项目系统构成 */}
         <section>
           <div className="text-center mb-16">
             <h3 className="text-4xl font-black mb-4">全场景多端适配</h3>
-            <p className="text-slate-400 font-bold">实现管理端、办理端、APP、iPad 四端数据互通</p>
+            <p className="text-slate-400 font-bold">实现管理端、办理端、APP、iPad 四端数据互通与体验统一</p>
           </div>
+          
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { label: "管理端", color: "bg-blue-50", icon: Monitor, desc: "决策大脑：数据总览" },
-              { label: "办理端", color: "bg-emerald-50", icon: CheckCircle2, desc: "业务实操：流程审批" },
-              { label: "APP端", color: "bg-purple-50", icon: Smartphone, desc: "移动执法：现场取证" },
-              { label: "iPad端", color: "bg-amber-50", icon: Layers, desc: "会议演示：适老化设计" },
+              { label: "管理端", emoji: "💻", color: "bg-blue-50", text: "决策大脑：数据总览、权限配置、统计分析", icon: Monitor },
+              { label: "办理端", emoji: "✍️", color: "bg-emerald-50", text: "业务实操：流程审批、任务执行、在线办公", icon: CheckCircle2 },
+              { label: "APP端", emoji: "📲", color: "bg-purple-50", text: "移动执法：现场取证、实时推送、定位签到", icon: Smartphone },
+              { label: "iPad端", emoji: "📟", color: "bg-amber-50", text: "会议演示：适老化设计、数据大屏、会议流", icon: Layers },
             ].map((item, i) => (
-              <div key={i} className="bg-white rounded-[2rem] p-8 border border-slate-100 shadow-sm hover:shadow-xl transition-all h-full">
-                <div className={`w-14 h-14 ${item.color} rounded-2xl flex items-center justify-center mb-6`}>
-                  <item.icon className="w-6 h-6 text-slate-800" />
+              <FadeIn key={i} delay={i * 100}>
+                <div className="bg-white rounded-[2rem] p-8 border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all group h-full">
+                  <div className={`w-14 h-14 ${item.color} rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform`}>
+                    <item.icon className="w-6 h-6 text-slate-800" />
+                  </div>
+                  <h4 className="font-black text-xl mb-3">{item.label}</h4>
+                  <p className="text-slate-500 text-sm leading-relaxed font-medium">{item.text}</p>
                 </div>
-                <h4 className="font-black text-xl mb-3">{item.label}</h4>
-                <p className="text-slate-500 text-sm leading-relaxed font-medium">{item.desc}</p>
-              </div>
+              </FadeIn>
             ))}
           </div>
         </section>
 
-        {/* 界面细节展示占位 */}
+        {/* 图片占位符 2 - 界面细节展示 */}
         <section className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
-           <div className="lg:col-span-2 space-y-8">
+           <div className="lg:col-span-2">
+              <div className="p-2 bg-blue-600 text-white rounded-xl inline-block mb-6 shadow-lg shadow-blue-100">
+                <Lightbulb className="w-6 h-6" />
+              </div>
               <h3 className="text-3xl font-black mb-6">核心设计策略</h3>
-              {[
-                { t: "01 / 组件化思维", d: "沉淀 50+ 原子组件，缩短 40% 研发周期。" },
-                { t: "02 / 场景化导航", d: "“卡片式”首屏设计，降低认知负担。" },
-                { t: "03 / 适老化交互", d: "调整对比度与字号，提升操作性。" }
-              ].map((s, i) => (
-                <div key={i}>
-                  <h4 className="font-black text-blue-600 mb-2">{s.t}</h4>
-                  <p className="text-slate-500 font-medium">{s.d}</p>
+              <div className="space-y-8">
+                <div>
+                  <h4 className="font-black text-blue-600 mb-2">01 / 组件化思维</h4>
+                  <p className="text-slate-500 font-medium">沉淀 50+ 司法业务原子组件，确保多端 UI 一致性并缩短 40% 研发周期。</p>
                 </div>
-              ))}
+                <div>
+                  <h4 className="font-black text-blue-600 mb-2">02 / 场景化导航</h4>
+                  <p className="text-slate-500 font-medium">采用“卡片式”首屏设计，根据登录角色动态展示高频入口，降低认知负担。</p>
+                </div>
+                <div>
+                  <h4 className="font-black text-blue-600 mb-2">03 / 适老化交互</h4>
+                  <p className="text-slate-500 font-medium">针对特定层级用户，调整色彩对比度与字体层级，提升易操作性。</p>
+                </div>
+              </div>
            </div>
            <div className="lg:col-span-3">
-              <div className="aspect-[4/3] bg-slate-900 rounded-[3rem] flex items-center justify-center border border-slate-800">
-                 <div className="text-center text-slate-600">
-                    <Monitor className="w-12 h-12 mx-auto mb-4 opacity-30" />
-                    <p className="font-bold tracking-widest text-xs">[ 高保真界面细节展示位 ]</p>
-                 </div>
+              <div className="relative bg-slate-900 rounded-[3rem] p-4 shadow-2xl group overflow-hidden">
+                <div className="absolute inset-0 bg-blue-600/5 group-hover:bg-blue-600/10 transition-colors" />
+                <div className="relative aspect-[4/3] bg-slate-800 rounded-[2.25rem] border border-slate-700/50 flex items-center justify-center overflow-hidden">
+                   <div className="flex flex-col items-center gap-4 text-slate-600">
+                      <LayoutTemplate className="w-16 h-16 opacity-30" />
+                      <p className="font-bold tracking-widest text-sm">[ 高保真界面细节展示位 / 此处后续替换图片 ]</p>
+                   </div>
+                </div>
               </div>
            </div>
         </section>
+
       </main>
 
+      {/* 底部行动点 */}
       <footer className="max-w-4xl mx-auto px-6 mt-40">
-        <div className="bg-blue-600 rounded-[3.5rem] p-12 text-center text-white">
-          <h2 className="text-3xl font-black mb-10">探索更多数字化案例</h2>
-          <button onClick={onBack} className="px-10 py-5 bg-white text-blue-600 rounded-full font-black text-lg shadow-xl inline-flex items-center gap-3">
-            返回作品集首页 <ArrowRight className="w-5 h-5" />
-          </button>
+        <div className="bg-blue-600 rounded-[3.5rem] p-12 md:p-20 text-center relative overflow-hidden group">
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-indigo-700" />
+          <div className="relative z-10">
+            <h2 className="text-3xl md:text-5xl font-black text-white mb-10 tracking-tight">
+              探索更多司法行政<br/>数字化转型案例
+            </h2>
+            <button onClick={onBack} className="px-10 py-5 bg-white text-blue-600 hover:bg-slate-50 rounded-full font-black text-lg transition-all flex items-center gap-3 mx-auto shadow-xl">
+              返回作品集首页 <ArrowRight className="w-5 h-5" />
+            </button>
+          </div>
         </div>
       </footer>
     </div>
@@ -234,7 +257,7 @@ const ProjectDetail = ({ project, onBack }) => {
 export default function App() {
   const [currentView, setCurrentView] = useState('home');
   const [selectedProject, setSelectedProject] = useState(null);
-  const { activeSection } = useScroll();
+  const { scrollY, activeSection } = useScroll();
   const mousePos = useMousePosition();
 
   const navItems = [
@@ -250,7 +273,8 @@ export default function App() {
       tag: "业务系统重构 / 效率优先",
       color: "from-blue-100",
       icon: LayoutTemplate,
-      desc: "针对司法行政底层业务，通过模块化组件与适老化适配，重塑为闭环的高效办公流。",
+      desc: "针对司法行政底层业务，通过模块化组件与适老化适配，将原本碎片化的任务重塑为闭环的高效办公流。",
+      sections: [] // 详情页已独立重构
     },
     {
       id: 'p2',
@@ -258,7 +282,14 @@ export default function App() {
       tag: "数据可视化 / 舆情监控",
       color: "from-purple-100",
       icon: Database,
-      desc: "采用分模块设计，通过 135+ 个原子组件构建出实时、精准的数字化驾驶席。",
+      desc: "服务于决策层的全景指挥中心。采用分模块设计，通过 135+ 个原子组件构建出实时、精准的数字化驾驶席。",
+      sections: [
+        { 
+          title: "决策层分析视图", 
+          content: "采用极简的左右分栏布局，核心指标通过“数字翻牌器”动效增强仪式感，确保决策者能在 3 秒内捕捉核心痛点。", 
+          image: "https://placehold.co/1200x750/f3e8ff/a855f7?text=Data+Dashboard" 
+        }
+      ]
     },
     {
       id: 'p3',
@@ -266,7 +297,14 @@ export default function App() {
       tag: "视觉动效 / 性能落地",
       color: "from-emerald-100",
       icon: Monitor,
-      desc: "主导 AL 动效 IP 的全场景落地，在极端硬件环境下实现极致流畅体验。",
+      desc: "探索政务展示的科技美学极限。主导 AL 动效 IP 的全场景落地，并在极端硬件环境下实现极致流畅体验。",
+      sections: [
+        { 
+          title: "AL 动效 IP 视觉体系", 
+          content: "通过 3D 粒子建模与 AE 动画序列，构建了整套具有司法威严感的动态背景。", 
+          image: "https://placehold.co/1200x750/ecfdf5/10b981?text=Smart+Justice+Screen" 
+        }
+      ]
     }
   ];
 
@@ -275,108 +313,167 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-blue-100 overflow-x-hidden">
+    <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-blue-100 selection:text-blue-900 overflow-x-hidden animate-in fade-in duration-500">
       
-      {/* 侧边导航 */}
+      {/* 交互式侧边栏 */}
       <aside className="fixed left-0 top-0 h-full z-[100] group flex">
-        <div className="h-full bg-white/80 backdrop-blur-xl border-r border-slate-100 flex flex-col items-center py-8 w-16 group-hover:w-48 transition-all duration-500 shadow-2xl overflow-hidden">
+        <div className="h-full bg-white/80 backdrop-blur-xl border-r border-slate-100 flex flex-col items-center py-8 w-16 group-hover:w-48 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] shadow-2xl shadow-slate-200/50 overflow-hidden">
+          
           <div className="mb-12 flex items-center justify-start w-full px-4">
-            <div className="w-8 h-8 min-w-[32px] bg-black text-white rounded-lg flex items-center justify-center font-black">R</div>
-            <span className="ml-4 font-black text-slate-900 opacity-0 group-hover:opacity-100 transition-opacity">Ren Junming</span>
+            <div className="w-8 h-8 min-w-[32px] bg-black text-white rounded-lg flex items-center justify-center font-black text-lg">R</div>
+            <span className="ml-4 font-black tracking-tighter text-slate-900 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Ren Junming</span>
           </div>
+
           <div className="flex flex-col gap-4 w-full px-2">
             {navItems.map((item) => (
               <a 
                 key={item.id}
                 href={`#${item.id}`}
-                className={`flex items-center h-12 rounded-xl transition-all ${activeSection === item.id ? 'bg-blue-600 text-white shadow-lg shadow-blue-200' : 'text-slate-400 hover:bg-slate-50'}`}
+                className={`flex items-center h-12 rounded-xl transition-all duration-300 relative overflow-hidden group/item ${activeSection === item.id ? 'bg-blue-600 text-white shadow-lg shadow-blue-200' : 'text-slate-400 hover:bg-slate-50 hover:text-slate-900'}`}
               >
                 <div className="w-12 h-12 min-w-[48px] flex items-center justify-center">
                   <item.icon className="w-5 h-5" />
                 </div>
-                <span className={`ml-2 font-bold text-sm opacity-0 group-hover:opacity-100 transition-opacity ${activeSection === item.id ? 'block' : 'hidden group-hover:block'}`}>
+                <span className={`ml-2 font-bold text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-all duration-500 ${activeSection === item.id ? 'translate-x-0' : '-translate-x-4 group-hover:translate-x-0'}`}>
                   {item.label}
                 </span>
+                {activeSection === item.id && (
+                  <div className="absolute right-0 w-1 h-4 bg-white rounded-l-full" />
+                )}
               </a>
             ))}
+          </div>
+
+          <div className="mt-auto opacity-0 group-hover:opacity-100 transition-opacity pb-4">
+            <p className="text-[8px] text-slate-300 font-black uppercase tracking-widest text-center">v4.0</p>
           </div>
         </div>
       </aside>
 
-      <main className="pl-16 md:pl-24">
+      <main className="pl-16 md:pl-24 transition-all duration-500">
+
         {/* Hero Section */}
-        <section className="relative pt-32 pb-20 px-6 max-w-7xl mx-auto flex flex-col lg:flex-row justify-center min-h-[85vh] gap-16 items-center">
+        <section className="relative pt-32 pb-20 px-6 max-w-7xl mx-auto flex flex-col lg:flex-row justify-center min-h-[85vh] gap-16 lg:gap-20 items-start lg:items-center">
+          
           <div className="flex-1 relative z-10">
+            <div
+              className="absolute top-[15%] right-[10%] w-[500px] h-[500px] rounded-full pointer-events-none z-0 opacity-50"
+              style={{
+                background: 'radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, rgba(147, 51, 234, 0.05) 100%)',
+                filter: 'blur(100px)',
+                transform: `translate(${mousePos.x * 30}px, ${mousePos.y * 30}px)`,
+                transition: 'transform 0.8s ease-out'
+              }}
+            />
+            
             <FadeIn>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-600 font-bold text-[10px] uppercase tracking-[0.3em] mb-8">
                 <Activity className="w-3 h-3 animate-pulse" /> G Side Experience Design
               </div>
+              
               <h1 className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[1.05] mb-12">
-                Hi,<br />我是任俊明<br />
+                Hi,<br />
+                我是任俊明<br />
+                专注高效的<br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-blue-400 to-indigo-600">政务系统设计</span>
               </h1>
-              <p className="text-xl text-slate-400 max-w-3xl mb-12 leading-[1.65] font-medium">
-                深耕法治舆情与司法行政系统，致力于以组件化思维驱动设计落地。
+              
+              <p className="text-xl md:text-2xl text-slate-400 max-w-3xl mb-12 leading-[1.65] font-medium">
+                深耕法治舆情与司法行政系统，擅长 0-1 构建复杂政务业务。我致力于以组件化思维驱动设计落地，将繁琐的业务转化为极致流畅的数字化体验。
               </p>
-              <a href="#work" className="group flex items-center gap-4 text-lg font-bold">
-                开始探索作品 <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-all"><ArrowRight className="w-5 h-5" /></div>
-              </a>
+
+              <div className="flex gap-6">
+                <a href="#work" className="group flex items-center gap-4 text-lg font-bold transition-all">
+                  开始探索作品 <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-all"><ArrowRight className="w-5 h-5" /></div>
+                </a>
+              </div>
             </FadeIn>
           </div>
 
-          {/* Spline 容器 - 动态安全加载 */}
-          <div className="flex-1 w-full relative">
+          <div className="flex-1 w-full lg:w-auto relative lg:-mt-8">
             <div className="relative w-full h-[460px] lg:h-[580px] overflow-hidden rounded-[2.75rem] bg-slate-50 border border-slate-100 shadow-inner">
-              <Suspense fallback={
-                <div className="w-full h-full flex flex-col items-center justify-center bg-slate-50">
-                  <Cpu className="w-12 h-12 text-slate-200 animate-pulse" />
-                </div>
-              }>
-                <Spline scene="https://prod.spline.design/clonercopy-a4f6645607b328135832a875a6435661/scene.splinecode" />
-              </Suspense>
+              {/* 使用 iframe 嵌入 Spline 以解决依赖库缺失问题 */}
+              <iframe 
+                src='https://my.spline.design/clonercopy-a4f6645607b328135832a875a6435661/' 
+                frameBorder='0' 
+                width='100%' 
+                height='100%'
+                className="scale-105"
+              />
               <div className="absolute bottom-6 right-6 px-4 py-2 bg-white/50 backdrop-blur-md rounded-full border border-white/20 text-[10px] font-black uppercase text-slate-400">Interactive 3D Scene</div>
             </div>
           </div>
         </section>
 
-        {/* 关于我 */}
-        <section id="about" className="py-32 max-w-7xl mx-auto px-6 scroll-mt-20">
-            <FadeIn>
-              <h2 className="text-5xl font-black mb-10 tracking-tighter italic text-slate-900 underline decoration-blue-600 decoration-4 underline-offset-8">职业价值 / Value</h2>
-              <p className="text-slate-500 text-[21px] leading-[1.78] font-medium max-w-[920px] mb-20">
-                主导了法治舆情项目从 0-1 的全链路落地。通过沉淀 135+ 个原子组件，大幅提升了团队产出效率。
-              </p>
-            </FadeIn>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {[
-                { icon: Briefcase, title: "杭州睿云", desc: "UI设计师" },
-                { icon: GraduationCap, title: "杭职院", desc: "数字媒体艺术设计" },
-                { icon: Award, title: "技能证书", desc: "界面设计高级" }
-              ].map((item, i) => (
-                <div key={i} className="flex gap-5 items-start p-8 rounded-3xl bg-slate-50 border border-slate-100 h-full hover:border-blue-200 transition-colors">
-                  <div className="w-12 h-12 rounded-2xl bg-white shadow-sm flex-shrink-0 flex items-center justify-center text-blue-600">
-                    <item.icon className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <h4 className="font-black text-lg mb-1">{item.title}</h4>
-                    <p className="text-slate-400 font-medium text-[15px]">{item.desc}</p>
-                  </div>
+        {/* About Section */}
+        <section id="about" className="py-32 relative scroll-mt-20">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="mb-24">
+              <FadeIn>
+                <h2 className="text-5xl font-black mb-10 tracking-tighter italic text-slate-900 underline decoration-blue-600 decoration-4 underline-offset-8">
+                  职业价值 / Value
+                </h2>
+                <div className="max-w-[920px]">
+                  <p className="text-slate-500 text-[21px] leading-[1.78] font-medium text-justify">
+                    毕业于杭州职业技术学院。在杭州睿云期间，主导了法治舆情项目从 0-1 的全链路落地。我不仅交付界面，更交付<strong>设计系统</strong>。通过沉淀 135+ 个原子组件，大幅提升了团队 40% 的产出效率。
+                  </p>
                 </div>
+              </FadeIn>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
+              {[
+                { icon: Briefcase, title: "杭州睿云信息技术有限公司", desc: "UI设计师 / 2023 - 2025" },
+                { icon: GraduationCap, title: "杭州职业技术学院", desc: "数字媒体艺术设计 / 全日制专科" },
+                { icon: Award, title: "界面设计职业技能证书(高级)", desc: "国家学分银行权威认定" }
+              ].map((item, i) => (
+                <FadeIn key={i} delay={i * 100}>
+                  <div className="flex gap-5 items-start p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:border-blue-200 transition-all group h-full">
+                    <div className="w-12 h-12 rounded-2xl bg-white shadow-sm flex-shrink-0 flex items-center justify-center text-blue-600 group-hover:scale-110 transition-transform mt-1">
+                      <item.icon className="w-6 h-6" />
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="font-black text-lg leading-tight mb-1">{item.title}</h4>
+                      <p className="text-slate-400 font-medium text-[15px]">{item.desc}</p>
+                    </div>
+                  </div>
+                </FadeIn>
               ))}
             </div>
+
+            <FadeIn delay={200}>
+              <div className="bg-slate-900 text-white p-12 md:p-16 rounded-[3.5rem] relative overflow-hidden group shadow-2xl max-w-5xl mx-auto mt-24">
+                <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/10 blur-[120px] group-hover:bg-blue-600/20 transition-all duration-700" />
+                
+                <div className="flex items-center gap-4 mb-12">
+                  <div className="w-3 h-8 bg-blue-600 rounded-full" />
+                  <h3 className="text-3xl font-black tracking-tight">专业技能工具</h3>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
+                  <div><p className="text-blue-400 text-xs font-black uppercase tracking-[0.08em] mb-3">专业设计软件</p><p className="text-2xl font-semibold">Figma / MasterGo / Axure</p></div>
+                  <div><p className="text-blue-400 text-xs font-black uppercase tracking-[0.08em] mb-3">AI 提效工具</p><p className="text-2xl font-semibold">FigmaMake / Stitch</p></div>
+                  <div><p className="text-blue-400 text-xs font-black uppercase tracking-[0.08em] mb-3">全链路落地</p><p className="text-2xl font-semibold">物料印刷 / UI动效</p></div>
+                  <div><p className="text-blue-400 text-xs font-black uppercase tracking-[0.08em] mb-3">系统化思维</p><p className="text-2xl font-semibold">原子组件 / 设计资产</p></div>
+                </div>
+              </div>
+            </FadeIn>
+          </div>
         </section>
 
-        {/* 项目展示 */}
+        {/* Work Section */}
         <section id="work" className="py-32 bg-slate-50 scroll-mt-20">
           <div className="max-w-7xl mx-auto px-6">
             <FadeIn className="mb-20 text-center">
-              <h2 className="text-5xl font-black tracking-tighter mb-4">项目作品 / Projects</h2>
+              <h2 className="text-5xl font-black tracking-tighter mb-4">核心项目拆解 / Projects</h2>
+              <p className="text-slate-400 text-lg font-bold italic">基于《司法行政系统》项目深度复盘</p>
             </FadeIn>
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
               {projects.map((project, index) => (
                 <FadeIn key={project.id} delay={index * 150}>
                   <ShimmerWrapper 
-                    className="bg-white rounded-[3rem] p-10 border border-slate-100 shadow-xl hover:-translate-y-4 transition-all h-full flex flex-col cursor-pointer" 
+                    className="bg-white rounded-[3rem] p-10 border border-slate-100 shadow-xl hover:-translate-y-4 transition-all duration-500 h-full flex flex-col cursor-pointer group" 
                     onClick={() => { setSelectedProject(project); setCurrentView('detail'); }}
                   >
                     <div className={`w-16 h-16 rounded-[1.5rem] bg-gradient-to-br ${project.color} to-white flex items-center justify-center mb-10`}>
@@ -384,9 +481,9 @@ export default function App() {
                     </div>
                     <div className="text-blue-600 font-black text-[10px] mb-4 tracking-[0.2em] uppercase">{project.tag}</div>
                     <h3 className="text-3xl font-black mb-6 leading-tight">{project.title}</h3>
-                    <p className="text-slate-500 mb-10 flex-grow font-medium line-clamp-3">{project.desc}</p>
-                    <div className="flex items-center gap-3 text-slate-900 font-black group-hover:text-blue-600 transition-all">
-                      查看详情 <ArrowRight className="w-5 h-5" />
+                    <p className="text-slate-500 mb-10 flex-grow line-clamp-3 font-medium">{project.desc}</p>
+                    <div className="flex items-center gap-3 text-slate-900 font-black group-hover:text-blue-600 group-hover:gap-5 transition-all">
+                      查看项目详情 <ArrowRight className="w-5 h-5" />
                     </div>
                   </ShimmerWrapper>
                 </FadeIn>
@@ -395,22 +492,37 @@ export default function App() {
           </div>
         </section>
 
-        {/* 页脚 */}
-        <footer id="contact" className="py-32 bg-white text-center scroll-mt-20">
-          <FadeIn>
-            <h2 className="text-5xl md:text-8xl font-black tracking-tighter mb-20 italic">Say Hello.</h2>
-            <div className="flex flex-col items-center gap-10">
-               <div className="w-48 h-48 bg-slate-50 rounded-[3rem] flex flex-col items-center justify-center border border-slate-100">
-                  <QrCode className="w-12 h-12 text-slate-200 mb-4" />
-                  <span className="text-[10px] font-black text-slate-400">微信: PMR37</span>
-               </div>
-               <a href="tel:19357500473" className="text-4xl md:text-7xl font-black hover:text-blue-600 transition-colors">193 5750 0473</a>
-               <div className="text-slate-300 font-black text-xs uppercase tracking-widest mt-20">
-                  © {new Date().getFullYear()} Ren Junming · Portfolio 4.0
-               </div>
-            </div>
-          </FadeIn>
+        {/* Contact Footer */}
+        <footer id="contact" className="py-32 bg-white text-center relative overflow-hidden scroll-mt-20">
+          <div className="max-w-5xl mx-auto px-6 relative z-10">
+            <FadeIn>
+              <h2 className="text-5xl md:text-8xl font-black tracking-tighter mb-20 italic">Say Hello.</h2>
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 items-center">
+                <div className="flex flex-col items-center gap-6">
+                  <div className="w-56 h-56 p-6 bg-slate-50 rounded-[3rem] border border-slate-100 flex items-center justify-center relative group shadow-inner">
+                    <QrCode className="w-14 h-14 text-slate-300" />
+                    <div className="absolute bottom-6 text-[10px] font-black uppercase tracking-widest text-slate-400">微信: PMR37</div>
+                  </div>
+                </div>
+                <div className="lg:col-span-2 flex flex-col items-center lg:items-start gap-10">
+                  <div className="flex flex-col items-center lg:items-start group cursor-pointer">
+                    <p className="text-slate-400 text-[10px] font-black uppercase tracking-widest mb-3">联系电话</p>
+                    <a href="tel:19357500473" className="text-4xl md:text-7xl font-black hover:text-blue-600 transition-all tracking-tighter">193 5750 0473</a>
+                  </div>
+                  <div className="flex flex-wrap justify-center lg:justify-start gap-3">
+                    <div className="px-5 py-2.5 bg-blue-50 rounded-full text-[10px] font-black uppercase text-blue-600 flex items-center gap-2 border border-blue-100">
+                      <div className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-ping" /> 状态：求职中 / UI设计师
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="mt-32 pt-10 border-t border-slate-100 text-slate-300 font-black text-xs uppercase tracking-widest">
+                © {new Date().getFullYear()} Ren Junming · Portfolio Digital 4.0
+              </div>
+            </FadeIn>
+          </div>
         </footer>
+
       </main>
     </div>
   );
