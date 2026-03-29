@@ -126,29 +126,50 @@ const ProjectDetail = ({ project, onBack }) => {
           </div>
         </section>
 
-        {/* 项目统构成 */}
-        <section>
-          <div className="text-3xl font-black mb-8">项目统构成</div>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            {/* 这里可以继续根据 PDF 补充更多卡片 */}
-            <div className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all">① 细化内容</div>
-            <div className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all">② 业务流程</div>
-            <div className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all">③ 数据分析</div>
-            <div className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all">④ 舆情监控</div>
-          </div>
-        </section>
+        {/* 项目统构成 - 修改为四个端 */}
+<section className="mt-20">
+  <div className="text-3xl font-black mb-8">项目统构成</div>
+  
+  <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+    
+    {/* 管理端 */}
+    <div className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all group">
+      <div className="flex items-center justify-center w-12 h-12 bg-blue-100 text-blue-600 rounded-2xl mb-6 group-hover:scale-110 transition-transform">
+        📱
+      </div>
+      <h4 className="font-black text-xl mb-2">管理端</h4>
+      <p className="text-slate-500 text-sm leading-relaxed">后台管理系统、数据总览、权限配置、统计分析</p>
+    </div>
 
-        {/* 更多 PDF 章节可以继续往下加 */}
-        {/* ... 后续你可以根据 PDF 继续扩展 ... */}
+    {/* 办理端 */}
+    <div className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all group">
+      <div className="flex items-center justify-center w-12 h-12 bg-emerald-100 text-emerald-600 rounded-2xl mb-6 group-hover:scale-110 transition-transform">
+        ✍️
+      </div>
+      <h4 className="font-black text-xl mb-2">办理端</h4>
+      <p className="text-slate-500 text-sm leading-relaxed">业务办理、流程审批、任务执行、移动办公</p>
+    </div>
 
-        {/* 设计页面展示 - 占位图 */}
-        <section>
-          <div className="text-3xl font-black mb-8">设计页面展示</div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <img src="https://placehold.co/1200x750/f1f5f9/3b82f6?text=管理端首页" alt="管理端首页" className="rounded-3xl shadow-xl hover:scale-[1.02] transition-transform" />
-            <img src="https://placehold.co/1200x750/f1f5f9/3b82f6?text=办理端页面" alt="办理端页面" className="rounded-3xl shadow-xl hover:scale-[1.02] transition-transform" />
-          </div>
-        </section>
+    {/* APP端 */}
+    <div className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all group">
+      <div className="flex items-center justify-center w-12 h-12 bg-purple-100 text-purple-600 rounded-2xl mb-6 group-hover:scale-110 transition-transform">
+        📲
+      </div>
+      <h4 className="font-black text-xl mb-2">APP端</h4>
+      <p className="text-slate-500 text-sm leading-relaxed">移动端适配、执法人员使用、实时任务推送</p>
+    </div>
+
+    {/* iPad端 */}
+    <div className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all group">
+      <div className="flex items-center justify-center w-12 h-12 bg-amber-100 text-amber-600 rounded-2xl mb-6 group-hover:scale-110 transition-transform">
+        📟
+      </div>
+      <h4 className="font-black text-xl mb-2">iPad端</h4>
+      <p className="text-slate-500 text-sm leading-relaxed">大屏适配、适老化设计、会议演示、现场办公</p>
+    </div>
+
+  </div>
+</section>
 
       </main>
 
