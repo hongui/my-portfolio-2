@@ -1,6 +1,22 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ArrowRight, Mail, Phone, ArrowLeft, ExternalLink, Activity, Layers, Smartphone, PieChart, LayoutTemplate, Zap, Shield, ChevronRight, Monitor, Database, Settings, GraduationCap, Briefcase, Award, QrCode, CheckCircle2, Cpu, MousePointer2, User, FolderOpen, MessageSquare } from 'lucide-react';
 
+// --- Spline 3D 组件修复 (使用原生加载方式避免依赖冲突) ---
+const SplineScene = ({ scene, className, onLoad }) => {
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.type = 'module';
+    script.src = 'https://unpkg.com/@splinetool/viewer@1.0.94/build/spline-viewer.js';
+    document.head.appendChild(script);
+  }, []);
+
+  return (
+    <div className={className}>
+      <spline-viewer url={scene} onLoad={onLoad} />
+    </div>
+  );
+};
+
 // --- 自定义 Hooks ---
 const useScroll = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -206,6 +222,16 @@ export default function App() {
     }
   ];
 
+  const handleSplineLoad = () => {
+    const loadingEl = document.getElementById('spline-loading');
+    if (loadingEl) {
+      loadingEl.style.opacity = '0';
+      setTimeout(() => {
+        if (loadingEl) loadingEl.style.display = 'none';
+      }, 800);
+    }
+  };
+
   if (currentView === 'detail' && selectedProject) {
     return <ProjectDetail project={selectedProject} onBack={() => setCurrentView('home')} />;
   }
@@ -250,13 +276,10 @@ export default function App() {
         </div>
       </aside>
 
-      {/* 内容区域主体 - 增加左侧内边距 */}
       <main className="pl-16 md:pl-24 transition-all duration-500">
         
-{/* Hero Section - 右侧无边框模型 + 文字可叠加 */}
 <section className="relative pt-48 pb-24 px-6 max-w-7xl mx-auto flex flex-col lg:flex-row justify-center min-h-[90vh] gap-16 lg:gap-20 items-start lg:items-center">
   
-{/* 左侧文字内容 - 回滚版 + 加大行间距 */}
 <div className="flex-1 relative z-10">
   <div
     className="absolute top-[15%] right-[10%] w-[500px] h-[500px] rounded-full pointer-events-none z-0 opacity-50"
@@ -273,7 +296,6 @@ export default function App() {
       <Activity className="w-3 h-3 animate-pulse" /> G Side Experience Design
     </div>
    
-    {/* 四行标题 - 加大行间距 */}
     <h1 className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[1.05] mb-14">
       Hi,<br />
       我是任俊明，<br />
@@ -281,7 +303,6 @@ export default function App() {
       <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-blue-400 to-indigo-600">政务系统设计</span>
     </h1>
    
-    {/* 简介段落 - 加大行间距 */}
     <p className="text-xl md:text-2xl text-slate-400 max-w-3xl mb-12 leading-[1.65] font-medium">
       深耕法治舆情与司法行政系统，擅长 0-1 构建复杂政务业务。我致力于以组件化思维驱动设计落地，将繁琐的业务转化为极致流畅的数字化体验。
     </p>
@@ -294,58 +315,41 @@ export default function App() {
   </FadeIn>
 </div>
 
-  {/* 右侧无边框 Spline 窗口 - 模型直接显示 */}
   <div className="flex-1 w-full lg:w-auto relative lg:-mt-8">
     <div className="relative w-full h-[460px] lg:h-[580px] overflow-hidden rounded-[2.75rem]">
-      <iframe 
-        src="https://my.spline.design/xxocG5UX04nYJYmm/" 
-        className="absolute inset-0 w-full h-full scale-[1.08] border-0"
-        onLoad={() => {
-          const loadingEl = document.getElementById('spline-loading');
-          if (loadingEl) {
-            loadingEl.style.opacity = '0';
-            setTimeout(() => {
-              if (loadingEl) loadingEl.style.display = 'none';
-            }, 800);
-          }
-        }}
-        title="3D Scene"
+      {/* 修复后的 Spline 加载 */}
+      <SplineScene 
+        scene="https://prod.spline.design/xxocG5UX04nYJYmm/scene.splinecode" 
+        className="absolute inset-0 w-full h-full scale-[1.08]"
+        onLoad={handleSplineLoad}
       />
       
-      {/* 加载提示 */}
       <div id="spline-loading" 
-           className="absolute inset-0 flex items-center justify-center bg-slate-50/80 z-10 transition-opacity duration-700">
-        <div className="flex flex-col items-center gap-3">
-          <div className="w-5 h-5 border-2 border-slate-300 border-t-blue-600 rounded-full animate-spin"></div>
-          <div className="text-slate-400 text-sm font-medium">加载 3D 场景中...</div>
-        </div>
+           className="absolute inset-0 flex items-center justify-center bg-slate-50/80 z-10 transition-opacity duration-700 text-slate-400 text-sm font-medium">
+        加载 3D 场景中...
       </div>
     </div>
   </div>
 </section>
         
-{/* About Me - 文字宽度与三个卡片总宽度对齐 */}
 <section id="about" className="py-32 relative scroll-mt-20">
   <div className="max-w-7xl mx-auto px-6">
     
-    {/* 职业价值 - 宽度和三个卡片总宽度一致 */}
     <div className="mb-24">
       <FadeIn>
         <h2 className="text-5xl font-black mb-10 tracking-tighter italic text-slate-900 underline decoration-blue-600 decoration-4 underline-offset-8">
           职业价值 / Value
         </h2>
         
-        {/* 重点：让文字宽度接近三个卡片总和 */}
         <div className="max-w-5xl">
-          {/* 在这里添加了 text-justify 类 */}
-          <p className="text-slate-500 text-xl leading-relaxed font-medium text-justify">
+          {/* 核心修改：text-justify 配合 break-all 实现完美的左右端对齐 */}
+          <p className="text-slate-500 text-xl leading-relaxed font-medium text-justify break-all">
             毕业于杭州职业技术学院。在杭州睿云期间，主导了法治舆情项目从 0-1 的全链路落地。我不仅交付界面，更交付<strong>设计系统</strong>。通过沉淀 135+ 个原子组件，大幅提升了团队 40% 的产出效率。
           </p>
         </div>
       </FadeIn>
     </div>
 
-    {/* 三个经历卡片 */}
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
       {[
         { 
@@ -378,7 +382,6 @@ export default function App() {
       ))}
     </div>
 
-    {/* 专业技能工具 - 宽度和三个卡片总宽度一致 */}
     <FadeIn delay={200}>
       <div className="bg-slate-900 text-white p-12 md:p-16 rounded-[3.5rem] relative overflow-hidden group shadow-2xl max-w-5xl">
         <div className="absolute top-0 right-0 w-80 h-80 bg-blue-600/20 blur-[100px] group-hover:bg-blue-600/30 transition-all" />
@@ -406,7 +409,6 @@ export default function App() {
   </div>
 </section>
 
-        {/* Work Section */}
         <section id="work" className="py-32 bg-slate-50 scroll-mt-20">
           <div className="max-w-7xl mx-auto px-6">
             <FadeIn className="mb-20 text-center">
@@ -437,7 +439,6 @@ export default function App() {
           </div>
         </section>
 
-        {/* Contact Section */}
         <footer id="contact" className="py-32 bg-white text-center relative overflow-hidden scroll-mt-20">
           <div className="max-w-5xl mx-auto px-6 relative z-10">
             <FadeIn>
