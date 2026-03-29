@@ -236,40 +236,24 @@ const images = {
                 </div>
               </div>
               <div className="flex-1 flex justify-center gap-6">
-                <div className="w-40 h-80 bg-white rounded-[2rem] border-[6px] border-slate-900 shadow-xl overflow-hidden flex items-center justify-center text-slate-200 font-bold">[ App 占位 ]</div>
-                <div className="w-40 h-80 bg-white rounded-[2rem] border-[6px] border-slate-900 shadow-xl overflow-hidden flex items-center justify-center text-slate-200 font-bold mt-8">[ iPad 占位 ]</div>
+                {/* 手机端图片 */}
+                <div className="w-40 h-80 bg-white rounded-[2rem] border-[6px] border-slate-900 shadow-xl overflow-hidden relative flex-shrink-0">
+                  <img 
+                    src="https://raw.githubusercontent.com/hongui/my-portfolio-2/main/public/images/duoduan%20app%201%402x.png" 
+                    className="w-full h-full object-cover"
+                    alt="App"
+                  />
+                </div>
+                {/* iPad端图片 */}
+                <div className="w-40 h-80 bg-white rounded-[2rem] border-[6px] border-slate-900 shadow-xl overflow-hidden relative mt-8 flex-shrink-0">
+                  <img 
+                    src="https://raw.githubusercontent.com/hongui/my-portfolio-2/main/public/images/duoduan%20app%202%402x.png" 
+                    className="w-full h-full object-cover"
+                    alt="iPad"
+                  />
+                </div>
               </div>
             </section>
-          </>
-        )}
-
-        {/* ============================================================
-            子页面 2：法治舆情决策驾驶舱 (基于 PDF 1 & 2)
-            设计重点：需求提炼、组件化原则、A/B屏切换
-            ============================================================ */}
-        {isDashboard && (
-          <>
-            <section className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
-              <FadeIn>
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="p-2 bg-blue-50 text-blue-600 rounded-xl"><Target className="w-6 h-6" /></div>
-                  <h3 className="text-3xl font-black">需求拆解 / Demand</h3>
-                </div>
-                <p className="text-lg text-slate-500 leading-[1.8] font-medium">
-                  将碎片化的业务描述提炼为结构化列表。通过首页仪表盘直观展示办结完成情况，并利用地域热力图突出问题高发区。
-                </p>
-              </FadeIn>
-              <FadeIn delay={200}>
-                <div className="bg-slate-50 p-8 rounded-[2.5rem] border border-slate-100 space-y-4">
-                  {["关键数据仪表盘化展示", "地域热力图 + 时间维度切换", "异常预警生成与验证优化闭环"].map((item, i) => (
-                    <div key={i} className="flex gap-3 text-slate-700 font-bold">
-                      <span className="text-blue-600">●</span> {item}
-                    </div>
-                  ))}
-                </div>
-              </FadeIn>
-            </section>
-
             <section>
               <div className="text-center mb-16">
                 <h3 className="text-4xl font-black mb-4">组件化设计原则</h3>
