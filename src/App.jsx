@@ -108,14 +108,15 @@ const ProjectDetail = ({ project, onBack }) => {
   const images = {
     p1: {
       hero: "https://raw.githubusercontent.com/hongui/my-portfolio-2/refs/heads/main/public/images/fzyq%20shouye.png",
-      mobile: "https://github.com/hongui/my-portfolio-2/blob/main/public/images/duoduan%20app%201%402x.png", // 对应左边小框
-      pad: "https://github.com/hongui/my-portfolio-2/blob/main/public/images/duoduan%20app%202%402x.png",    // 对应右边大框
+      // 修正后的 Raw 地址（将 github.com 换成了 raw.githubusercontent.com，并去掉了 /blob/）
+      mobile: "https://raw.githubusercontent.com/hongui/my-portfolio-2/main/public/images/duoduan%20app%201%402x.png", 
+      pad: "https://raw.githubusercontent.com/hongui/my-portfolio-2/main/public/images/duoduan%20app%202%402x.png",
     },
     p2: {
-      dashboard: "https://raw.githubusercontent.com/你的用户名/仓库名/main/p2_main.png",
+      dashboard: "", 
     },
     p3: {
-      ip: "https://raw.githubusercontent.com/你的用户名/仓库名/main/p3_robot.png",
+      ip: "",
     }
   };
 
