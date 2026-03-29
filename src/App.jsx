@@ -372,55 +372,34 @@ export default function App() {
         ))}
       </div>
 
-   {/* ==================== 专业技能工具 (优化版) ==================== */}
+   {/* 专业技能工具 - 极简干净版（避免标签错误） */}
 <FadeIn delay={200}>
+  <div className="bg-slate-900 text-white p-12 md:p-16 rounded-[3.5rem] relative overflow-hidden group shadow-2xl max-w-5xl mx-auto mt-24">
+    
+    <div className="flex items-center gap-4 mb-12">
+      <div className="w-3 h-8 bg-blue-600 rounded-full" />
+      <h3 className="text-3xl font-black tracking-tight">专业技能工具</h3>
+    </div>
 
-<div className="bg-slate-900 text-white p-12 md:p-20 rounded-[4rem] relative overflow-hidden group shadow-2xl max-w-6xl mx-auto mt-24 mb-32">
-{/* 装饰性背景 */}
-<div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/10 blur-[120px] group-hover:bg-blue-500/20 transition-all duration-1000" />
-
-<div className="flex items-center gap-4 mb-16 relative z-10">
-  <div className="w-1.5 h-8 bg-blue-600 rounded-full" />
-  <h3 className="text-3xl font-black tracking-tight">专业技能工具</h3>
-</div>
-
-{/* 栅格布局：增加间距与对齐感 */}
-<div className="grid grid-cols-1 md:grid-cols-2 gap-x-24 gap-y-16 relative z-10">
-  {/* 模块 1 */}
-  <div className="group/item transition-all duration-500 hover:translate-x-2">
-    <p className="text-blue-400/80 text-[11px] font-black uppercase tracking-[0.2em] mb-4">专业设计软件</p>
-    <p className="text-3xl font-bold text-white/90 group-hover/item:text-white transition-colors tracking-tight">
-      Figma / MasterGo / Axure
-    </p>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
+      <div>
+        <p className="text-blue-400 text-xs font-black uppercase tracking-[0.08em] mb-3">专业设计软件</p>
+        <p className="text-2xl font-semibold">Figma / MasterGo / Axure</p>
+      </div>
+      <div>
+        <p className="text-blue-400 text-xs font-black uppercase tracking-[0.08em] mb-3">AI 提效工具</p>
+        <p className="text-2xl font-semibold">FigmaMake / Stitch</p>
+      </div>
+      <div>
+        <p className="text-blue-400 text-xs font-black uppercase tracking-[0.08em] mb-3">全链路落地</p>
+        <p className="text-2xl font-semibold">物料印刷 / UI动效</p>
+      </div>
+      <div>
+        <p className="text-blue-400 text-xs font-black uppercase tracking-[0.08em] mb-3">系统化思维</p>
+        <p className="text-2xl font-semibold">原子组件 / 设计资产</p>
+      </div>
+    </div>
   </div>
-
-  {/* 模块 2 */}
-  <div className="group/item transition-all duration-500 hover:translate-x-2">
-    <p className="text-blue-400/80 text-[11px] font-black uppercase tracking-[0.2em] mb-4">AI 提效工具</p>
-    <p className="text-3xl font-bold text-white/90 group-hover/item:text-white transition-colors tracking-tight">
-      FigmaMake / Stitch
-    </p>
-  </div>
-
-  {/* 模块 3 */}
-  <div className="group/item transition-all duration-500 hover:translate-x-2">
-    <p className="text-blue-400/80 text-[11px] font-black uppercase tracking-[0.2em] mb-4">全链路落地</p>
-    <p className="text-3xl font-bold text-white/90 group-hover/item:text-white transition-colors tracking-tight">
-      物料印刷 / UI动效
-    </p>
-  </div>
-
-  {/* 模块 4 */}
-  <div className="group/item transition-all duration-500 hover:translate-x-2">
-    <p className="text-blue-400/80 text-[11px] font-black uppercase tracking-[0.2em] mb-4">系统化思维</p>
-    <p className="text-3xl font-bold text-white/90 group-hover/item:text-white transition-colors tracking-tight">
-      原子组件 / 设计资产
-    </p>
-  </div>
-</div>
-
-
-</div>
 </FadeIn>
 
 {/* ==================== 项目展示列表 (优化间距) ==================== */}
