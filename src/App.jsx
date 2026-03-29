@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ArrowRight, Mail, Phone, ArrowLeft, ExternalLink, Activity, Layers, Smartphone, PieChart, LayoutTemplate, Zap, Shield, ChevronRight, Monitor, Database, Settings, GraduationCap, Briefcase, Award, QrCode, CheckCircle2, Cpu, MousePointer2, User, FolderOpen, MessageSquare } from 'lucide-react';
-import Spline from '@splinetool/react-spline';
 
 // --- 自定义 Hooks ---
 const useScroll = () => {
@@ -298,9 +297,9 @@ export default function App() {
   {/* 右侧无边框 Spline 窗口 - 模型直接显示 */}
   <div className="flex-1 w-full lg:w-auto relative lg:-mt-8">
     <div className="relative w-full h-[460px] lg:h-[580px] overflow-hidden rounded-[2.75rem]">
-      <Spline 
-        scene="https://prod.spline.design/xxocG5UX04nYJYmm/scene.splinecode" 
-        className="absolute inset-0 w-full h-full scale-[1.08]"
+      <iframe 
+        src="https://my.spline.design/xxocG5UX04nYJYmm/" 
+        className="absolute inset-0 w-full h-full scale-[1.08] border-0"
         onLoad={() => {
           const loadingEl = document.getElementById('spline-loading');
           if (loadingEl) {
@@ -310,6 +309,7 @@ export default function App() {
             }, 800);
           }
         }}
+        title="3D Scene"
       />
       
       {/* 加载提示 */}
@@ -337,7 +337,8 @@ export default function App() {
         
         {/* 重点：让文字宽度接近三个卡片总和 */}
         <div className="max-w-5xl">
-          <p className="text-slate-500 text-xl leading-relaxed font-medium">
+          {/* 在这里添加了 text-justify 类 */}
+          <p className="text-slate-500 text-xl leading-relaxed font-medium text-justify">
             毕业于杭州职业技术学院。在杭州睿云期间，主导了法治舆情项目从 0-1 的全链路落地。我不仅交付界面，更交付<strong>设计系统</strong>。通过沉淀 135+ 个原子组件，大幅提升了团队 40% 的产出效率。
           </p>
         </div>
