@@ -104,31 +104,33 @@ const ProjectDetail = ({ project, onBack }) => {
     window.scrollTo(0, 0);
   }, []);
 
-  const isJusticeSystem = project.id === 'p1';
-  const isDashboard = project.id === 'p2';
-  const isVisualScreen = project.id === 'p3';
+  // 路由逻辑：判断当前点击的是哪一个子页面
+  const isJusticeSystem = project.id === 'p1';   // 子页面 1：司法行政系统工作台 (PDF 3 视觉规范)
+  const isDashboard = project.id === 'p2';       // 子页面 2：法治舆情决策驾驶舱 (PDF 1/2 需求拆解)
+  const isVisualScreen = project.id === 'p3';    // 子页面 3：司法可视化大屏 (PDF 4 AI/IP 形象)
 
   return (
     <div className="min-h-screen bg-[#FDFDFD] text-slate-900 pb-32">
       
-      {/* 顶部导航 */}
+      {/* --- 公共顶部导航 --- */}
       <nav className="sticky top-0 w-full z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200/60">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <button onClick={onBack} className="flex items-center gap-2 text-slate-500 hover:text-blue-600 font-bold transition-all group">
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" /> 返回作品集
           </button>
-          <div className="text-xs font-black tracking-widest text-slate-300 uppercase">Case Study / {project.tag}</div>
+          <div className="text-xs font-black tracking-widest text-slate-300 uppercase">
+            Case Study / {project.tag.split(' / ')[0]}
+          </div>
         </div>
       </nav>
 
-      {/* 头部 */}
+      {/* --- 公共动态头部 --- */}
       <header className={`pt-24 pb-20 bg-gradient-to-br ${project.color} to-white border-b border-slate-100`}>
         <div className="max-w-6xl mx-auto px-6">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-blue-600 text-white text-sm md:text-base font-black uppercase tracking-widest mb-8 shadow-lg shadow-blue-200">
-              <project.icon className="w-4 h-4" /> {project.tag}
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-600 text-white text-[10px] font-black uppercase tracking-widest mb-6 shadow-lg shadow-blue-200">
+              <project.icon className="w-3 h-3" /> {project.tag}
             </div>
-
             <h1 className="text-5xl md:text-7xl font-black tracking-tighter leading-tight mb-8">
               {project.title}
             </h1>
@@ -141,76 +143,219 @@ const ProjectDetail = ({ project, onBack }) => {
 
       <main className="max-w-6xl mx-auto px-6 mt-24 space-y-32">
 
+        {/* ============================================================
+            子页面 1：司法行政系统工作台 (基于 PDF 3)
+            设计重点：业务准确性、多端适配、适老化
+            ============================================================ */}
         {isJusticeSystem && (
           <>
-            {/* 项目背景 */}
             <section className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
-              <div>
+              <FadeIn>
                 <div className="flex items-center gap-3 mb-6">
                   <div className="p-2 bg-blue-50 text-blue-600 rounded-xl"><Shield className="w-6 h-6" /></div>
-                  <h3 className="text-3xl font-black">项目背景</h3>
+                  <h3 className="text-3xl font-black">视觉规范 / Visual Standards</h3>
                 </div>
-                <p className="text-lg text-slate-500 leading-[1.8]">
-                  传统司法办公系统长期面临“入口深、数据散、操作慢”的痛点。本项目旨在打破碎片化业务条线，为执法人员提供“一屏通办、全程闭环”的数字化工作站。
+                <p className="text-lg text-slate-500 leading-[1.8] font-medium">
+                  G端设计的核心在于“<strong>业务准确性优先</strong>”。通过标准化、克制、一致的视觉语言，降低认知负荷，呈现业务内容强关联的页面。
                 </p>
-              </div>
-              <div className="bg-slate-50 p-8 rounded-[2.5rem] border border-slate-100">
-                <h4 className="font-black text-slate-400 text-sm uppercase tracking-widest mb-6">核心挑战</h4>
-                <ul className="space-y-4 text-slate-700">
-                  <li className="flex gap-3"><span className="text-blue-600">●</span> 高频业务埋藏深，查找时间长</li>
-                  <li className="flex gap-3"><span className="text-blue-600">●</span> 多端体验割裂，数据不同步</li>
-                  <li className="flex gap-3"><span className="text-blue-600">●</span> 界面老旧，不符合适老化规范</li>
-                </ul>
-              </div>
-            </section>
-
-            {/* 项目统构成 - 四端 */}
-            <section>
-              <div className="text-center mb-12">
-                <h3 className="text-4xl font-black mb-4">全场景多端适配</h3>
-                <p className="text-slate-400">实现管理端、办理端、APP端、iPad端四端数据互通与体验统一</p>
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                {[
-                  { label: "管理端", emoji: "💻", color: "bg-blue-50", text: "数据总览、权限配置、统计分析" },
-                  { label: "办理端", emoji: "✍️", color: "bg-emerald-50", text: "业务办理、流程审批、任务执行" },
-                  { label: "APP端", emoji: "📲", color: "bg-purple-50", text: "移动执法、实时推送、现场办公" },
-                  { label: "iPad端", emoji: "📟", color: "bg-amber-50", text: "会议演示、适老化设计、数据大屏" },
-                ].map((item, i) => (
-                  <div key={i} className="bg-white rounded-[2rem] p-8 border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all group h-full">
-                    <div className={`w-14 h-14 ${item.color} rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform`}>
-                      {item.emoji}
-                    </div>
-                    <h4 className="font-black text-xl mb-3">{item.label}</h4>
-                    <p className="text-slate-500 text-sm leading-relaxed">{item.text}</p>
+              </FadeIn>
+              <FadeIn delay={200}>
+                <div className="bg-slate-50 p-8 rounded-[2.5rem] border border-slate-100">
+                  <h4 className="font-black text-slate-400 text-sm uppercase tracking-widest mb-6">G端设计特点</h4>
+                  <div className="grid grid-cols-2 gap-4">
+                    {["业务准确性 > 视觉体验", "用户年龄偏大", "多角色切换", "数据录入频率高"].map((txt, i) => (
+                      <div key={i} className="bg-white p-4 rounded-2xl shadow-sm text-sm font-bold text-slate-700">{txt}</div>
+                    ))}
                   </div>
-                ))}
+                </div>
+              </FadeIn>
+            </section>
+
+            <section className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="md:col-span-1 space-y-6">
+                <h3 className="text-3xl font-black">首页功能概述</h3>
+                <p className="text-slate-500 font-medium">采用可拓展导航设计与分模块布局，支持快速决策分析，确保 Webapp 用户体验高度一致。</p>
+                <div className="space-y-4">
+                  {["统一视觉语言", "响应式布局优化", "适老化交互模式"].map((item, i) => (
+                    <div key={i} className="flex items-center gap-3 text-slate-900 font-bold italic">
+                      <CheckCircle2 className="w-5 h-5 text-blue-600" /> {item}
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="md:col-span-2 relative bg-slate-900 rounded-[2.5rem] p-4 shadow-2xl overflow-hidden group">
+                <div className="aspect-[16/10] w-full bg-slate-800 rounded-[1.75rem] flex items-center justify-center border border-slate-700/50">
+                  <div className="text-center">
+                    <LayoutTemplate className="w-12 h-12 text-slate-600 mx-auto mb-4" />
+                    <p className="text-slate-500 font-bold tracking-widest">[ 首页/Web端模块化布局展示位 ]</p>
+                  </div>
+                </div>
               </div>
             </section>
 
-            {/* 首页功能概述图片 */}
-            <section className="mt-16">
-              <div className="text-sm font-black uppercase tracking-widest text-slate-400 mb-4">首页功能概述</div>
-              <div className="aspect-[16/10] w-full overflow-hidden rounded-[1.75rem] shadow-2xl border border-slate-100">
-                <img 
-                  src="https://raw.githubusercontent.com/hongui/my-portfolio-2/refs/heads/main/public/images/fzyq%20shouye.png" 
-                  alt="首页功能概述" 
-                  className="w-full h-full object-cover"
-                />
+            <section className="bg-slate-50 rounded-[3.5rem] p-12 md:p-20 flex flex-col md:flex-row items-center gap-16">
+              <div className="flex-1 space-y-8">
+                <h3 className="text-3xl font-black">多端适配方案</h3>
+                <p className="text-slate-500 text-lg leading-relaxed">针对 iPad/App 端进行平板场景优化与响应式布局适配，确保执法人员在现场办公时拥有极佳的易用性与执行效率。</p>
+                <div className="flex gap-4">
+                  <div className="px-6 py-4 bg-white rounded-2xl border border-slate-200 font-bold text-slate-600">iPad 响应式设计</div>
+                  <div className="px-6 py-4 bg-white rounded-2xl border border-slate-200 font-bold text-slate-600">App 适老化模式</div>
+                </div>
+              </div>
+              <div className="flex-1 flex justify-center gap-6">
+                <div className="w-40 h-80 bg-white rounded-[2rem] border-[6px] border-slate-900 shadow-xl overflow-hidden flex items-center justify-center text-slate-200 font-bold">[ App 占位 ]</div>
+                <div className="w-40 h-80 bg-white rounded-[2rem] border-[6px] border-slate-900 shadow-xl overflow-hidden flex items-center justify-center text-slate-200 font-bold mt-8">[ iPad 占位 ]</div>
               </div>
             </section>
           </>
         )}
 
-        {/* 其他项目详情页可继续扩展 */}
+        {/* ============================================================
+            子页面 2：法治舆情决策驾驶舱 (基于 PDF 1 & 2)
+            设计重点：需求提炼、组件化原则、A/B屏切换
+            ============================================================ */}
+        {isDashboard && (
+          <>
+            <section className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+              <FadeIn>
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-2 bg-blue-50 text-blue-600 rounded-xl"><Target className="w-6 h-6" /></div>
+                  <h3 className="text-3xl font-black">需求拆解 / Demand</h3>
+                </div>
+                <p className="text-lg text-slate-500 leading-[1.8] font-medium">
+                  将碎片化的业务描述提炼为结构化列表。通过首页仪表盘直观展示办结完成情况，并利用地域热力图突出问题高发区。
+                </p>
+              </FadeIn>
+              <FadeIn delay={200}>
+                <div className="bg-slate-50 p-8 rounded-[2.5rem] border border-slate-100 space-y-4">
+                  {["关键数据仪表盘化展示", "地域热力图 + 时间维度切换", "异常预警生成与验证优化闭环"].map((item, i) => (
+                    <div key={i} className="flex gap-3 text-slate-700 font-bold">
+                      <span className="text-blue-600">●</span> {item}
+                    </div>
+                  ))}
+                </div>
+              </FadeIn>
+            </section>
+
+            <section>
+              <div className="text-center mb-16">
+                <h3 className="text-4xl font-black mb-4">组件化设计原则</h3>
+                <p className="text-slate-400 font-bold">确保整个数据驾驶舱视觉语言一致，提升开发效率与后期维护性。</p>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {[
+                  { title: "风格统一", icon: Shield, desc: "高度一致的视觉语言，提升专业感与可读性。" },
+                  { title: "效率提升", icon: Zap, desc: "预定义组件库，缩短高保真迭代周期。" },
+                  { title: "可维护性", icon: Settings, desc: "统一规范，一处修改全局生效。" }
+                ].map((item, i) => (
+                  <div key={i} className="bg-white p-10 rounded-[2.5rem] border border-slate-100 hover:shadow-xl transition-all group">
+                    <item.icon className="w-10 h-10 text-blue-600 mb-6" />
+                    <h4 className="font-black text-xl mb-4">{item.title}</h4>
+                    <p className="text-slate-500 text-sm font-medium">{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            <FadeIn>
+              <div className="relative bg-slate-900 rounded-[3rem] p-4 shadow-2xl group overflow-hidden">
+                <div className="absolute top-8 left-8 z-10 flex gap-2">
+                   <div className="px-4 py-2 bg-blue-600 text-white rounded-lg text-xs font-black">A 屏 - 数据分析主视图</div>
+                   <div className="px-4 py-2 bg-slate-700 text-white rounded-lg text-xs font-black">B 屏 - 领域分析视图</div>
+                </div>
+                <div className="aspect-[16/9] w-full bg-slate-800 rounded-[2.25rem] border border-slate-700/50 flex items-center justify-center">
+                   <div className="text-center">
+                      <PieChart className="w-16 h-16 text-slate-600 mx-auto mb-4" />
+                      <p className="font-bold tracking-widest text-slate-500">[ 驾驶舱 A/B 屏切换效果图展示位 ]</p>
+                   </div>
+                </div>
+              </div>
+            </FadeIn>
+          </>
+        )}
+
+        {/* ============================================================
+            子页面 3：司法可视化大屏 (基于 PDF 4)
+            设计重点：AI/IP 形象、WebP 序列帧技术、舆情情绪
+            ============================================================ */}
+        {isVisualScreen && (
+          <>
+            <section className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+              <FadeIn>
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-2 bg-indigo-50 text-indigo-600 rounded-xl"><Activity className="w-6 h-6" /></div>
+                  <h3 className="text-3xl font-black">舆情情绪可视化</h3>
+                </div>
+                <p className="text-lg text-slate-500 leading-[1.8] font-medium">
+                  将常见舆论情绪抽象分为“正向、中性、负向”三大类。通过<strong>舆情焦点、热词分布、主题分布</strong>三大核心板块拓展监测范围。
+                </p>
+              </FadeIn>
+              <FadeIn delay={200}>
+                <div className="bg-slate-900 rounded-[2.5rem] p-8 border border-slate-800 shadow-2xl">
+                  <div className="flex justify-between items-center mb-8 border-b border-white/10 pb-4">
+                    <span className="text-white font-black">舆情线索监测中心</span>
+                    <span className="text-indigo-400 text-xs font-bold italic">Real-time Monitor</span>
+                  </div>
+                  <div className="grid grid-cols-3 gap-4">
+                    {[{l:"正向", v:"772", c:"text-emerald-400"}, {l:"中性", v:"482", c:"text-blue-400"}, {l:"负向", v:"75", c:"text-rose-400"}].map((d, i) => (
+                      <div key={i} className="text-center p-4 bg-white/5 rounded-2xl">
+                        <div className={`text-2xl font-black ${d.c}`}>{d.v}</div>
+                        <div className="text-[10px] text-slate-500 font-bold uppercase mt-1">{d.l}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </FadeIn>
+            </section>
+
+            <section className="bg-indigo-50 rounded-[3.5rem] p-12 md:p-20 relative overflow-hidden">
+               <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-200/20 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl" />
+               <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                  <div>
+                    <h3 className="text-3xl font-black mb-6">AI 驱动 IP 形象落地</h3>
+                    <p className="text-slate-600 text-lg leading-relaxed mb-8">利用 AI 工具链（LibLib / Vidu）实现从概念到高保真落地的闭环。采用 <strong>WebP 序列帧</strong>技术方案，显著降低加载负担。</p>
+                    <div className="flex gap-8">
+                       <div><div className="text-2xl font-black text-indigo-600">85%</div><div className="text-xs font-bold text-indigo-300">动图压缩率</div></div>
+                       <div><div className="text-2xl font-black text-indigo-600">37.5%</div><div className="text-xs font-bold text-indigo-300">响应速度提升</div></div>
+                    </div>
+                  </div>
+                  <div className="aspect-square bg-white rounded-full shadow-2xl border-[12px] border-white flex items-center justify-center">
+                     <div className="text-center">
+                        <Cpu className="w-12 h-12 text-indigo-200 mx-auto mb-2" />
+                        <p className="text-indigo-300 font-black text-xs">[ AI 生成的动态 IP 占位 ]</p>
+                     </div>
+                  </div>
+               </div>
+            </section>
+
+            <section className="grid grid-cols-1 md:grid-cols-2 gap-10">
+               <div className="bg-slate-50 p-6 rounded-[2.5rem] border border-slate-100">
+                  <div className="aspect-video bg-slate-200 rounded-[1.5rem] mb-6 flex items-center justify-center text-slate-400 font-bold">[ 热词分布图表位 ]</div>
+                  <h4 className="font-black px-4">热词分布板块</h4>
+               </div>
+               <div className="bg-slate-50 p-6 rounded-[2.5rem] border border-slate-100">
+                  <div className="aspect-video bg-slate-200 rounded-[1.5rem] mb-6 flex items-center justify-center text-slate-400 font-bold">[ 主题分布图表位 ]</div>
+                  <h4 className="font-black px-4">主题分布板块</h4>
+               </div>
+            </section>
+          </>
+        )}
 
       </main>
 
-      {/* 底部 */}
-      <footer className="max-w-4xl mx-auto px-6 mt-40 text-center">
-        <button onClick={onBack} className="px-10 py-5 bg-blue-600 hover:bg-blue-500 rounded-full font-bold text-white transition-all flex items-center gap-3 mx-auto">
-          返回作品集首页 <ArrowRight className="w-5 h-5" />
-        </button>
+      {/* --- 公共底部行动点 --- */}
+      <footer className="max-w-4xl mx-auto px-6 mt-40">
+        <div className="bg-blue-600 rounded-[3.5rem] p-12 md:p-20 text-center relative overflow-hidden group">
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-indigo-700" />
+          <div className="relative z-10">
+            <h2 className="text-3xl md:text-5xl font-black text-white mb-10 tracking-tight">
+              探索更多司法行政<br/>数字化转型案例
+            </h2>
+            <button onClick={onBack} className="px-10 py-5 bg-white text-blue-600 hover:bg-slate-50 rounded-full font-black text-lg transition-all flex items-center gap-3 mx-auto shadow-xl">
+              返回作品集首页 <ArrowRight className="w-5 h-5" />
+            </button>
+          </div>
+        </div>
       </footer>
     </div>
   );
