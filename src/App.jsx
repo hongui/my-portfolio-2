@@ -263,247 +263,195 @@ export default function App() {
       </aside>
 
       <main className="pl-16 md:pl-24 transition-all duration-500">
-        
-<section className="relative pt-48 pb-24 px-6 max-w-7xl mx-auto flex flex-col lg:flex-row justify-center min-h-[90vh] gap-16 lg:gap-20 items-start lg:items-center">
   
-<div className="flex-1 relative z-10">
-  <div
-    className="absolute top-[15%] right-[10%] w-[500px] h-[500px] rounded-full pointer-events-none z-0 opacity-50"
-    style={{
-      background: 'radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, rgba(147, 51, 234, 0.05) 100%)',
-      filter: 'blur(100px)',
-      transform: `translate(${mousePos.x * 30}px, ${mousePos.y * 30}px)`,
-      transition: 'transform 0.8s ease-out'
-    }}
-  />
- 
-  <FadeIn>
-    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-600 font-bold text-[10px] uppercase tracking-[0.3em] mb-10">
-      <Activity className="w-3 h-3 animate-pulse" /> G Side Experience Design
-    </div>
-   
-    <h1 className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[1.05] mb-14">
-      Hi,<br />
-      我是任俊明，<br />
-      专注高效的<br />
-      <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-blue-400 to-indigo-600">政务系统设计</span>
-    </h1>
-   
-    <p className="text-xl md:text-2xl text-slate-400 max-w-3xl mb-12 leading-[1.65] font-medium">
-      深耕法治舆情与司法行政系统，擅长 0-1 构建复杂政务业务。我致力于以组件化思维驱动设计落地，将繁琐的业务转化为极致流畅的数字化体验。
-    </p>
-
-    <div className="flex gap-6">
-      <a href="#work" className="group flex items-center gap-4 text-lg font-bold transition-all">
-        开始探索作品 <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-all"><ArrowRight className="w-5 h-5" /></div>
-      </a>
-    </div>
-  </FadeIn>
-</div>
-
-  <div className="flex-1 w-full lg:w-auto relative lg:-mt-8">
-    <div className="relative w-full h-[460px] lg:h-[580px] overflow-hidden rounded-[2.75rem]">
-      {/* 修复后的 Spline 加载 */}
-      <Spline 
-  scene="https://prod.spline.design/xxocG5UX04nYJYmm/scene.splinecode" 
-  className="absolute inset-0 w-full h-full scale-[1.08]"
-  onLoad={handleSplineLoad}
-/>
-      
-      <div id="spline-loading" 
-           className="absolute inset-0 flex items-center justify-center bg-slate-50/80 z-10 transition-opacity duration-700 text-slate-400 text-sm font-medium">
-        加载 3D 场景中...
-      </div>
-    </div>
-  </div>
-</section>
-        
-<section id="about" className="py-32 relative scroll-mt-20">
-  <div className="max-w-7xl mx-auto px-6">
+  {/* Hero Section */}
+  <section className="relative pt-48 pb-24 px-6 max-w-7xl mx-auto flex flex-col lg:flex-row justify-center min-h-[90vh] gap-16 lg:gap-20 items-start lg:items-center">
     
-    {/* 职业价值 */}
-    <div className="mb-24">
+    {/* 左侧文字 */}
+    <div className="flex-1 relative z-10">
+      <div
+        className="absolute top-[15%] right-[10%] w-[500px] h-[500px] rounded-full pointer-events-none z-0 opacity-50"
+        style={{
+          background: 'radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, rgba(147, 51, 234, 0.05) 100%)',
+          filter: 'blur(100px)',
+          transform: `translate(${mousePos.x * 30}px, ${mousePos.y * 30}px)`,
+          transition: 'transform 0.8s ease-out'
+        }}
+      />
+      
       <FadeIn>
-        <h2 className="text-5xl font-black mb-10 tracking-tighter italic text-slate-900 underline decoration-blue-600 decoration-4 underline-offset-8">
-          职业价值 / Value
-        </h2>
-        <div className="max-w-[920px]">
-          <p className="text-slate-500 text-[21px] leading-[1.78] font-medium text-justify">
-            毕业于杭州职业技术学院。在杭州睿云期间，主导了法治舆情项目从 0-1 的全链路落地。我不仅交付界面，更交付<strong>设计系统</strong>。通过沉淀 135+ 个原子组件，大幅提升了团队 40% 的产出效率。
-          </p>
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-600 font-bold text-[10px] uppercase tracking-[0.3em] mb-10">
+          <Activity className="w-3 h-3 animate-pulse" /> G Side Experience Design
+        </div>
+        
+        <h1 className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[1.05] mb-14">
+          Hi,<br />
+          我是任俊明<br />
+          专注高效的<br />
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-blue-400 to-indigo-600">政务系统设计</span>
+        </h1>
+        
+        <p className="text-xl md:text-2xl text-slate-400 max-w-3xl mb-12 leading-[1.65] font-medium">
+          深耕法治舆情与司法行政系统，擅长 0-1 构建复杂政务业务。我致力于以组件化思维驱动设计落地，将繁琐的业务转化为极致流畅的数字化体验。
+        </p>
+
+        <div className="flex gap-6">
+          <a href="#work" className="group flex items-center gap-4 text-lg font-bold transition-all">
+            开始探索作品 <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-all"><ArrowRight className="w-5 h-5" /></div>
+          </a>
         </div>
       </FadeIn>
     </div>
 
-    {/* 三个经历卡片 */}
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
-      {[
-        { icon: Briefcase, title: "杭州睿云信息技术有限公司", desc: "UI设计师 / 2023 - 2025" },
-        { icon: GraduationCap, title: "杭州职业技术学院", desc: "数字媒体艺术设计 / 全日制专科" },
-        { icon: Award, title: "界面设计职业技能证书(高级)", desc: "国家学分银行权威认定" }
-      ].map((item, i) => (
-        <FadeIn key={i} delay={i * 100}>
-          <div className="flex gap-5 items-start p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:border-blue-200 transition-all group h-full">
-            <div className="w-12 h-12 rounded-2xl bg-white shadow-sm flex-shrink-0 flex items-center justify-center text-blue-600 group-hover:scale-110 transition-transform mt-1">
-              <item.icon className="w-6 h-6" />
-            </div>
-            <div className="flex-1">
-              <h4 className="font-black text-lg leading-tight mb-1">{item.title}</h4>
-              <p className="text-slate-400 font-medium text-[15px]">{item.desc}</p>
-            </div>
+    {/* 右侧 Spline */}
+    <div className="flex-1 w-full lg:w-auto relative lg:-mt-8">
+      <div className="relative w-full h-[460px] lg:h-[580px] overflow-hidden rounded-[2.75rem]">
+        <Spline 
+          scene="https://prod.spline.design/xxocG5UX04nYJYmm/scene.splinecode" 
+          className="absolute inset-0 w-full h-full scale-[1.08]"
+          onLoad={handleSplineLoad}
+        />
+        
+        <div id="spline-loading" 
+             className="absolute inset-0 flex items-center justify-center bg-slate-50/80 z-10 transition-opacity duration-700">
+          <div className="flex flex-col items-center gap-3">
+            <div className="w-5 h-5 border-2 border-slate-300 border-t-blue-600 rounded-full animate-spin"></div>
+            <div className="text-slate-400 text-sm font-medium">加载 3D 场景中...</div>
           </div>
-        </FadeIn>
-      ))}
-    </div>
-
-    {/* 专业技能工具 */}
-    <FadeIn delay={200}>
-      <div className="bg-slate-900 text-white p-12 md:p-16 rounded-[3.5rem] relative overflow-hidden group shadow-2xl max-w-5xl">
-        <div className="absolute top-0 right-0 w-80 h-80 bg-blue-600/20 blur-[100px] group-hover:bg-blue-600/30 transition-all" />
-        
-        <h3 className="text-3xl font-black mb-12 flex items-center gap-4">
-          <div className="w-3 h-8 bg-blue-600 rounded-full" />
-          专业技能工具
-        </h3>
-        
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-16 gap-y-10">
-          {[
-            { label: "专业设计软件", list: "Figma / MasterGo / Axure" },
-            { label: "AI 提效工具", list: "FigmaMake / Stitch" },
-            { label: "全链路落地", list: "物料印刷 / UI动效" },
-            { label: "系统化思维", list: "原子组件 / 设计资产" }
-          ].map((skill, i) => (
-            <div key={i} className="group/item">
-              <p className="text-blue-500 text-[10px] font-black uppercase tracking-widest mb-3">{skill.label}</p>
-              <p className="text-2xl font-black group-hover/item:translate-x-1 transition-transform">{skill.list}</p>
-            </div>
-          ))}
         </div>
       </div>
-    </FadeIn>
-  </div>
-</section>
-        
-   
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
-      {[
-        { 
-          icon: Briefcase, 
-          title: "杭州睿云信息技术有限公司", 
-          desc: "UI设计师 / 2023 - 2025" 
-        },
-        { 
-          icon: GraduationCap, 
-          title: "杭州职业技术学院", 
-          desc: "数字媒体艺术设计 / 全日制专科" 
-        },
-        { 
-          icon: Award, 
-          title: "界面设计职业技能证书(高级)", 
-          desc: "国家学分银行权威认定" 
-        }
-      ].map((item, i) => (
-        <FadeIn key={i} delay={i * 100}>
-          <div className="flex gap-5 items-start p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:border-blue-200 transition-all group h-full">
-            <div className="w-12 h-12 rounded-2xl bg-white shadow-sm flex-shrink-0 flex items-center justify-center text-blue-600 group-hover:scale-110 transition-transform mt-1">
-              <item.icon className="w-6 h-6" />
-            </div>
-            <div className="flex-1">
-              <h4 className="font-black text-lg leading-tight mb-1">{item.title}</h4>
-              <p className="text-slate-400 font-medium text-[15px]">{item.desc}</p>
-            </div>
+    </div>
+  </section>
+
+  {/* About Section */}
+  <section id="about" className="py-32 relative scroll-mt-20">
+    <div className="max-w-7xl mx-auto px-6">
+      
+      {/* 职业价值 */}
+      <div className="mb-24">
+        <FadeIn>
+          <h2 className="text-5xl font-black mb-10 tracking-tighter italic text-slate-900 underline decoration-blue-600 decoration-4 underline-offset-8">
+            职业价值 / Value
+          </h2>
+          <div className="max-w-[920px]">
+            <p className="text-slate-500 text-[21px] leading-[1.78] font-medium text-justify">
+              毕业于杭州职业技术学院。在杭州睿云期间，主导了法治舆情项目从 0-1 的全链路落地。我不仅交付界面，更交付<strong>设计系统</strong>。通过沉淀 135+ 个原子组件，大幅提升了团队 40% 的产出效率。
+            </p>
           </div>
         </FadeIn>
-      ))}
-    </div>
-
-    <FadeIn delay={200}>
-      <div className="bg-slate-900 text-white p-12 md:p-16 rounded-[3.5rem] relative overflow-hidden group shadow-2xl max-w-5xl">
-        <div className="absolute top-0 right-0 w-80 h-80 bg-blue-600/20 blur-[100px] group-hover:bg-blue-600/30 transition-all" />
-        
-        <h3 className="text-3xl font-black mb-12 flex items-center gap-4">
-          <div className="w-3 h-8 bg-blue-600 rounded-full" />
-          专业技能工具
-        </h3>
-        
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-16 gap-y-10">
-          {[
-            { label: "专业设计软件", list: "Figma / MasterGo / Axure" },
-            { label: "AI 提效工具", list: "FigmaMake / Stitch" },
-            { label: "全链路落地", list: "物料印刷 / UI动效" },
-            { label: "系统化思维", list: "原子组件 / 设计资产" }
-          ].map((skill, i) => (
-            <div key={i} className="group/item">
-              <p className="text-blue-500 text-[10px] font-black uppercase tracking-widest mb-3">{skill.label}</p>
-              <p className="text-2xl font-black group-hover/item:translate-x-1 transition-transform">{skill.list}</p>
-            </div>
-          ))}
-        </div>
       </div>
-    </FadeIn>
-  </div>
-</section>
 
-        <section id="work" className="py-32 bg-slate-50 scroll-mt-20">
-          <div className="max-w-7xl mx-auto px-6">
-            <FadeIn className="mb-20 text-center">
-              <h2 className="text-5xl font-black tracking-tighter mb-4">核心项目拆解 / Projects</h2>
-              <p className="text-slate-400 text-lg font-bold italic">基于《司法行政系统》项目深度复盘</p>
-            </FadeIn>
+      {/* 三个经历卡片 */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
+        {[
+          { icon: Briefcase, title: "杭州睿云信息技术有限公司", desc: "UI设计师 / 2023 - 2025" },
+          { icon: GraduationCap, title: "杭州职业技术学院", desc: "数字媒体艺术设计 / 全日制专科" },
+          { icon: Award, title: "界面设计职业技能证书(高级)", desc: "国家学分银行权威认定" }
+        ].map((item, i) => (
+          <FadeIn key={i} delay={i * 100}>
+            <div className="flex gap-5 items-start p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:border-blue-200 transition-all group h-full">
+              <div className="w-12 h-12 rounded-2xl bg-white shadow-sm flex-shrink-0 flex items-center justify-center text-blue-600 group-hover:scale-110 transition-transform mt-1">
+                <item.icon className="w-6 h-6" />
+              </div>
+              <div className="flex-1">
+                <h4 className="font-black text-lg leading-tight mb-1">{item.title}</h4>
+                <p className="text-slate-400 font-medium text-[15px]">{item.desc}</p>
+              </div>
+            </div>
+          </FadeIn>
+        ))}
+      </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-              {projects.map((project, index) => (
-                <FadeIn key={project.id} delay={index * 150}>
-                  <ShimmerWrapper 
-                    className="bg-white rounded-[3rem] p-10 border border-slate-100 shadow-xl hover:-translate-y-4 transition-all duration-500 h-full flex flex-col cursor-pointer group" 
-                    onClick={() => { setSelectedProject(project); setCurrentView('detail'); }}
-                  >
-                    <div className={`w-16 h-16 rounded-[1.5rem] bg-gradient-to-br ${project.color} to-white flex items-center justify-center mb-10`}>
-                      <project.icon className="w-8 h-8 text-slate-800" />
-                    </div>
-                    <div className="text-blue-600 font-black text-[10px] mb-4 tracking-[0.2em] uppercase">{project.tag}</div>
-                    <h3 className="text-3xl font-black mb-6 leading-tight">{project.title}</h3>
-                    <p className="text-slate-500 mb-10 flex-grow line-clamp-3 font-medium">{project.desc}</p>
-                    <div className="flex items-center gap-3 text-slate-900 font-black group-hover:text-blue-600 group-hover:gap-5 transition-all">
-                      查看项目详情 <ArrowRight className="w-5 h-5" />
-                    </div>
-                  </ShimmerWrapper>
-                </FadeIn>
-              ))}
+      {/* 专业技能工具 */}
+      <FadeIn delay={200}>
+        <div className="bg-slate-900 text-white p-12 md:p-16 rounded-[3.5rem] relative overflow-hidden group shadow-2xl max-w-5xl">
+          <div className="absolute top-0 right-0 w-80 h-80 bg-blue-600/20 blur-[100px] group-hover:bg-blue-600/30 transition-all" />
+          
+          <h3 className="text-3xl font-black mb-12 flex items-center gap-4">
+            <div className="w-3 h-8 bg-blue-600 rounded-full" />
+            专业技能工具
+          </h3>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-16 gap-y-10">
+            {[
+              { label: "专业设计软件", list: "Figma / MasterGo / Axure" },
+              { label: "AI 提效工具", list: "FigmaMake / Stitch" },
+              { label: "全链路落地", list: "物料印刷 / UI动效" },
+              { label: "系统化思维", list: "原子组件 / 设计资产" }
+            ].map((skill, i) => (
+              <div key={i} className="group/item">
+                <p className="text-blue-500 text-[10px] font-black uppercase tracking-widest mb-3">{skill.label}</p>
+                <p className="text-2xl font-black group-hover/item:translate-x-1 transition-transform">{skill.list}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </FadeIn>
+    </div>
+  </section>
+
+  {/* Work Section */}
+  <section id="work" className="py-32 bg-slate-50 scroll-mt-20">
+    <div className="max-w-7xl mx-auto px-6">
+      <FadeIn className="mb-20 text-center">
+        <h2 className="text-5xl font-black tracking-tighter mb-4">核心项目拆解 / Projects</h2>
+        <p className="text-slate-400 text-lg font-bold italic">基于《司法行政系统》项目深度复盘</p>
+      </FadeIn>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+        {projects.map((project, index) => (
+          <FadeIn key={project.id} delay={index * 150}>
+            <ShimmerWrapper 
+              className="bg-white rounded-[3rem] p-10 border border-slate-100 shadow-xl hover:-translate-y-4 transition-all duration-500 h-full flex flex-col cursor-pointer group" 
+              onClick={() => { setSelectedProject(project); setCurrentView('detail'); }}
+            >
+              <div className={`w-16 h-16 rounded-[1.5rem] bg-gradient-to-br ${project.color} to-white flex items-center justify-center mb-10`}>
+                <project.icon className="w-8 h-8 text-slate-800" />
+              </div>
+              <div className="text-blue-600 font-black text-[10px] mb-4 tracking-[0.2em] uppercase">{project.tag}</div>
+              <h3 className="text-3xl font-black mb-6 leading-tight">{project.title}</h3>
+              <p className="text-slate-500 mb-10 flex-grow line-clamp-3 font-medium">{project.desc}</p>
+              <div className="flex items-center gap-3 text-slate-900 font-black group-hover:text-blue-600 group-hover:gap-5 transition-all">
+                查看项目详情 <ArrowRight className="w-5 h-5" />
+              </div>
+            </ShimmerWrapper>
+          </FadeIn>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* Contact Footer */}
+  <footer id="contact" className="py-32 bg-white text-center relative overflow-hidden scroll-mt-20">
+    <div className="max-w-5xl mx-auto px-6 relative z-10">
+      <FadeIn>
+        <h2 className="text-5xl md:text-8xl font-black tracking-tighter mb-20 italic">Say Hello.</h2>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 items-center">
+          <div className="flex flex-col items-center gap-6">
+            <div className="w-56 h-56 p-6 bg-slate-50 rounded-[3rem] border border-slate-100 flex items-center justify-center relative group shadow-inner">
+              <QrCode className="w-14 h-14 text-slate-300" />
+              <div className="absolute bottom-6 text-[10px] font-black uppercase tracking-widest text-slate-400">微信: PMR37</div>
             </div>
           </div>
-        </section>
-
-        <footer id="contact" className="py-32 bg-white text-center relative overflow-hidden scroll-mt-20">
-          <div className="max-w-5xl mx-auto px-6 relative z-10">
-            <FadeIn>
-              <h2 className="text-5xl md:text-8xl font-black tracking-tighter mb-20 italic">Say Hello.</h2>
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 items-center">
-                <div className="flex flex-col items-center gap-6">
-                  <div className="w-56 h-56 p-6 bg-slate-50 rounded-[3rem] border border-slate-100 flex items-center justify-center relative group shadow-inner">
-                    <QrCode className="w-14 h-14 text-slate-300" />
-                    <div className="absolute bottom-6 text-[10px] font-black uppercase tracking-widest text-slate-400">微信: PMR37</div>
-                  </div>
-                </div>
-                <div className="lg:col-span-2 flex flex-col items-center lg:items-start gap-10">
-                  <div className="flex flex-col items-center lg:items-start group cursor-pointer">
-                    <p className="text-slate-400 text-[10px] font-black uppercase tracking-widest mb-3">联系电话</p>
-                    <a href="tel:19357500473" className="text-4xl md:text-7xl font-black hover:text-blue-600 transition-all tracking-tighter">193 5750 0473</a>
-                  </div>
-                  <div className="flex flex-wrap justify-center lg:justify-start gap-3">
-                     <div className="px-5 py-2.5 bg-blue-50 rounded-full text-[10px] font-black uppercase text-blue-600 flex items-center gap-2 border border-blue-100">
-                       <div className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-ping" /> 状态：求职中 / UI设计师
-                     </div>
-                  </div>
-                </div>
+          <div className="lg:col-span-2 flex flex-col items-center lg:items-start gap-10">
+            <div className="flex flex-col items-center lg:items-start group cursor-pointer">
+              <p className="text-slate-400 text-[10px] font-black uppercase tracking-widest mb-3">联系电话</p>
+              <a href="tel:19357500473" className="text-4xl md:text-7xl font-black hover:text-blue-600 transition-all tracking-tighter">193 5750 0473</a>
+            </div>
+            <div className="flex flex-wrap justify-center lg:justify-start gap-3">
+              <div className="px-5 py-2.5 bg-blue-50 rounded-full text-[10px] font-black uppercase text-blue-600 flex items-center gap-2 border border-blue-100">
+                <div className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-ping" /> 状态：求职中 / UI设计师
               </div>
-              <div className="mt-32 pt-10 border-t border-slate-100 text-slate-300 font-black text-xs uppercase tracking-widest">
-                © {new Date().getFullYear()} Ren Junming · Portfolio Digital 4.0
-              </div>
-            </FadeIn>
+            </div>
           </div>
-        </footer>
-      </main>
+        </div>
+        <div className="mt-32 pt-10 border-t border-slate-100 text-slate-300 font-black text-xs uppercase tracking-widest">
+          © {new Date().getFullYear()} Ren Junming · Portfolio Digital 4.0
+        </div>
+      </FadeIn>
+    </div>
+  </footer>
+</main>
     </div>
   );
 }
