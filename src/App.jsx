@@ -394,7 +394,7 @@ export default function App() {
             <div className="relative w-full h-[460px] lg:h-[580px] overflow-hidden rounded-[2.75rem] bg-slate-50 border border-slate-100 shadow-inner">
               {/* 使用 iframe 嵌入 Spline 以解决依赖库缺失问题 */}
               <iframe 
-                src='https://my.spline.design/clonercopy-a4f6645607b328135832a875a6435661/' 
+                src='https://prod.spline.design/kN0BGRxHdBIuvXNd/scene.splinecode' 
                 frameBorder='0' 
                 width='100%' 
                 height='100%'
