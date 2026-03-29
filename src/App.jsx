@@ -1,4 +1,3 @@
-import React, { useState, useEffect, useRef } from 'react';
 import { 
   ArrowRight, 
   ArrowLeft, 
@@ -15,7 +14,14 @@ import {
   User, 
   FolderOpen, 
   MessageSquare,
-  Target 
+  Target,
+  // --- 补充下面这些缺少的图标 ---
+  Zap,
+  Settings,
+  PieChart,
+  Cpu,
+  Smartphone,
+  UserCircle2
 } from 'lucide-react';
 import Spline from '@splinetool/react-spline';
 
@@ -105,18 +111,18 @@ const ProjectDetail = ({ project, onBack }) => {
   }, []);
 
   // --- 这是你要“插入”的代码开始 ---
-  const images = {
+const images = {
     p1: {
-      hero: "https://raw.githubusercontent.com/hongui/my-portfolio-2/refs/heads/main/public/images/fzyq%20shouye.png",
-      // 修正后的 Raw 地址（将 github.com 换成了 raw.githubusercontent.com，并去掉了 /blob/）
+      // 统一使用这种格式，去掉 refs/heads/，直接用 main
+      hero: "https://raw.githubusercontent.com/hongui/my-portfolio-2/main/public/images/fzyq%20shouye.png",
       mobile: "https://raw.githubusercontent.com/hongui/my-portfolio-2/main/public/images/duoduan%20app%201%402x.png", 
       pad: "https://raw.githubusercontent.com/hongui/my-portfolio-2/main/public/images/duoduan%20app%202%402x.png",
     },
     p2: {
-      dashboard: "", 
+      dashboard: "https://placehold.co/1200x800?text=P2+Coming+Soon", // 先放个占位图防止报错
     },
     p3: {
-      ip: "",
+      ip: "https://placehold.co/800x800?text=P3+IP+Coming+Soon",
     }
   };
 
