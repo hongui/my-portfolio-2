@@ -374,75 +374,77 @@ export default function App() {
 
    {/* ==================== 专业技能工具 (优化版) ==================== */}
 <FadeIn delay={200}>
-  <div className="bg-slate-900 text-white p-12 md:p-20 rounded-[4rem] relative overflow-hidden group shadow-2xl max-w-6xl mx-auto mt-24 mb-32"> 
-    {/* 装饰性背景 */}
-    <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/10 blur-[120px] group-hover:bg-blue-500/20 transition-all duration-1000" />
-    
-    <div className="flex items-center gap-4 mb-16 relative z-10">
-      <div className="w-1.5 h-8 bg-blue-600 rounded-full" />
-      <h3 className="text-3xl font-black tracking-tight">专业技能工具</h3>
-    </div>
 
-    {/* 栅格布局优化：增加间距与对齐感 */}
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-24 gap-y-16 relative z-10">
-      {/* 模块 1 */}
-      <div className="group/item transition-all duration-500 hover:translate-x-2">
-        <p className="text-blue-400/80 text-[11px] font-black uppercase tracking-[0.2em] mb-4">专业设计软件</p>
-        <p className="text-3xl font-bold text-white/90 group-hover/item:text-white transition-colors tracking-tight">
-          Figma / MasterGo / Axure
-        </p>
-      </div>
+<div className="bg-slate-900 text-white p-12 md:p-20 rounded-[4rem] relative overflow-hidden group shadow-2xl max-w-6xl mx-auto mt-24 mb-32">
+{/* 装饰性背景 */}
+<div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/10 blur-[120px] group-hover:bg-blue-500/20 transition-all duration-1000" />
 
-      {/* 模块 2 */}
-      <div className="group/item transition-all duration-500 hover:translate-x-2">
-        <p className="text-blue-400/80 text-[11px] font-black uppercase tracking-[0.2em] mb-4">AI 提效工具</p>
-        <p className="text-3xl font-bold text-white/90 group-hover/item:text-white transition-colors tracking-tight">
-          FigmaMake / Stitch
-        </p>
-      </div>
+<div className="flex items-center gap-4 mb-16 relative z-10">
+  <div className="w-1.5 h-8 bg-blue-600 rounded-full" />
+  <h3 className="text-3xl font-black tracking-tight">专业技能工具</h3>
+</div>
 
-      {/* 模块 3 */}
-      <div className="group/item transition-all duration-500 hover:translate-x-2">
-        <p className="text-blue-400/80 text-[11px] font-black uppercase tracking-[0.2em] mb-4">全链路落地</p>
-        <p className="text-3xl font-bold text-white/90 group-hover/item:text-white transition-colors tracking-tight">
-          物料印刷 / UI动效
-        </p>
-      </div>
-
-      {/* 模块 4 */}
-      <div className="group/item transition-all duration-500 hover:translate-x-2">
-        <p className="text-blue-400/80 text-[11px] font-black uppercase tracking-[0.2em] mb-4">系统化思维</p>
-        <p className="text-3xl font-bold text-white/90 group-hover/item:text-white transition-colors tracking-tight">
-          原子组件 / 设计资产
-        </p>
-      </div>
-    </div>
+{/* 栅格布局：增加间距与对齐感 */}
+<div className="grid grid-cols-1 md:grid-cols-2 gap-x-24 gap-y-16 relative z-10">
+  {/* 模块 1 */}
+  <div className="group/item transition-all duration-500 hover:translate-x-2">
+    <p className="text-blue-400/80 text-[11px] font-black uppercase tracking-[0.2em] mb-4">专业设计软件</p>
+    <p className="text-3xl font-bold text-white/90 group-hover/item:text-white transition-colors tracking-tight">
+      Figma / MasterGo / Axure
+    </p>
   </div>
-</FadeIn>
 
-{/* ==================== 项目展示列表 (优化间距) ==================== */}
-<div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16 mb-20">
-  {projects.map((project, index) => (
-    <FadeIn key={project.id} delay={index * 150}>
-      <ShimmerWrapper 
-        className="bg-white rounded-[3.5rem] p-12 border border-slate-100 shadow-[0_20px_50px_rgba(0,0,0,0.04)] hover:-translate-y-4 transition-all duration-700 h-full flex flex-col cursor-pointer group" 
-        onClick={() => { setSelectedProject(project); setCurrentView('detail'); }}
-      >
-        <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${project.color} to-white flex items-center justify-center mb-12`}>
-          <project.icon className="w-7 h-7 text-slate-800" />
-        </div>
-        <div className="text-blue-600 font-black text-[10px] mb-4 tracking-[0.25em] uppercase opacity-70">{project.tag}</div>
-        <h3 className="text-3xl font-black mb-6 leading-tight tracking-tighter text-slate-900">{project.title}</h3>
-        <p className="text-slate-500 mb-12 flex-grow line-clamp-3 font-medium leading-relaxed">{project.desc}</p>
-        <div className="flex items-center gap-3 text-slate-900 font-bold group-hover:text-blue-600 group-hover:gap-6 transition-all duration-300">
-          查看项目详情 <ArrowRight className="w-5 h-5" />
-        </div>
-      </ShimmerWrapper>
-    </FadeIn>
-  ))}
+  {/* 模块 2 */}
+  <div className="group/item transition-all duration-500 hover:translate-x-2">
+    <p className="text-blue-400/80 text-[11px] font-black uppercase tracking-[0.2em] mb-4">AI 提效工具</p>
+    <p className="text-3xl font-bold text-white/90 group-hover/item:text-white transition-colors tracking-tight">
+      FigmaMake / Stitch
+    </p>
+  </div>
+
+  {/* 模块 3 */}
+  <div className="group/item transition-all duration-500 hover:translate-x-2">
+    <p className="text-blue-400/80 text-[11px] font-black uppercase tracking-[0.2em] mb-4">全链路落地</p>
+    <p className="text-3xl font-bold text-white/90 group-hover/item:text-white transition-colors tracking-tight">
+      物料印刷 / UI动效
+    </p>
+  </div>
+
+  {/* 模块 4 */}
+  <div className="group/item transition-all duration-500 hover:translate-x-2">
+    <p className="text-blue-400/80 text-[11px] font-black uppercase tracking-[0.2em] mb-4">系统化思维</p>
+    <p className="text-3xl font-bold text-white/90 group-hover/item:text-white transition-colors tracking-tight">
+      原子组件 / 设计资产
+    </p>
+  </div>
+</div>
+
+
 </div>
 </FadeIn>
 
+{/* ==================== 项目展示列表 (优化间距) ==================== */}
+
+<div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16 mb-20">
+{projects.map((project, index) => (
+<FadeIn key={project.id} delay={index * 150}>
+<div
+className="bg-white rounded-[3.5rem] p-12 border border-slate-100 shadow-[0_20px_50px_rgba(0,0,0,0.04)] hover:-translate-y-4 transition-all duration-700 h-full flex flex-col cursor-pointer group"
+onClick={() => { setSelectedProject(project); setCurrentView('detail'); }}
+>
+<div className={w-16 h-16 rounded-2xl bg-gradient-to-br ${project.color} to-white flex items-center justify-center mb-12}>
+<project.icon className="w-7 h-7 text-slate-800" />
+</div>
+<div className="text-blue-600 font-black text-[10px] mb-4 tracking-[0.25em] uppercase opacity-70">{project.tag}</div>
+<h3 className="text-3xl font-black mb-6 leading-tight tracking-tighter text-slate-900">{project.title}</h3>
+<p className="text-slate-500 mb-12 flex-grow line-clamp-3 font-medium leading-relaxed">{project.desc}</p>
+<div className="flex items-center gap-3 text-slate-900 font-bold group-hover:text-blue-600 group-hover:gap-6 transition-all duration-300">
+查看项目详情 <span className="text-xl">→</span>
+</div>
+</div>
+</FadeIn>
+))}
+</div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
         {projects.map((project, index) => (
           <FadeIn key={project.id} delay={index * 150}>
