@@ -168,12 +168,14 @@ const ProjectDetail = ({ project, onBack }) => {
                   ))}
                 </div>
               </div>
-              <div className="md:col-span-2 relative bg-slate-900 rounded-[2.5rem] p-4 shadow-2xl overflow-hidden group">
-                <div className="aspect-[16/10] w-full bg-slate-800 rounded-[1.75rem] flex items-center justify-center border border-slate-700/50">
-                  <div className="text-center">
-                    <LayoutTemplate className="w-12 h-12 text-slate-600 mx-auto mb-4" />
-                    <p className="text-slate-500 font-bold tracking-widest">[ 首页/Web端模块化布局展示位 ]</p>
-                  </div>
+             {/* 首页/Web端模块化布局展示 - 使用你的真实图片 */}
+<div className="aspect-[16/10] w-full overflow-hidden rounded-[1.75rem] shadow-xl">
+  <img 
+    src="https://raw.githubusercontent.com/hongui/my-portfolio-2/refs/heads/main/public/images/fzyq%20shouye.png" 
+    alt="首页功能概述" 
+    className="w-full h-full object-cover"
+  />
+</div>
                 </div>
               </div>
             </section>
