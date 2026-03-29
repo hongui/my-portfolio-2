@@ -303,21 +303,31 @@ export default function App() {
       </FadeIn>
     </div>
 
-    {/* 右侧 Spline 窗口 */}
+ {/* 右侧 Spline 窗口 - 优化加载体验 */}
 <div className="flex-1 w-full lg:w-auto relative lg:-mt-8">
   <div className="relative w-full h-[460px] lg:h-[580px] overflow-hidden rounded-[2.75rem]">
     
-    <spline-viewer 
-      url="https://prod.spline.design/kN0BGRxHdBIuvXNd/scene.splinecode"
+    <Spline 
+      scene="https://prod.spline.design/kN0BGRxHdBIuvXNd/scene.splinecode" 
       className="absolute inset-0 w-full h-full scale-[1.08]"
-    ></spline-viewer>
+      onLoad={() => {
+        const loadingEl = document.getElementById('spline-loading');
+        if (loadingEl) {
+          loadingEl.style.opacity = '0';
+          setTimeout(() => {
+            if (loadingEl) loadingEl.style.display = 'none';
+          }, 800);
+        }
+      }}
+    />
     
-    {/* 加载提示 */}
+    {/* 加载提示 - 增加超时自动隐藏 */}
     <div id="spline-loading" 
-         className="absolute inset-0 flex items-center justify-center bg-slate-50/80 z-10 transition-opacity duration-700">
+         className="absolute inset-0 flex items-center justify-center bg-slate-50/90 z-10 transition-opacity duration-700">
       <div className="flex flex-col items-center gap-3">
         <div className="w-5 h-5 border-2 border-slate-300 border-t-blue-600 rounded-full animate-spin"></div>
-        <div className="text-slate-400 text-sm font-medium">加载 3D 场景中...</div>
+        <div className="text-slate-400 text-sm font-medium">加载 3D 场景中... (1.44MB)</div>
+        <div className="text-[10px] text-slate-400 mt-1">首次加载可能需要几秒</div>
       </div>
     </div>
   </div>
