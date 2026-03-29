@@ -520,7 +520,7 @@ export default function App() {
                 </h2>
                 <div className="max-w-[920px]">
                   <p className="text-slate-500 text-[21px] leading-[1.78] font-medium text-justify">
-                    毕业于杭州职业技术学院。在杭州睿云期间，主导了法治舆情项目从 0-1 的全链路落地。我不仅交付界面，更交付<strong>设计系统</strong>。通过沉淀 135+ 个原子组件，大幅提升了团队 40% 的产出效率。
+                    毕业于杭州职业技术学院。在杭州睿云信息技术有限公司工作期间，负责了法治舆情项目从 0-1 的UI落地。我不仅交付界面，更交付<strong>设计系统</strong>。通过后期对组件的收集整理，大幅提升了团队的产出效率。
                   </p>
                 </div>
               </FadeIn>
