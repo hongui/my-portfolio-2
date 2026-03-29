@@ -321,27 +321,70 @@ export default function App() {
 <section id="about" className="py-32 relative scroll-mt-20">
   <div className="max-w-7xl mx-auto px-6">
     
+    {/* 职业价值 */}
     <div className="mb-24">
       <FadeIn>
         <h2 className="text-5xl font-black mb-10 tracking-tighter italic text-slate-900 underline decoration-blue-600 decoration-4 underline-offset-8">
           职业价值 / Value
         </h2>
-        
-   {/* 职业价值 - 最终优化版 */}
-<div className="mb-24">
-  <FadeIn>
-    <h2 className="text-5xl font-black mb-10 tracking-tighter italic text-slate-900 underline decoration-blue-600 decoration-4 underline-offset-8">
-      职业价值 / Value
-    </h2>
-    
-    <div className="max-w-[920px]">
-      <p className="text-slate-500 text-[21px] leading-[1.78] font-medium text-justify">
-        毕业于杭州职业技术学院。在杭州睿云期间，主导了法治舆情项目从 0-1 的全链路落地。我不仅交付界面，更交付<strong>设计系统</strong>。通过沉淀 135+ 个原子组件，大幅提升了团队 40% 的产出效率。
-      </p>
+        <div className="max-w-[920px]">
+          <p className="text-slate-500 text-[21px] leading-[1.78] font-medium text-justify">
+            毕业于杭州职业技术学院。在杭州睿云期间，主导了法治舆情项目从 0-1 的全链路落地。我不仅交付界面，更交付<strong>设计系统</strong>。通过沉淀 135+ 个原子组件，大幅提升了团队 40% 的产出效率。
+          </p>
+        </div>
+      </FadeIn>
     </div>
-  </FadeIn>
-</div>
 
+    {/* 三个经历卡片 */}
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
+      {[
+        { icon: Briefcase, title: "杭州睿云信息技术有限公司", desc: "UI设计师 / 2023 - 2025" },
+        { icon: GraduationCap, title: "杭州职业技术学院", desc: "数字媒体艺术设计 / 全日制专科" },
+        { icon: Award, title: "界面设计职业技能证书(高级)", desc: "国家学分银行权威认定" }
+      ].map((item, i) => (
+        <FadeIn key={i} delay={i * 100}>
+          <div className="flex gap-5 items-start p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:border-blue-200 transition-all group h-full">
+            <div className="w-12 h-12 rounded-2xl bg-white shadow-sm flex-shrink-0 flex items-center justify-center text-blue-600 group-hover:scale-110 transition-transform mt-1">
+              <item.icon className="w-6 h-6" />
+            </div>
+            <div className="flex-1">
+              <h4 className="font-black text-lg leading-tight mb-1">{item.title}</h4>
+              <p className="text-slate-400 font-medium text-[15px]">{item.desc}</p>
+            </div>
+          </div>
+        </FadeIn>
+      ))}
+    </div>
+
+    {/* 专业技能工具 */}
+    <FadeIn delay={200}>
+      <div className="bg-slate-900 text-white p-12 md:p-16 rounded-[3.5rem] relative overflow-hidden group shadow-2xl max-w-5xl">
+        <div className="absolute top-0 right-0 w-80 h-80 bg-blue-600/20 blur-[100px] group-hover:bg-blue-600/30 transition-all" />
+        
+        <h3 className="text-3xl font-black mb-12 flex items-center gap-4">
+          <div className="w-3 h-8 bg-blue-600 rounded-full" />
+          专业技能工具
+        </h3>
+        
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-16 gap-y-10">
+          {[
+            { label: "专业设计软件", list: "Figma / MasterGo / Axure" },
+            { label: "AI 提效工具", list: "FigmaMake / Stitch" },
+            { label: "全链路落地", list: "物料印刷 / UI动效" },
+            { label: "系统化思维", list: "原子组件 / 设计资产" }
+          ].map((skill, i) => (
+            <div key={i} className="group/item">
+              <p className="text-blue-500 text-[10px] font-black uppercase tracking-widest mb-3">{skill.label}</p>
+              <p className="text-2xl font-black group-hover/item:translate-x-1 transition-transform">{skill.list}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </FadeIn>
+  </div>
+</section>
+        
+   
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
       {[
         { 
