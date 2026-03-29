@@ -372,41 +372,51 @@ export default function App() {
         ))}
       </div>
 
-      {/* 专业技能工具 */}
-      <FadeIn delay={200}>
-        <div className="bg-slate-900 text-white p-12 md:p-16 rounded-[3.5rem] relative overflow-hidden group shadow-2xl max-w-5xl">
-          <div className="absolute top-0 right-0 w-80 h-80 bg-blue-600/20 blur-[100px] group-hover:bg-blue-600/30 transition-all" />
-          
-          <h3 className="text-3xl font-black mb-12 flex items-center gap-4">
-            <div className="w-3 h-8 bg-blue-600 rounded-full" />
-            专业技能工具
-          </h3>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-16 gap-y-10">
-            {[
-              { label: "专业设计软件", list: "Figma / MasterGo / Axure" },
-              { label: "AI 提效工具", list: "FigmaMake / Stitch" },
-              { label: "全链路落地", list: "物料印刷 / UI动效" },
-              { label: "系统化思维", list: "原子组件 / 设计资产" }
-            ].map((skill, i) => (
-              <div key={i} className="group/item">
-                <p className="text-blue-500 text-[10px] font-black uppercase tracking-widest mb-3">{skill.label}</p>
-                <p className="text-2xl font-black group-hover/item:translate-x-1 transition-transform">{skill.list}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </FadeIn>
+      {/* 专业技能工具 - 重新设计版（等宽 + 微动效） */}
+<FadeIn delay={200}>
+  <div className="bg-slate-900 text-white p-12 md:p-16 rounded-[3.5rem] relative overflow-hidden group shadow-2xl max-w-5xl mx-auto">
+    <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/10 blur-[120px] group-hover:bg-blue-600/20 transition-all duration-700" />
+    
+    <div className="flex items-center gap-4 mb-12">
+      <div className="w-3 h-8 bg-blue-600 rounded-full" />
+      <h3 className="text-3xl font-black tracking-tight">专业技能工具</h3>
     </div>
-  </section>
 
-  {/* Work Section */}
-  <section id="work" className="py-32 bg-slate-50 scroll-mt-20">
-    <div className="max-w-7xl mx-auto px-6">
-      <FadeIn className="mb-20 text-center">
-        <h2 className="text-5xl font-black tracking-tighter mb-4">核心项目拆解 / Projects</h2>
-        <p className="text-slate-400 text-lg font-bold italic">基于《司法行政系统》项目深度复盘</p>
-      </FadeIn>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
+      {/* 专业设计软件 */}
+      <div className="group/item transition-all hover:translate-x-1">
+        <p className="text-blue-400 text-xs font-black uppercase tracking-[0.08em] mb-3">专业设计软件</p>
+        <p className="text-2xl font-semibold text-white group-hover/item:text-blue-300 transition-colors">
+          Figma / MasterGo / Axure
+        </p>
+      </div>
+
+      {/* AI 提效工具 */}
+      <div className="group/item transition-all hover:translate-x-1">
+        <p className="text-blue-400 text-xs font-black uppercase tracking-[0.08em] mb-3">AI 提效工具</p>
+        <p className="text-2xl font-semibold text-white group-hover/item:text-blue-300 transition-colors">
+          FigmaMake / Stitch
+        </p>
+      </div>
+
+      {/* 全链路落地 */}
+      <div className="group/item transition-all hover:translate-x-1">
+        <p className="text-blue-400 text-xs font-black uppercase tracking-[0.08em] mb-3">全链路落地</p>
+        <p className="text-2xl font-semibold text-white group-hover/item:text-blue-300 transition-colors">
+          物料印刷 / UI动效
+        </p>
+      </div>
+
+      {/* 系统化思维 */}
+      <div className="group/item transition-all hover:translate-x-1">
+        <p className="text-blue-400 text-xs font-black uppercase tracking-[0.08em] mb-3">系统化思维</p>
+        <p className="text-2xl font-semibold text-white group-hover/item:text-blue-300 transition-colors">
+          原子组件 / 设计资产
+        </p>
+      </div>
+    </div>
+  </div>
+</FadeIn>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
         {projects.map((project, index) => (
