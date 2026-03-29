@@ -372,9 +372,10 @@ export default function App() {
         ))}
       </div>
 
-      {/* 专业技能工具 - 重新设计版（等宽 + 微动效） */}
+      {/* 专业技能工具 - 修复间距版 */}
 <FadeIn delay={200}>
-  <div className="bg-slate-900 text-white p-12 md:p-16 rounded-[3.5rem] relative overflow-hidden group shadow-2xl max-w-5xl mx-auto">
+  <div className="bg-slate-900 text-white p-12 md:p-16 rounded-[3.5rem] relative overflow-hidden group shadow-2xl max-w-5xl mx-auto mt-16">   {/* ← 增加 mt-16 */}
+
     <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/10 blur-[120px] group-hover:bg-blue-600/20 transition-all duration-700" />
     
     <div className="flex items-center gap-4 mb-12">
