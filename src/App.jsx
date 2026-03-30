@@ -205,7 +205,7 @@ const ProjectDetail = ({ project, onBack }) => {
               </FadeIn>
             </section>
 
-            {/* A/B 屏切换交互展示区（新增核心功能） */}
+                    {/* A/B 屏切换交互展示区（新增核心功能） */}
             <FadeIn>
               <div className="relative bg-slate-900 rounded-[3rem] p-6 shadow-2xl overflow-hidden">
                 {/* 切换 Tab */}
@@ -213,7 +213,7 @@ const ProjectDetail = ({ project, onBack }) => {
                   <div className="inline-flex bg-slate-800 rounded-full p-1">
                     <button
                       onClick={() => setActiveTab('A')}
-                      className={`px-8 py-2.5 rounded-full font-black text-sm transition-all ${activeTab === 'A' 
+                      className={`px-8 py-2.5 rounded-full font-black text-sm transition-all ${activeTab === 'A'
                         ? 'bg-blue-600 text-white shadow-lg' 
                         : 'text-slate-400 hover:text-white'}`}
                     >
@@ -221,8 +221,29 @@ const ProjectDetail = ({ project, onBack }) => {
                     </button>
                     <button
                       onClick={() => setActiveTab('B')}
-                      className={`px-8 py-2.5 rounded-full font-black text-sm transition-all ${activeTab === 'B' 
-                        ? '
+                      className={`px-8 py-2.5 rounded-full font-black text-sm transition-all ${activeTab === 'B'
+                        ? 'bg-blue-600 text-white shadow-lg' 
+                        : 'text-slate-400 hover:text-white'}`}
+                    >
+                      B 屏 - 领域分析视图
+                    </button>
+                  </div>
+                </div>
+
+                {/* 图片展示区域 */}
+                <div className="aspect-[16/9] w-full bg-slate-800 rounded-[2.25rem] overflow-hidden border border-slate-700/50 relative">
+                  <img 
+                    src={activeTab === 'A' ? images.p2.A : images.p2.B}
+                    alt={`驾驶舱 ${activeTab} 屏`}
+                    className="w-full h-full object-cover transition-all duration-700"
+                  />
+                </div>
+
+                <div className="text-center mt-6 text-slate-400 text-sm">
+                  点击上方按钮切换 A / B 屏视图 • 真实驾驶舱效果
+                </div>
+              </div>
+            </FadeIn>
 // --- 主应用组件 ---
 export default function App() {
   const [currentView, setCurrentView] = useState('home');
