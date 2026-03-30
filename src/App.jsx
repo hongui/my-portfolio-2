@@ -615,11 +615,18 @@ export default function App() {
               <h2 className="text-5xl md:text-8xl font-black tracking-tighter mb-20 italic">Say Hello.</h2>
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 items-center">
                 <div className="flex flex-col items-center gap-6">
-                  <div className="w-56 h-56 p-6 bg-slate-50 rounded-[3rem] border border-slate-100 flex items-center justify-center relative group shadow-inner">
-                    <QrCode className="w-14 h-14 text-slate-300" />
-                    <div className="absolute bottom-6 text-[10px] font-black uppercase tracking-widest text-slate-400">微信: PMR37</div>
+                  {/* 二维码展示区 */}
+                  <div className="w-56 h-56 p-4 bg-slate-50 rounded-[3rem] border border-slate-100 flex items-center justify-center relative group shadow-inner overflow-hidden">
+                    <img 
+                      src="https://raw.githubusercontent.com/hongui/my-portfolio-2/refs/heads/main/public/images/6677198df0f8d12293cb6f63fa9b70ed%201.png" 
+                      alt="微信二维码" 
+                      className="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors pointer-events-none" />
                   </div>
+                  <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">扫码添加微信 / PMR37</p>
                 </div>
+
                 <div className="lg:col-span-2 flex flex-col items-center lg:items-start gap-10">
                   <div className="flex flex-col items-center lg:items-start group cursor-pointer">
                     <p className="text-slate-400 text-[10px] font-black uppercase tracking-widest mb-3">联系电话</p>
