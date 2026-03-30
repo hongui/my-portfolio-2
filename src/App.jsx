@@ -114,7 +114,7 @@ const ProjectDetail = ({ project, onBack }) => {
 
   const [activeTab, setActiveTab] = useState('A'); // A屏 或 B屏
 
-  // 图片资源
+    // 图片资源
   const images = {
     p1: {
       hero: "https://raw.githubusercontent.com/hongui/my-portfolio-2/main/public/images/fzyq%20shouye.png",
@@ -129,7 +129,6 @@ const ProjectDetail = ({ project, onBack }) => {
       ip: "https://placehold.co/800x800?text=P3+IP+Coming+Soon",
     }
   };
-
   const isJusticeSystem = project.id === 'p1';
   const isDashboard = project.id === 'p2';
   const isVisualScreen = project.id === 'p3';
