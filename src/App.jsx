@@ -339,6 +339,7 @@ const ProjectDetail = ({ project, onBack }) => {
 
               <div className="flex-1 space-y-8 relative z-10">
                 <div className="inline-flex items-center gap-3 px-4 py-2 rounded-xl bg-white border border-indigo-100 text-indigo-600 shadow-sm">
+                   {/* 💡 引入新图标：UserCircle2 */}
                    <UserCircle2 className="w-5 h-5" /> 
                    <span className="font-bold text-sm">AI 动效 IP 形象落地</span>
                 </div>
@@ -354,14 +355,14 @@ const ProjectDetail = ({ project, onBack }) => {
                 </div>
               </div>
 
-              {/* 右侧：IP 形象展示区 (可以替换为序列帧 img) */}
+              {/* 右侧：IP 形象展示区 */}
               <div className="flex-1 flex justify-center items-center relative z-10">
                 <div className="aspect-square w-full max-w-sm rounded-full bg-white shadow-2xl border-4 border-white flex items-center justify-center p-10 overflow-hidden group">
                   <FadeIn delay={300} className="w-full h-full">
-                    {/* 💡 这里放你的 IP 序列帧或 GIF/WebP 文件路径 */}
+                    {/* 💡 图片已替换为机器人 IP 1：robot%20ip%201.png */}
                     <img 
-                      src="https://raw.githubusercontent.com/hongui/my-portfolio-2/main/public/images/fzyq%20shouye.png" 
-                      alt="IP 形象展示" 
+                      src="https://raw.githubusercontent.com/hongui/my-portfolio-2/refs/heads/main/public/images/robot%20ip%201.png" 
+                      alt="AI IP 形象" 
                       className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700"
                     />
                   </FadeIn>
