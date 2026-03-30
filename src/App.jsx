@@ -247,7 +247,13 @@ const ProjectDetail = ({ project, onBack }) => {
                 </div>
               </div>
             </FadeIn>
-            
+          </>
+        )}
+      </main>
+    </div>
+  );
+};
+
 // --- 主应用组件 ---
 export default function App() {
   const [currentView, setCurrentView] = useState('home');
