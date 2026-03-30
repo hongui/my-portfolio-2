@@ -173,11 +173,58 @@ const ProjectDetail = ({ project, onBack }) => {
             ============================================================ */}
         {isJusticeSystem && (
           <>
-            {/* ... 你的原有司法行政系统内容保持不变 ... */}
-            {/* 这里省略了你原来的 p1 内容，如果你想保留可以保持原样 */}
+            {/* 项目背景与目标 */}
+            <section className="grid grid-cols-1 md:grid-cols-2 gap-16">
+              <FadeIn>
+                <h3 className="text-3xl font-black mb-6">项目背景 / Context</h3>
+                <p className="text-lg text-slate-500 leading-relaxed font-medium">
+                  该系统是为司法行政部门打造的一站式协同平台。原始业务流程高度依赖线下表单，且用户群体包含大量资深干警，对系统的易用性与视觉清晰度有极高要求。
+                </p>
+              </FadeIn>
+              <FadeIn delay={200}>
+                <div className="bg-blue-50 p-8 rounded-[2.5rem] border border-blue-100">
+                  <h4 className="font-black text-blue-900 mb-4">核心设计目标</h4>
+                  <ul className="space-y-3 text-blue-800/80 font-bold">
+                    <li className="flex gap-2">抽离 135+ 核心业务组件</li>
+                    <li className="flex gap-2">针对 PAD 端进行 1:1 响应式适配</li>
+                    <li className="flex gap-2">首创“适老化”高对比度办公模式</li>
+                  </ul>
+                </div>
+              </FadeIn>
+            </section>
+
+            {/* 图片展示：主视觉 */}
+            <FadeIn>
+              <div className="rounded-[3.5rem] overflow-hidden shadow-2xl border border-slate-100 bg-white">
+                <img 
+                  src="https://raw.githubusercontent.com/hongui/my-portfolio-2/main/public/images/fzyq%20shouye.png" 
+                  alt="司法系统首页" 
+                  className="w-full h-auto"
+                />
+              </div>
+            </FadeIn>
+
+            {/* 多端适配方案 (刚才修好的那部分) */}
+            <section className="bg-slate-50 rounded-[3.5rem] p-12 md:p-20 flex flex-col md:flex-row items-center gap-16">
+              <div className="flex-1 space-y-8">
+                <h3 className="text-3xl font-black">多端适配方案</h3>
+                <p className="text-slate-500 text-lg leading-relaxed">针对 iPad/App 端进行平板场景优化与响应式布局适配，确保执法人员在现场办公时拥有极佳的易用性与执行效率。</p>
+                <div className="flex gap-4">
+                  <div className="px-6 py-4 bg-white rounded-2xl border border-slate-200 font-bold text-slate-600">iPad 响应式设计</div>
+                  <div className="px-6 py-4 bg-white rounded-2xl border border-slate-200 font-bold text-slate-600">App 适老化模式</div>
+                </div>
+              </div>
+              <div className="flex-1 flex justify-center gap-6">
+                <div className="w-40 h-80 bg-white rounded-[2rem] border-[6px] border-slate-900 shadow-xl overflow-hidden relative flex-shrink-0">
+                  <img src="https://raw.githubusercontent.com/hongui/my-portfolio-2/main/public/images/duoduan%20app%201%402x.png" className="w-full h-full object-cover" alt="App" />
+                </div>
+                <div className="w-40 h-80 bg-white rounded-[2rem] border-[6px] border-slate-900 shadow-xl overflow-hidden relative mt-8 flex-shrink-0">
+                  <img src="https://raw.githubusercontent.com/hongui/my-portfolio-2/main/public/images/duoduan%20app%202%402x.png" className="w-full h-full object-cover" alt="iPad" />
+                </div>
+              </div>
+            </section>
           </>
         )}
-
         {/* ============================================================
             子页面 2：法治舆情决策驾驶舱（重点修改部分）
             ============================================================ */}
