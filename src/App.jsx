@@ -296,6 +296,44 @@ const ProjectDetail = ({ project, onBack }) => {
             </FadeIn>
           </>
         )}
+        {/* ============================================================
+            子页面 3：司法可视化大屏设计
+            ============================================================ */}
+        {isVisualScreen && (
+          <>
+            <section className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+              <FadeIn>
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-2 bg-emerald-50 text-emerald-600 rounded-xl"><Cpu className="w-6 h-6" /></div>
+                  <h3 className="text-3xl font-black">视觉动效与性能 / Performance</h3>
+                </div>
+                <p className="text-lg text-slate-500 leading-[1.8] font-medium">
+                  主导 AI 动效 IP 的全场景落地。在政务大屏端，我们通过优化 WebGL 渲染管线，确保在低配硬件环境下依然能保持 60fps 的极致流畅度。
+                </p>
+              </FadeIn>
+              <FadeIn delay={200}>
+                <div className="bg-emerald-50/50 p-8 rounded-[2.5rem] border border-emerald-100 space-y-4">
+                  {["自研 AL 动效组件库", "三维空间坐标映射技术", "极端环境下的显存占用优化"].map((item, i) => (
+                    <div key={i} className="flex gap-3 text-slate-700 font-bold">
+                      <span className="text-emerald-600">●</span> {item}
+                    </div>
+                  ))}
+                </div>
+              </FadeIn>
+            </section>
+
+            <FadeIn>
+              <div className="rounded-[3.5rem] overflow-hidden shadow-2xl border border-slate-100 bg-slate-900 aspect-video flex items-center justify-center">
+                 {/* 这里先用占位图，你可以之后换成实际的大屏截图 */}
+                 <img 
+                  src="https://raw.githubusercontent.com/hongui/my-portfolio-2/main/public/images/fzyq%20shouye.png" 
+                  alt="大屏设计展示" 
+                  className="w-full h-full object-cover opacity-80"
+                />
+              </div>
+            </FadeIn>
+          </>
+        )}
       </main>
     </div>
   );
