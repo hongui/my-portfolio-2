@@ -297,41 +297,77 @@ const ProjectDetail = ({ project, onBack }) => {
           </>
         )}
         {/* ============================================================
-            子页面 3：司法可视化大屏设计
+            子页面 3：司法可视化大屏设计 (IP 形象与 WebP 序列帧)
             ============================================================ */}
         {isVisualScreen && (
           <>
+            {/* 1. 核心理念与情绪可视化 */}
             <section className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
               <FadeIn>
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="p-2 bg-emerald-50 text-emerald-600 rounded-xl"><Cpu className="w-6 h-6" /></div>
-                  <h3 className="text-3xl font-black">视觉动效与性能 / Performance</h3>
+                  <div className="p-2 bg-emerald-50 text-emerald-600 rounded-xl"><Activity className="w-6 h-6" /></div>
+                  <h3 className="text-3xl font-black">舆情情绪可视化</h3>
                 </div>
                 <p className="text-lg text-slate-500 leading-[1.8] font-medium">
-                  主导 AI 动效 IP 的全场景落地。在政务大屏端，我们通过优化 WebGL 渲染管线，确保在低配硬件环境下依然能保持 60fps 的极致流畅度。
+                  将碎片化的舆论情绪抽象为“正向、中性、负向”三大类。通过<strong>舆情焦点、热词分布、主题分布</strong>三大核心板块拓展监测范围。
                 </p>
               </FadeIn>
               <FadeIn delay={200}>
-                <div className="bg-emerald-50/50 p-8 rounded-[2.5rem] border border-emerald-100 space-y-4">
-                  {["自研 AL 动效组件库", "三维空间坐标映射技术", "极端环境下的显存占用优化"].map((item, i) => (
-                    <div key={i} className="flex gap-3 text-slate-700 font-bold">
-                      <span className="text-emerald-600">●</span> {item}
-                    </div>
-                  ))}
+                <div className="bg-slate-900 rounded-[2.5rem] p-8 border border-slate-800 shadow-2xl">
+                  <div className="flex justify-between items-center mb-8 border-b border-white/10 pb-4">
+                    <span className="text-white font-black">舆情线索监测中心</span>
+                    <span className="text-emerald-400 text-xs font-bold italic">Real-time Monitor</span>
+                  </div>
+                  <div className="grid grid-cols-3 gap-4">
+                    {[{l:"正向", v:"772", c:"text-emerald-400"}, {l:"中性", v:"482", c:"text-blue-400"}, {l:"负向", v:"75", c:"text-rose-400"}].map((d, i) => (
+                      <div key={i} className="text-center p-4 bg-white/5 rounded-2xl">
+                        <div className={`text-2xl font-black ${d.c}`}>{d.v}</div>
+                        <div className="text-[10px] text-slate-500 font-bold uppercase mt-1">{d.l}</div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </FadeIn>
             </section>
 
-            <FadeIn>
-              <div className="rounded-[3.5rem] overflow-hidden shadow-2xl border border-slate-100 bg-slate-900 aspect-video flex items-center justify-center">
-                 {/* 这里先用占位图，你可以之后换成实际的大屏截图 */}
-                 <img 
-                  src="https://raw.githubusercontent.com/hongui/my-portfolio-2/main/public/images/fzyq%20shouye.png" 
-                  alt="大屏设计展示" 
-                  className="w-full h-full object-cover opacity-80"
-                />
+            {/* 2. 重点修改区域：AI / IP 形象与序列帧展示 */}
+            <section className="bg-indigo-50 rounded-[3.5rem] p-12 md:p-20 flex flex-col md:flex-row items-center gap-16 overflow-hidden relative">
+              {/* 背景装饰纹理 */}
+              <div className="absolute inset-0 opacity-[0.03] flex items-center justify-center">
+                 <Cpu className="w-[800px] h-[800px] text-indigo-900" />
               </div>
-            </FadeIn>
+
+              <div className="flex-1 space-y-8 relative z-10">
+                <div className="inline-flex items-center gap-3 px-4 py-2 rounded-xl bg-white border border-indigo-100 text-indigo-600 shadow-sm">
+                   <UserCircle2 className="w-5 h-5" /> 
+                   <span className="font-bold text-sm">AI 动效 IP 形象落地</span>
+                </div>
+                <h3 className="text-4xl md:text-5xl font-black leading-tight tracking-tighter">探索政务展示的科技美学极限</h3>
+                <p className="text-slate-600 text-lg leading-relaxed max-w-xl">
+                   主导 AI 动效 IP 的全场景落地。在政务大屏端，我们通过<strong>优化 WebGL 渲染管线</strong>，采用 **WebP 序列帧技术方案**，确保在低配硬件环境下依然能保持 60fps 的极致流畅度。
+                </p>
+                <div className="flex gap-4 pt-4">
+                  <div className="px-6 py-4 bg-white rounded-2xl border border-indigo-100 font-bold text-indigo-900 text-sm flex items-center gap-2">
+                     <Zap className="w-4 h-4 text-emerald-500" /> 60fps 极致流畅
+                  </div>
+                  <div className="px-6 py-4 bg-white rounded-2xl border border-indigo-100 font-bold text-indigo-900 text-sm">WebP 序列帧优化</div>
+                </div>
+              </div>
+
+              {/* 右侧：IP 形象展示区 (可以替换为序列帧 img) */}
+              <div className="flex-1 flex justify-center items-center relative z-10">
+                <div className="aspect-square w-full max-w-sm rounded-full bg-white shadow-2xl border-4 border-white flex items-center justify-center p-10 overflow-hidden group">
+                  <FadeIn delay={300} className="w-full h-full">
+                    {/* 💡 这里放你的 IP 序列帧或 GIF/WebP 文件路径 */}
+                    <img 
+                      src="https://raw.githubusercontent.com/hongui/my-portfolio-2/main/public/images/fzyq%20shouye.png" 
+                      alt="IP 形象展示" 
+                      className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700"
+                    />
+                  </FadeIn>
+                </div>
+              </div>
+            </section>
           </>
         )}
       </main>
