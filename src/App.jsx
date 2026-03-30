@@ -204,32 +204,36 @@ const ProjectDetail = ({ project, onBack }) => {
               </FadeIn>
             </section>
 
-                    {/* A/B 屏切换交互展示区（新增核心功能） */}
+                                {/* A/B 屏切换交互展示区 */}
             <FadeIn>
               <div className="relative bg-slate-900 rounded-[3rem] p-6 shadow-2xl overflow-hidden">
-                {/* 切换 Tab */}
+                {/* Tab 切换按钮 */}
                 <div className="flex justify-center mb-8">
                   <div className="inline-flex bg-slate-800 rounded-full p-1">
                     <button
                       onClick={() => setActiveTab('A')}
-                      className={`px-8 py-2.5 rounded-full font-black text-sm transition-all ${activeTab === 'A'
-                        ? 'bg-blue-600 text-white shadow-lg' 
-                        : 'text-slate-400 hover:text-white'}`}
+                      className={`px-8 py-2.5 rounded-full font-black text-sm transition-all ${
+                        activeTab === 'A' 
+                          ? 'bg-blue-600 text-white shadow-lg' 
+                          : 'text-slate-400 hover:text-white'
+                      }`}
                     >
                       A 屏 - 数据分析主视图
                     </button>
                     <button
                       onClick={() => setActiveTab('B')}
-                      className={`px-8 py-2.5 rounded-full font-black text-sm transition-all ${activeTab === 'B'
-                        ? 'bg-blue-600 text-white shadow-lg' 
-                        : 'text-slate-400 hover:text-white'}`}
+                      className={`px-8 py-2.5 rounded-full font-black text-sm transition-all ${
+                        activeTab === 'B' 
+                          ? 'bg-blue-600 text-white shadow-lg' 
+                          : 'text-slate-400 hover:text-white'
+                      }`}
                     >
                       B 屏 - 领域分析视图
                     </button>
                   </div>
                 </div>
 
-                {/* 图片展示区域 */}
+                {/* 图片展示 */}
                 <div className="aspect-[16/9] w-full bg-slate-800 rounded-[2.25rem] overflow-hidden border border-slate-700/50 relative">
                   <img 
                     src={activeTab === 'A' ? images.p2.A : images.p2.B}
@@ -243,6 +247,7 @@ const ProjectDetail = ({ project, onBack }) => {
                 </div>
               </div>
             </FadeIn>
+            
 // --- 主应用组件 ---
 export default function App() {
   const [currentView, setCurrentView] = useState('home');
